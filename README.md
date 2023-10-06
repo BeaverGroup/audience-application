@@ -1,1 +1,2 @@
-# paris-olympics-2024-audience-application
+# Audience-Application
+Audience Application for Paris Olympics 2024
