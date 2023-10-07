@@ -6,5 +6,6 @@ DB_NAME=Database_Name
 DB_PORT=Database_Port
 SERVER_PORT=Server_Port
 
+DB_DATABASE_Public_URL=Mongo_DATABASE_Public_URL_For_Connection
 
 
