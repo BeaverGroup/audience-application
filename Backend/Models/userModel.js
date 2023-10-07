@@ -13,7 +13,7 @@ const voteSchema = new mongoose.Schema(
     },
   },
   { _id: false }
-); 
+);
 
 const userSchema = new mongoose.Schema({
   _id: {
@@ -68,6 +68,6 @@ const userSchema = new mongoose.Schema({
 //   next();
 // });
 
-const UserModel = mongoose.model("User", userSchema);
+exports.UserModel = mongoose.model("User", userSchema);
 
-module.exports = UserModel;
+// module.exports = UserModel;

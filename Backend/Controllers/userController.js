@@ -1,10 +1,12 @@
 // create user and manage user (base structure user information in register account and login account / accress a)
-const UserModel = require("../Models/UserModel");
+// const UserModel = require("../Models/UserModel.js");
+
+const { UserModel } = require("../Models/UserModel");
 
 // 1. set bcrypt to to password before sending to database
 // 2. set status code
 //
-// UserModel
+
 exports.createUser = async (req, res) => {
   try {
     const {
