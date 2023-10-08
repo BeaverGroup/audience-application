@@ -1,10 +1,11 @@
 // create user and manage user (base structure user information in register account and login account / accress a)
-// const UserModel = require("../Models/UserModel.js");
 
-const { UserModel } = require("../Models/UserModel");
+const { user_model } = require("../Models/userModel");
 
 // 1. set bcrypt to to password before sending to database
 // 2. set status code
+// user_model
+// user_model
 //
 
 exports.createUser = async (req, res) => {
@@ -20,7 +21,7 @@ exports.createUser = async (req, res) => {
       Password,
     } = req.body;
 
-    const newUser = new UserModel({
+    const newUser = new user_model({
       Name,
       Gender,
       Age,
@@ -48,7 +49,7 @@ exports.infoUserByEmail = async (req, res) => {
   try {
     const UserData = req.body;
     const { Email } = UserData;
-    const info = await UserModel.findOne({ Email: Email }).exec();
+    const info = await user_model.findOne({ Email: Email }).exec();
     res.status(200).json({ message: "User information", info });
   } catch (err) {
     console.log(err);
@@ -60,7 +61,7 @@ exports.infoUserByID = async (req, res) => {
   try {
     const UserData = req.body;
     const { _id } = UserData;
-    const info = await UserModel.findOne({ _id: _id }).exec();
+    const info = await user_model.findOne({ _id: _id }).exec();
     res.status(200).json({ message: "User information", info });
   } catch (err) {
     console.log(err);
@@ -72,7 +73,7 @@ exports.allinfoUser = async (req, res) => {
   try {
     // const UserData = req.body;
     //   const { email } = UserData;
-    const Data = await UserModel.find({}).exec();
+    const Data = await user_model.find({}).exec();
 
     res.status(200).json({ message: "ALL user information", Data });
   } catch (err) {
@@ -85,7 +86,7 @@ exports.removeUserByEmail = async (req, res) => {
   try {
     const UserData = req.body;
     const { Email } = UserData;
-    const info = await UserModel.findOneAndDelete({ Email: Email }).exec();
+    const info = await user_model.findOneAndDelete({ Email: Email }).exec();
     res.status(200).json({ message: "User is removed", info });
   } catch (err) {
     console.log(err);
@@ -97,7 +98,7 @@ exports.removeUserByID = async (req, res) => {
   try {
     const UserData = req.body;
     const { _id } = UserData;
-    const info = await UserModel.findOneAndDelete({ _id: _id }).exec();
+    const info = await user_model.findOneAndDelete({ _id: _id }).exec();
     res.status(200).json({ message: "User is removed", info });
   } catch (err) {
     console.log(err);
