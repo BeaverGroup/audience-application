@@ -11,11 +11,11 @@ const {
   removeUserByEmail,
 } = require("../Controllers/userController");
 
-const { addSub } = require("../Controllers/subController")
-const { unSub } = require("../Controllers/subController")
+const { addSub,unSub,allSub  } = require("../Controllers/subController")
 const jsonParser = bodyParser.json();
 router.post("/subscribe/:id", jsonParser, addSub); // add sport into subscribe (http://localhost:3002/user/subscribe/:id)
 router.delete("/unsubscribe/:id", jsonParser, unSub); // unsubcribe sport from subscribe (http://localhost:3002/user/unsubscribe/:id)
+router.get("/userAllsub/:id", jsonParser, allSub); // get all user's subscribetions (http://localhost:3002/user/userAllsub/:id)
 require("dotenv").config();
 
 // ADD : check mail used before sending crateUser
