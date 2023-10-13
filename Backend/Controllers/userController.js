@@ -2,6 +2,7 @@
 
 const { user_model } = require("../Models/userModel");
 
+
 exports.infoUserByEmail = async (req, res) => {
   try {
     const UserData = req.body;
@@ -70,8 +71,6 @@ exports.updateUserByEmail = async (req, res) => {
       Gender,
       Age,
       Nationality,
-      Subscribe,
-      Votes,
       Email,
       // NewEmail, // Use this if the email needs to be updated
     } = req.body;
@@ -83,8 +82,6 @@ exports.updateUserByEmail = async (req, res) => {
         Gender,
         Age,
         Nationality,
-        Subscribe,
-        Votes,
         // Email: NewEmail || Email, // Update email if NewEmail is provide
       },
       {
@@ -104,7 +101,7 @@ exports.updateUserByEmail = async (req, res) => {
 
 exports.updateUserByID = async (req, res) => {
   try {
-    const { Name, Gender, Age, Nationality, Subscribe, Votes, _id } = req.body;
+    const { Name, Gender, Age, Nationality, _id } = req.body;
 
     const updatedUser = await user_model.findOneAndUpdate(
       { _id: _id }, // Find user by this email
@@ -113,8 +110,6 @@ exports.updateUserByID = async (req, res) => {
         Gender,
         Age,
         Nationality,
-        Subscribe,
-        Votes,
       },
       {
         new: true,
