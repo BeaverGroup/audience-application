@@ -11,15 +11,15 @@ const {
   updateUserByID,
   updateUserByEmail,
 } = require("../Controllers/userController");
+const { checkTokenG_Middle } = require("../Middlewares/authMiddle");
 
-const { registerUser, loginUser } = require("../Controllers/authController");
+// const { registerUser, loginUser } = require("../Controllers/authController");
 
 const jsonParser = bodyParser.json();
 require("dotenv").config();
 
 // ADD : check mail used before sending crateUser
-router.post("/register", jsonParser, registerUser); // register user   (http://localhost:3002/user/register)
-router.post("/login", jsonParser, loginUser); // register user (http://localhost:3002/user/login)
+
 
 router.get("/infoByEmail", jsonParser, infoUserByEmail); // register user (http://localhost:3002/user/infoByEmail)
 router.get("/infoByID", jsonParser, infoUserByID); // register user (http://localhost:3002/user/infoByID)

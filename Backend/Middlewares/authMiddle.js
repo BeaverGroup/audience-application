@@ -31,7 +31,7 @@ exports.checkTokenG_Middle = async (req, res, next) => {
       });
       return;
     }
-    if (token_mail !== Email) {
+    if (token_mail !== Email) { 
       res.status(401).json({
         token_status: "invalid",
         error: "This is not your token.",

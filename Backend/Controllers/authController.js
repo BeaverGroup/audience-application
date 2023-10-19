@@ -130,7 +130,6 @@ exports.loginUser = async (req, res) => {
     if (!isPasswordMatched) {
       return res.status(400).json({ message: "Password is wrong" });
     }
-    
     const tokenPayload = { Email: Email, Role: "User" };
     jwt.sign(
       tokenPayload,
