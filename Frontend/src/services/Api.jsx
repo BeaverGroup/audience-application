@@ -1,8 +1,8 @@
 import axios from "axios";
 // require("dotenv").config(); // Load environment variables from .env file
 
-const port = 4002;
-const host_ip = "localhost";
+const port = import.meta.env.VITE_API_PORT;
+const host_ip = import.meta.env.VITE_API_HOST_IP;
 
 export const TokenDecodeGOOGLE = async (token) => {
   try {
