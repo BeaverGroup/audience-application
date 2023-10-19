@@ -48,7 +48,7 @@ exports.createUser = async (req, res) => {
 exports.infoUserByEmail = async (req, res) => {
   try {
     const UserData = req.body;
-    const { Email } = UserData;
+    const { Email } = UserData; //
     const info = await user_model.findOne({ Email: Email }).exec();
     res.status(200).json({ message: "User information", info });
   } catch (err) {
