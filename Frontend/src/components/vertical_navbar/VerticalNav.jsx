@@ -1,8 +1,8 @@
 import "./vertical_nav.css";
-import homeIcon from "../../images/home.svg";
-import subIcon from "../../images/subscribe.svg";
-import matchIcon from "../../images/match.svg";
-import resultIcon from "../../images/result.svg";
+import homeIcon from "../../icons/home.svg";
+import subIcon from "../../icons/subscribe.svg";
+import matchIcon from "../../icons/match.svg";
+import resultIcon from "../../icons/result.svg";
 import VerticalNavIcon from "../vertical_nav_icon/VerticalNavIcon";
 
 const navigates = [
