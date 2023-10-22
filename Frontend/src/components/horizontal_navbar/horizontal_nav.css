@@ -1,0 +1,71 @@
+.horizontal-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3rem;
+    padding-top: 1rem;
+    transition: 0.5s ease-in-out;
+}
+
+.scrolled {
+    padding-top: 0;
+    background-color: var(--horizontal-nav);
+    opacity: 90%;
+    filter: var(--normal-shadow);
+}
+
+.horizontal-nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.horizontal-nav .logo .circle-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
+}
+
+.horizontal-nav .logo span {
+    color: var(--text-horizontal-nav);
+    font-family: 'paris2024-font';
+    font-weight: 760;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+}
+
+
+.horizontal-nav .navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.horizontal-nav .navigate li a {
+    color: var(--text-horizontal-nav);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+.circle-svg path {
+    stroke: var(--text-horizontal-nav);
+    /* stroke-dasharray: 33;
+    animation: drawLine 0.5s linear forwards infinite; */
+}
+
+/* @keyframes drawLine {
+    to {
+        stroke-dashoffset: 66;
+    }
+} */
