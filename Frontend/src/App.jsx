@@ -1,12 +1,12 @@
 import React, { Fragment, createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-import ProfileBar from "./components/ProfileBar";
+import ProfileBar from "./components/NavAuthDemo";
 import LoginPage from "./pages/auth/LoginPage";
 
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import MainPage from "./pages/main/MainPage";
+import MainPage from "./pages/main/MainPageDemo";
 import RegisterPage from "./pages/auth/RegisterPage";
 
 const UserStateContext = createContext();
@@ -23,7 +23,7 @@ function App() {
       } else {
         // use api login user by sent mail and google token for verify
         const authToken = Cookies.get("authToken");
-        const decodedToken =  jwt_decode(authToken);
+        const decodedToken = jwt_decode(authToken);
 
         if (decodedToken) {
           console.log("DecodedToken : ", decodedToken);
@@ -32,7 +32,9 @@ function App() {
           // window.location.reload();
         } else {
           console.log("DecodedToken : ", decodedToken);
+          console.log("Token expired or Token not found or Token invalid");
           Cookies.remove("authToken");
+          // window.location.reload();
         }
       }
     } catch (e) {
@@ -47,11 +49,10 @@ function App() {
         <Route path="/" element={<MainPage />} />
         {userState ? null : (
           <Fragment>
-            <Route path="/sign-up" element={<RegisterPage/>} />
+            <Route path="/sign-up" element={<RegisterPage />} />
             <Route path="/sign-in" element={<LoginPage />} />
           </Fragment>
         )}
-
       </Routes>
     </UserStateContext.Provider>
   );

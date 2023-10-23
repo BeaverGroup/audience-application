@@ -11,11 +11,9 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
-import "./ProfileBar.css";
+import "./NavAuthDemo.css";
 import Cookies from "js-cookie";
-// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 
 export default function ProfileBar({ user_email }) {
   const navigate = useNavigate();
@@ -94,7 +92,6 @@ export default function ProfileBar({ user_email }) {
                 },
                 "&:before": {
                   //   fontFamily: "Kanit, sans-serif",
-
                   content: '""',
                   display: "block",
                   position: "absolute",
@@ -160,10 +157,8 @@ export default function ProfileBar({ user_email }) {
               textAlign: "center",
             }}
           >
-            {/* <Tooltip title={user_email}> */}
             <Tooltip>
               <Button
-                //   style={{padding:"1rem"}}
                 onClick={handleSignup}
                 size="medium"
                 sx={{ ml: 2, border: "2px solid #D5D1D1" }}

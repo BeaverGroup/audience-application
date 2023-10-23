@@ -57,6 +57,9 @@ export const login_api = async (data) => {
         "Content-Type": "application/json",
       },
       withCredentials: true,
+      validateStatus: function (status) {
+        return status >= 200 && status < 500; // ยอมรับ status codes ระหว่าง 200-499
+      },
     });
     console.log("status", response.status);
 
@@ -64,9 +67,10 @@ export const login_api = async (data) => {
       console.log("login_api : Success");
       return response;
     } else {
-      // console.log("status code : " + response.statusCode);
+      console.log("status code : " + response.status);
       // console.log("Error : " + response.error);
-      console.log("Response: " + response);
+      // console.log(response);
+      return response;
     }
 
     // console.log("status", response.status);

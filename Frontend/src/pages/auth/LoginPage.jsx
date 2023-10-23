@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { TokenDecodeGOOGLE, login_api } from "../../services/Api";
 import { useContext } from "react";
 import { UserStateContext } from "../../App";
+import Swal from "`sweetalert2`";
 
 function LoginPage() {
   const { userState, setUserState } = useContext(UserStateContext);
@@ -27,7 +28,7 @@ function LoginPage() {
     try {
       // api will sent cookie and respose
       const response = await login_api(data_form);
-      // console.log(respose);
+      console.log(response);
       if (response.status === 201) {
         const data_user = response.data.user;
         console.log(data_user);
@@ -35,9 +36,17 @@ function LoginPage() {
         navigate("/");
         window.location.reload();
       }
-      if (response.status === 401) {
+      if (
+        response.status === 400 &&
+        response.data.message === "Password is wrong"
+      ) {
+        Swal.fire({
+          icon: "warning",
+          title: "Password is wrong",
+          text: "Please check mail and password again",
+          confirmButtonColor: "#7fcee2",
+        });
         console.log("wrong password");
-        alert("wrong password");
       }
     } catch (e) {
       console.log(e);
