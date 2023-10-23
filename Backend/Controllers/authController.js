@@ -92,10 +92,10 @@ exports.registerUser = async (req, res) => {
 
     // Using async/await to save the user and generate token
     try {
-      const savedUser = await newUser.save();
+      const saved_user = await newUser.save();
 
-      const tokenPayload = { Email: Email, Role: "User" };
-      const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+      const token_payload = { Email: Email, Role: "User" };
+      const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
 
@@ -103,10 +103,10 @@ exports.registerUser = async (req, res) => {
       res.status(201).cookie("authToken", token, { maxAge: threeDays }).json({
         message: "User account created successfully.",
         token,
-        user: savedUser,
+        user: saved_user,
       });
-    } catch (saveErr) {
-      console.error("Error saving user or generating token:", saveErr);
+    } catch (err) {
+      console.error("Error saving user or generating token:", err);
       return res.status(500).json({
         error: "Internal server error while saving user or generating token",
       });

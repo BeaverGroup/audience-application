@@ -11,7 +11,7 @@ const {
   updateUserByID,
   updateUserByEmail,
 } = require("../Controllers/userController");
-const { checkTokenG_Middle } = require("../Middlewares/authMiddle");
+const { checkTokenGMiddle } = require("../Middlewares/authMiddle");
 
 // const { registerUser, loginUser } = require("../Controllers/authController");
 

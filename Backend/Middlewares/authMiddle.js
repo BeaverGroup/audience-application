@@ -7,11 +7,11 @@ const axios = require("axios");
 
 // Google OAuth -> verify token of google ?? opinally check
 
-exports.checkTokenG_Middle = async (req, res, next) => {
+exports.checkTokenGMiddle = async (req, res, next) => {
   var { Token, Email } = req.body;
 
   try {
-    const GToken = await axios.get(
+    const g_token = await axios.get(
       `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${Token}`,
       {
         headers: {
@@ -22,7 +22,7 @@ exports.checkTokenG_Middle = async (req, res, next) => {
       }
     );
 
-    const token_mail = GToken.data.email;
+    const token_mail = g_token.data.email;
     console.log("token_mail", token_mail);
     if (!Boolean(token_mail)) {
       res.status(401).json({
@@ -38,7 +38,7 @@ exports.checkTokenG_Middle = async (req, res, next) => {
       });
       return;
     }
-    if (GToken.status === 200) {
+    if (g_token.status === 200) {
       next();
       console.log("vaild g token correct");
       return;
