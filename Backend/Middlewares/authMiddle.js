@@ -1,4 +1,5 @@
 const axios = require("axios");
+const jwt = require("jsonwebtoken");
 
 // verify user that request api is authorized from token endpoint
 
@@ -7,6 +8,16 @@ const axios = require("axios");
 
 // Google OAuth -> verify token of google ?? opinally check
 
+async function verifyToken(token, secret) {
+  try {
+    const decoded = jwt.verify(token, secret);
+    console.log(decoded); // this will print out the payload of the token
+    return decoded;
+  } catch (err) {
+    console.error("Token verification failed:", err.message);
+    return null;
+  }
+}
 exports.checkTokenGMiddle = async (req, res, next) => {
   var { Token, Email } = req.body;
 
@@ -31,7 +42,7 @@ exports.checkTokenGMiddle = async (req, res, next) => {
       });
       return;
     }
-    if (token_mail !== Email) { 
+    if (token_mail !== Email) {
       res.status(401).json({
         token_status: "invalid",
         error: "This is not your token.",
@@ -47,6 +58,24 @@ exports.checkTokenGMiddle = async (req, res, next) => {
     return res.status(400).json({ message: "some error" });
   } catch (err) {
     console.log("Error in token decode", err);
+    return res.status(400).json({ message: "Error in token decode" });
+  }
+};
+
+exports.verifyCookieToken = async (req, res, next) => {
+  try {
+    const token = req.cookies.authToken;
+    console.log("token", token);
+    if (!token) {
+      return res.status(401).json({ message: "Token not provided" });
+    }
+    const decodedToken = verifyToken(token, process.env.JWT_SECRET); // Make sure to use your JWT secret here
+    if (!decodedToken) {
+      return res.status(401).json({ message: "Token verification failed" });
+    }
+    next();
+  } catch (err) {
+    console.log(err);
     return res.status(400).json({ message: "Error in token decode" });
   }
 };

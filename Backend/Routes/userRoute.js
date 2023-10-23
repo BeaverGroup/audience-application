@@ -11,7 +11,10 @@ const {
   updateUserByID,
   updateUserByEmail,
 } = require("../Controllers/userController");
-const { checkTokenGMiddle } = require("../Middlewares/authMiddle");
+const {
+  checkTokenGMiddle,
+  verifyCookieToken,
+} = require("../Middlewares/authMiddle");
 
 // const { registerUser, loginUser } = require("../Controllers/authController");
 
@@ -20,15 +23,14 @@ require("dotenv").config();
 
 // ADD : check mail used before sending crateUser
 
+router.get("/infoByEmail", jsonParser, verifyCookieToken, infoUserByEmail); // register user (http://localhost:3002/user/infoByEmail)
+router.get("/infoByID", jsonParser, verifyCookieToken, infoUserByID); // register user (http://localhost:3002/user/infoByID)
+router.get("/list", jsonParser, verifyCookieToken, allinfoUser); // register user
 
-router.get("/infoByEmail", jsonParser, infoUserByEmail); // register user (http://localhost:3002/user/infoByEmail)
-router.get("/infoByID", jsonParser, infoUserByID); // register user (http://localhost:3002/user/infoByID)
-router.get("/list", jsonParser, allinfoUser); // register user
-
-router.delete("/removeByID", jsonParser, removeUserByID); // register user (http://localhost:3002/user/infoByID)
+router.delete("/removeByID", jsonParser, verifyCookieToken, removeUserByID); // register user (http://localhost:3002/user/infoByID)
 router.delete("/removeByEmail", jsonParser, removeUserByEmail); // register user (http://localhost:3002/user/infoByID)
 
-router.post("/updateByID", jsonParser, updateUserByID); // update user
-router.post("/updateByEmail", jsonParser, updateUserByEmail); // update user
+router.post("/updateByID", jsonParser, verifyCookieToken, updateUserByID); // update user
+router.post("/updateByEmail", jsonParser, verifyCookieToken, updateUserByEmail); // update user
 
 module.exports = router;
