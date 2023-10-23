@@ -61,7 +61,7 @@
 
 ## 8. Update User by Email
 - **Endpoint**: `/user/update/email`
-- **HTTP Method**: `PUT`
+- **HTTP Method**: `POST`
 - **Description**: Update user details using their email address.
 
   **Request Body**:
@@ -73,7 +73,7 @@
 
 ## 9. Update User by ID
 - **Endpoint**: `/user/update/id`
-- **HTTP Method**: `PUT`
+- **HTTP Method**: `POST`
 - **Description**: Update user details using their unique ID.
 
   **Request Body**:
