@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     try {
       const authToken = Cookies.get("authToken");
-      console.log("authToken", authToken);
+      // console.log("authToken", authToken);
       if (!authToken) {
         console.log("Cookie_token not found");
       } else {
@@ -26,7 +26,7 @@ function App() {
         const decodedToken = jwt_decode(authToken);
 
         if (decodedToken) {
-          console.log("DecodedToken : ", decodedToken);
+          // console.log("DecodedToken : ", decodedToken);
           setUserState(decodedToken);
 
           // window.location.reload();

@@ -62,12 +62,23 @@ function RegisterPage() {
     try {
       // Create a new user
       const new_user = await CreateAuthUser({ ...input, Role: "user" });
-      console.log("New user created:", new_user);
+      console.log(new_user);
 
       // If the user was successfully created, navigate to the home page
       if (new_user) {
-        navigate("/");
-        window.location.reload();
+        if (new_user.success) {
+          navigate("/");
+          window.location.reload();
+        }
+
+        if (!new_user.success && new_user.message == "Email is already used") {
+          Swal.fire({
+            icon: "warning",
+            title: "Try again",
+            text: "Email is already used",
+            confirmButtonColor: "#7fcee2",
+          });
+        }
       } else {
         console.error("User creation failed:", new_user);
       }

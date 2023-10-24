@@ -2,28 +2,88 @@ import React, { useState, useEffect } from "react";
 import "./LoginPage.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import Divider from "@mui/material/Divider";
-import axios from "axios";
-import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { TokenDecodeGOOGLE, login_api } from "../../services/Api";
+import {
+  Login_api_google,
+  TokenDecodeGOOGLE,
+  login_api,
+} from "../../services/Api";
 import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import Swal from "`sweetalert2`";
 
 function LoginPage() {
-  const { userState, setUserState } = useContext(UserStateContext);
-  // const [tokenOfUser, setTokenOfUser] = useState(null); // useEffective when google login for local
+  const { userState, setUserState } = useContext(UserStateContext); // userState  is data of user after jwt decode from app.jsx
+  const [googleTokenOfUser, setGoolgeTokenOfUser] = useState(null); // useEffective when google login for local
   const [input, setInput] = useState({ Email: "", Password: "" });
   const navigate = useNavigate();
 
-  // const decodedToken = jwt_decode(authToken);
+  useEffect(() => {
+    async function fetchGoogleUserData() {
+      console.log(googleTokenOfUser);
+      if (googleTokenOfUser) {
+        // console.log("googleTokenOfUser", googleTokenOfUser);
+        const response = await TokenDecodeGOOGLE(googleTokenOfUser);
+        console.log("response", response);
+        if (response) {
+          const user_data = response.data;
+          console.log(user_data);
+          try {
+            const data_body = {
+              Email: user_data.email,
+              Token: googleTokenOfUser,
+            };
+            // console.log(data_body)
+            const response_google_login = await Login_api_google(data_body);
+            console.log(response_google_login);
+            if (response_google_login.status === 201) {
+              // this email has db
+              const data_user = response_google_login.data.user;
+              console.log(data_user);
+              // setUserState(data_user);
+              navigate("/");
+              window.location.reload();
+            } else if (
+              response_google_login.status === 409 &&
+              response_google_login.data.message == "Email not use"
+            ) {
+              //redirect set info page with  prop of email
+            } else {
+              console.log("login fail");
+              console.log(response_google_login);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+          // setUserState(data_user);
+          navigate("/");
+          window.location.reload();
+        }
+      }
+    }
+    fetchGoogleUserData();
+  }, [googleTokenOfUser]);
+
+  const loginGoogle = useGoogleLogin({
+    onSuccess: async (codeResponse) => {
+      setGoolgeTokenOfUser(codeResponse.access_token);
+      // setIsLogin(true);
+      console.log("codeResponse", codeResponse);
+      localStorage.setItem("accessToken", codeResponse.access_token);
+      // window.location.reload();
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
+  const handleChange = (e) => {
+    const { target } = e; //  target = e.target is thing that changed state
+    const { name } = target; // name = e.target.name
+    const value = e.target.value;
+    setInput({ ...input, [name]: value });
+    // console.log(formInput);
+  };
+
   const onSubmit = async (e, data_form) => {
-    // req login api call
-    // if success
-    // api will sent cookie and respose  -> decode cookie -> set user state
-    // else
-    // alert("wrong password");
     e.preventDefault();
     try {
       // api will sent cookie and respose
@@ -51,62 +111,6 @@ function LoginPage() {
     } catch (e) {
       console.log(e);
     }
-  };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (tokenOfUser) {
-  //       try {
-  //         const userInfo_decode = await TokenDecodeGOOGLE(
-  //           tokenOfUser.access_token
-  //         );
-  //         // setUserInfo(data);
-  //         setUserInfo(userInfo_decode);
-  //         // const log = await Login_api_google(json_);
-  //         // // 401 : mail not use / 200 : mail used
-  //         // console.log("log : ", log.status);
-  //         // if (log.status === 401) {
-  //         //   setIsLogin(true);
-  //         //   console.log(
-  //         //     "Create new user and redirect to /assign info user page (./setpassword)"
-  //         //   );
-  //         //   // navigate("/setpassword");
-
-  //         //   // window.location.href = "/register";
-  //         // }
-  //         // if (log.status === 201) {
-  //         //   console.log("Login success and redirect to main page (./)");
-  //         //   window.location.reload();
-  //         // }
-
-  //         // console.log(log);
-  //       } catch (error) {
-  //         console.log(error);
-
-  //         // Handle the error as needed
-  //       }
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  const loginGoogle = useGoogleLogin({
-    onSuccess: async (codeResponse) => {
-      // setTokenOfUser(codeResponse);
-      // setIsLogin(true);
-      localStorage.setItem("accessToken", codeResponse.access_token);
-      // window.location.reload();
-    },
-    onError: (error) => console.log("Login Failed:", error),
-  });
-
-  const handleChange = (e) => {
-    const { target } = e; //  target = e.target is thing that changed state
-    const { name } = target; // name = e.target.name
-    const value = e.target.value;
-    setInput({ ...input, [name]: value });
-    // console.log(formInput);
   };
 
   return (
