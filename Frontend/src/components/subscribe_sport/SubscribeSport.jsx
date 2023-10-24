@@ -1,13 +1,11 @@
 import "./subscribe-sport.css";
 import React from "react";
-import homeIcon from "../../icons/home.svg";
 
-const SubscribeSport = () => {
+const SubscribeSport = (props) => {
   return (
     <div className="subscribe">
-      {/* <div className="sport-logo"></div> */}
-      <img src={homeIcon} alt="" className="sport-logo"/>
-      <p className="sport-name">TEST</p>
+      <img src={props.icon} alt={props.sportname} className="sport-logo"/>
+      <p className="sport-name">{props.sportname}</p>
     </div>
   );
 };

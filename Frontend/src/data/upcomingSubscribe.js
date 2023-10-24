@@ -1,12 +1,17 @@
+import homeIcon from "../icons/home.svg";
+import subIcon from "../icons/subscribe.svg";
+import matchIcon from "../icons/match.svg";
+import resultIcon from "../icons/result.svg";
+
 const contents = [
     {
         id: "1",
-        name: "Home",
+        name: "Home Game",
         icon: homeIcon,
     },
     {
         id: "2",
-        name: "Subscribe",
+        name: "Home Alone",
         icon: subIcon,
     },
     {
