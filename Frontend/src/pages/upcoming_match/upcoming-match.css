@@ -1,22 +1,21 @@
 .upcoming-matches {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
+    gap: 16px;
+    margin: 24px 160px;
 }
 
-/* desktop */
-@media (min-width: 1440px) {
-    .upcoming-match {
-        margin: 24px 160px;
+/* tablet */
+@media screen and (max-width: 1024px) {
+    .upcoming-matches {
+        margin: 24px 32px;
     }
 }
 
 /* mobile */
-/* @media screen and (min-width: 375px) and (max-width: 744px) {
-    .upcoming-match {}
-} */
-
-/* tablet */
-/* @media screen and (min-width: 744px) and(max-width: 1440px) {
-    .upcoming-match {}
-} */
+@media screen and (max-width: 744px) {
+    .upcoming-matches {
+        margin: 24px 32px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
