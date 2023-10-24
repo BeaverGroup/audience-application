@@ -1,0 +1,22 @@
+.upcoming-matches {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+/* desktop */
+@media (min-width: 1440px) {
+    .upcoming-match {
+        margin: 24px 160px;
+    }
+}
+
+/* mobile */
+/* @media screen and (min-width: 375px) and (max-width: 744px) {
+    .upcoming-match {}
+} */
+
+/* tablet */
+/* @media screen and (min-width: 744px) and(max-width: 1440px) {
+    .upcoming-match {}
+} */

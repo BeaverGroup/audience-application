@@ -1,0 +1,24 @@
+.homepage {
+
+}
+
+/* mobile */
+@media screen and (max-width: 375px) {
+    .homepage{
+
+    }
+}
+
+/* tablet */
+@media screen and (max-width: 744px) {
+    .homepage{
+
+    }
+}
+
+/* desktop */
+@media screen and (max-width: 1440px) {
+    .homepage{
+        margin: 160px 0px;
+    }
+}
