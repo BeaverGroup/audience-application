@@ -77,9 +77,8 @@ exports.registerUser = async (req, res) => {
     const { Name, Gender, Age, Nationality, Password, Email } = req.body;
 
     const user = await user_model.findOne({ Email });
-
     if (user) {
-      return res.status(400).json({ message: "Email is already used" });
+      return res.status(409).json({ message: "Email is already used" });
     }
     const newUser = new user_model({
       Name,
@@ -153,11 +152,42 @@ exports.loginUser = async (req, res) => {
           })
           .json({
             message: "User account created successfully.",
-            token,
             user,
           });
       }
     );
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+exports.loginGoogle = async (req, res) => {
+  try {
+    const { Email } = req.body;
+    const user = await user_model.findOne({ Email });
+    //.exec(function(err, user) { }-> use for callback but you can is await insteand .exec
+    if (!user) {
+      // use register api instead login google
+      return res.status(409).json({ message: "Email not used" });
+    }
+    try {
+      const token_payload = { Email: Email, Role: "User" };
+      const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
+        expiresIn: "3d",
+      });
+
+      const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
+      return res
+        .status(201)
+        .cookie("authToken", token, { maxAge: threeDays })
+        .json({ message: "Login success", token, user });
+    } catch (err) {
+      console.error("Error saving user or generating token:", err);
+      return res.status(500).json({
+        error: "Internal server error while saving user or generating token",
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
