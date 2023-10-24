@@ -5,8 +5,12 @@ import contents from "../../data/navbarContent";
 import { widthToChangeNav, heightToChangeNav } from "../../services/constants";
 
 function HorizontalNav() {
+    // responsive navbar following window scroll
     const [scrolled, setScrolled] = useState(false);
+
+    // active hamburger navbar
     const [actived, setActived] = useState(false);
+
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
@@ -19,20 +23,19 @@ function HorizontalNav() {
                 setScrolled(false);
             }
         }
-        
 
-        if ((screenHeight > heightToChangeNav) && actived && (screenWidth > widthToChangeNav)) {
-            setActived(false)
-        }
-        
         const handleResizeWindow = () => {
             setScreenWidth(window.innerWidth);
             setScreenHeight(window.innerHeight);
-          };
+        };
+
+        // deactive hamburger navbar when height or width changed
+        if ((screenHeight > heightToChangeNav) && actived && (screenWidth > widthToChangeNav)) {
+            setActived(false)
+        }
+
+
         window.addEventListener("resize", handleResizeWindow);
-
-
-
         window.addEventListener("scroll", onScroll);
 
         return () => {

@@ -8,6 +8,7 @@ function VerticalNavIcon(props) {
     const [hovered, setHovered] = useState(false);
 
     useEffect(() => {
+        // add mouseove and mouseout to check hover
         const element = document.getElementById(`${content.id}`);
         function handleMouseOver() {
             setHovered(true);
