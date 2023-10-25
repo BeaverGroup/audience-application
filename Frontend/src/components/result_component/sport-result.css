@@ -1,9 +1,10 @@
 .sport-result-card {
-    border: solid;
+    border-bottom: solid;
     border-color: #D9D9D9;
     border-radius: 16px;
     padding: 24px 32px;
-    grid-column: 4/13;
+    height: fit-content;
+
 }
 
 .sport-result-card h1 {
@@ -23,7 +24,8 @@
 .sport-result-card p {
     font-size: 16px;
     line-height: 24px;
-    padding: 4px;
+    padding: 0px 4px;
+    margin-top: -8px;
 }
 
 .sport-result-header {
@@ -49,6 +51,7 @@
 .sport-result-table tr td {
     border-bottom: 1px solid #ccc;
     line-height: 1.8em;
+    padding: 8px;
 }
 
 .sport-result-table-name {
@@ -56,8 +59,8 @@
 }
 
 .country-flag {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
 }
 
 /* tablet */

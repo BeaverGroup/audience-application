@@ -13,12 +13,10 @@ const UpcomingMatch = () => {
         <SubscribeBox />
         <AddSubscribeBox />
       </div>
-      <SportResult />
-      <SportResult />
-      <SportResult />
-      <SportResult />
-      <SportResult />
-      <SportResult />
+      <div className="sport-result-medal">
+        <SportResult />
+      </div>
+
     </div>
   );
 };
