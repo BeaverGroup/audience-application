@@ -43,6 +43,7 @@ function App() {
     }
   }, []);
   return (
+    // userState is data of user from token that decoded
     <UserStateContext.Provider value={{ userState, setUserState }}>
       <ProfileBar user_email={userState ? userState["Email"] : null} />
       <Routes>

@@ -48,6 +48,7 @@ function LoginPage() {
               response_google_login.data.message == "Email not use"
             ) {
               //redirect set info page with  prop of email
+              navigate("/register", { state: { email: user_data.email } });
             } else {
               console.log("login fail");
               console.log(response_google_login);
