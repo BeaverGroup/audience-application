@@ -8,6 +8,7 @@ const AddSubscribe = (props) => {
       {/* <img src={props.icon} alt={props.sportname} className="add-subscribe-sport-logo" /> */}
       <Icon icon="tabler:play-football" className="add-subscribe-sport-logo"/>
       <p className="add-subscribe-sport-name">TEST</p>
+      <Icon icon="ic:round-plus" className="plus-icon"/>
     </div>
   );
 };
