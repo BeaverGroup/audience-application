@@ -76,8 +76,8 @@ function LoginPage() {
   });
 
   const handleChange = (e) => {
-    const { target } = e; //  target = e.target is thing that changed state
-    const { name } = target; // name = e.target.name
+    const { target } = e;
+    const { name } = target;
     const value = e.target.value;
     setInput({ ...input, [name]: value });
     // console.log(formInput);
@@ -96,13 +96,15 @@ function LoginPage() {
         navigate("/");
         window.location.reload();
       }
+      console.log(response.status, response.data.message);
       if (
-        response.status === 400 &&
-        response.data.message === "Password is wrong"
+        (response.status === 400 &&
+          response.data.message === "Password is wrong") ||
+        "Email is not found"
       ) {
         Swal.fire({
           icon: "warning",
-          title: "Password is wrong",
+          title: "Password or Email is wrong",
           text: "Please check mail and password again",
           confirmButtonColor: "#7fcee2",
         });

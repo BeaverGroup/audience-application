@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./PasswordSetPage.css";
+import "./RegisterPage.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
 function RegisterPage() {
