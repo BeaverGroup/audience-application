@@ -1,18 +1,19 @@
-.subscribe-box {
+.add-subscribe-box {
     /* border: solid; */
     /* border-color: #D9D9D9 ; */
     /* border-radius: 16px; */
     padding: 20px 32px;
+    grid-column: 1/4;
 }
 
-.subscribe-box h5 {
+.add-subscribe-box h5 {
     font-size: 18px;
     font-family: 'paris2024-font';
     padding: 4px;
     font-weight: normal;
 }
 
-.subscribe-sport {
+.add-subscribe-sport {
     position: flex;
     flex-direction: column;
 }
