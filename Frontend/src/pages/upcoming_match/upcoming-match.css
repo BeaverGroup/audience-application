@@ -5,6 +5,10 @@
     margin: 24px 160px;
 }
 
+.sport-bar {
+    grid-column: 1/4;
+}
+
 /* tablet */
 @media screen and (max-width: 1024px) {
     .upcoming-matches {
