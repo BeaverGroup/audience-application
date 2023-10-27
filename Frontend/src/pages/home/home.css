@@ -41,7 +41,6 @@
 .section-2 {
     display: grid;
     grid-template-columns: repeat(12, 76px);
-    height: 500px;
     gap: 20px;
     justify-content: center;
 

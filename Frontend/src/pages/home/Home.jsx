@@ -17,6 +17,7 @@ const Home = () => {
                 <div className="news-section">
                     <h2>NEWS from your subscribe</h2>
                 </div>
+                <UpcomingBox/>
                 <div className="sports-section">
                     <h2>Sports</h2>
                 </div>
