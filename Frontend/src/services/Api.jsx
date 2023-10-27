@@ -13,6 +13,7 @@ export const TokenDecodeGOOGLE = async (token) => {
           Authorization: `Bearer ${token}`,
           Accept: "application/json",
           // value: "same-origin", // "same-origin-allow-popups"
+          // value: "same-origin-allow-popups",
         },
       }
     );
@@ -170,7 +171,6 @@ export const Login_api_google = async (data) => {
     return false;
   }
 };
-
 
 // export const Login_api_google = async (data) => {
 //   const baseURL = `http://${host_ip}:${port}/auth/google-login`;

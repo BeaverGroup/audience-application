@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import Swal from "`sweetalert2`";
 
-function LoginPage() {
+function LoginPage({ setEnableAssignPage }) {
   const { userState, setUserState } = useContext(UserStateContext); // userState  is data of user after jwt decode from app.jsx
   const [googleTokenOfUser, setGoolgeTokenOfUser] = useState(null); // useEffective when google login for local
   const [input, setInput] = useState({ Email: "", Password: "" });
@@ -35,7 +35,9 @@ function LoginPage() {
             };
             // console.log(data_body)
             const response_google_login = await Login_api_google(data_body);
-            console.log(response_google_login);
+            // console.log(response_google_login);
+            // console.log("G login status: ",response_google_login.status);
+            // console.log("G login message: ",response_google_login.data.message )
             if (response_google_login.status === 201) {
               // this email has db
               const data_user = response_google_login.data.user;
@@ -45,10 +47,12 @@ function LoginPage() {
               window.location.reload();
             } else if (
               response_google_login.status === 409 &&
-              response_google_login.data.message == "Email not use"
+              response_google_login.data.message == "Email not used"
             ) {
+              console.log("Google Login Error")
               //redirect set info page with  prop of email
-              navigate("/register", { state: { email: user_data.email } });
+              setEnableAssignPage(true);
+              navigate("/assign-info", { state: { email: user_data.email } });
             } else {
               console.log("login fail");
               console.log(response_google_login);
@@ -57,8 +61,8 @@ function LoginPage() {
             console.log(err);
           }
           // setUserState(data_user);
-          navigate("/");
-          window.location.reload();
+          // navigate("/");
+          // window.location.reload();
         }
       }
     }

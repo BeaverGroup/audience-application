@@ -1,4 +1,10 @@
-import React, { Fragment, createContext, useEffect, useState } from "react";
+import React, {
+  Fragment,
+  createContext,
+  useEffect,
+  useState,
+  Navigate,
+} from "react";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import ProfileBar from "./components/NavAuthDemo";
@@ -8,11 +14,13 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MainPage from "./pages/main/MainPageDemo";
 import RegisterPage from "./pages/auth/RegisterPage";
+import AssignPage from "./pages/auth/AssignPage";
 
 const UserStateContext = createContext();
 
 function App() {
   const [userState, setUserState] = useState(null); // login?
+  const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
 
   useEffect(() => {
     try {
@@ -48,10 +56,17 @@ function App() {
       <ProfileBar user_email={userState ? userState["Email"] : null} />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
         {userState ? null : (
           <Fragment>
             <Route path="/sign-up" element={<RegisterPage />} />
-            <Route path="/sign-in" element={<LoginPage />} />
+            <Route
+              path="/sign-in"
+              element={<LoginPage setEnableAssignPage={setEnableAssignPage} />}
+            />
+            {enableAssignPage ? (
+              <Route path="/assign-info" element={<AssignPage />} />
+            ) : null}
           </Fragment>
         )}
       </Routes>
