@@ -1,0 +1,16 @@
+.datebox {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.date {
+    padding-bottom: 20px;
+    font-weight: 900;
+}
+
+.upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

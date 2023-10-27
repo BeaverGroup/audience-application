@@ -1,0 +1,13 @@
+.upcoming {
+    width: 500px;
+    border: solid;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.upcoming-title {
+    color: #6677A5;
+    padding-bottom: 30px;
+    font-weight: 800;
+}
