@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
       {/* navigateBar here */}
         <Routes>
-            <Route>{/* page */}</Route>
+            <Route path="/">{/* page */}</Route>
             <Route>{/* page */}</Route>
             <Route path="/upcoming" element={<UpcomingMatch/>}/>
         </Routes>
