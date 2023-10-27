@@ -25,6 +25,11 @@ const contents = [
         name: "Result",
         icon: resultIcon,
     },
+    {
+        id: "5",
+        name: "Result",
+        icon: resultIcon,
+    },
 ];
 
 export default contents;
