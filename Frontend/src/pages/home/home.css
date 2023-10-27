@@ -56,11 +56,11 @@
 }
 
 .section-2 .news-section {
-    grid-column: 1/13;
+    grid-column: 1/-1;
 }
 
 .section-2 .sports-section {
-    grid-column: 1/13;
+    grid-column: 1/-1;
 }
 
 
@@ -92,13 +92,6 @@
     
     }
 
-    .section-2 .news-section {
-        grid-column: 1/9;
-    }
-    
-    .section-2 .sports-section {
-        grid-column: 1/9;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -129,14 +122,6 @@
     .section-2 h2{
         font-size: 24px;
     
-    }
-
-    .section-2 .news-section {
-        grid-column: 1/5;
-    }
-    
-    .section-2 .sports-section {
-        grid-column: 1/5;
     }
 }
 
