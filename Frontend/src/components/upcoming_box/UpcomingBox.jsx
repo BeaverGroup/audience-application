@@ -2,7 +2,7 @@ import React from 'react'
 
 const UpcomingBox = () => {
   return (
-    <div>Test</div>
+    <div>Tests</div>
   )
 }
 
