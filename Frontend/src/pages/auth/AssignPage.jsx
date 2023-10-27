@@ -10,16 +10,6 @@ function AssignPage() {
 
   const location = useLocation();
   const email = location.state?.email;
-  // (tokenOfUser && token_g)
-  //   useEffect(() => {
-  //     if (!userInfo && token_g) {
-  //       localStorage.removeItem("accessToken");
-  //       navigate("/");
-  //     } else {
-  //       setInput({ ...input, Mail: userInfo.data.email, Token: token_g });
-  //     }
-  //   }, [userInfo]);
-
   const [input, setInput] = useState({
     Email: email,
     Name: "",

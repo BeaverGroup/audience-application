@@ -5,16 +5,6 @@ import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
 function RegisterPage() {
   const navigate = useNavigate();
-  // (tokenOfUser && token_g)
-  //   useEffect(() => {
-  //     if (!userInfo && token_g) {
-  //       localStorage.removeItem("accessToken");
-  //       navigate("/");
-  //     } else {
-  //       setInput({ ...input, Mail: userInfo.data.email, Token: token_g });
-  //     }
-  //   }, [userInfo]);
-
   const [input, setInput] = useState({
     Email: "",
     Name: "",

@@ -8,12 +8,9 @@ import {
   TokenDecodeGOOGLE,
   login_api,
 } from "../../services/Api";
-import { useContext } from "react";
-import { UserStateContext } from "../../App";
 import Swal from "`sweetalert2`";
 
 function LoginPage({ setEnableAssignPage }) {
-  const { userState, setUserState } = useContext(UserStateContext); // userState  is data of user after jwt decode from app.jsx
   const [googleTokenOfUser, setGoolgeTokenOfUser] = useState(null); // useEffective when google login for local
   const [input, setInput] = useState({ Email: "", Password: "" });
   const navigate = useNavigate();
@@ -22,7 +19,6 @@ function LoginPage({ setEnableAssignPage }) {
     async function fetchGoogleUserData() {
       console.log(googleTokenOfUser);
       if (googleTokenOfUser) {
-        // console.log("googleTokenOfUser", googleTokenOfUser);
         const response = await TokenDecodeGOOGLE(googleTokenOfUser);
         console.log("response", response);
         if (response) {
@@ -33,23 +29,18 @@ function LoginPage({ setEnableAssignPage }) {
               Email: user_data.email,
               Token: googleTokenOfUser,
             };
-            // console.log(data_body)
             const response_google_login = await Login_api_google(data_body);
-            // console.log(response_google_login);
-            // console.log("G login status: ",response_google_login.status);
-            // console.log("G login message: ",response_google_login.data.message )
             if (response_google_login.status === 201) {
               // this email has db
               const data_user = response_google_login.data.user;
               console.log(data_user);
-              // setUserState(data_user);
               navigate("/");
               window.location.reload();
             } else if (
               response_google_login.status === 409 &&
               response_google_login.data.message == "Email not used"
             ) {
-              console.log("Google Login Error")
+              console.log("Google Login Error");
               //redirect set info page with  prop of email
               setEnableAssignPage(true);
               navigate("/assign-info", { state: { email: user_data.email } });
@@ -60,9 +51,6 @@ function LoginPage({ setEnableAssignPage }) {
           } catch (err) {
             console.log(err);
           }
-          // setUserState(data_user);
-          // navigate("/");
-          // window.location.reload();
         }
       }
     }
@@ -97,7 +85,6 @@ function LoginPage({ setEnableAssignPage }) {
       if (response.status === 201) {
         const data_user = response.data.user;
         console.log(data_user);
-        // setUserState(data_user);
         navigate("/");
         window.location.reload();
       }
@@ -130,9 +117,6 @@ function LoginPage({ setEnableAssignPage }) {
             src="../../image/login_img.png"
             alt="Italian Trulli"
           />
-          {/* <button id="button_auth" type="submit" onClick={test}>
-            Cookies
-          </button> */}
           <form
             id="form_auth"
             onSubmit={(e) => {
@@ -146,7 +130,6 @@ function LoginPage({ setEnableAssignPage }) {
               id="Email"
               name="Email"
               onChange={handleChange}
-              // value={input.username}
               required
             />
             <label id="label_auth">Password</label>
@@ -156,7 +139,6 @@ function LoginPage({ setEnableAssignPage }) {
               id="password"
               name="Password"
               onChange={handleChange}
-              // valก={input.password}
               required
             />
             <button id="button_auth" type="submit">
