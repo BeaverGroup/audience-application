@@ -1,4 +1,5 @@
-import UpcomingBox from '../../components/upcoming_box/UpcomingBox'
+import UpcomingBox from '../../components/Upcoming/upcoming_box/UpcomingBox'
+import SportResult from '../../components/result_component/SportResult'
 import './home.css'
 import parisIcon from "../../icons/paris-icon.svg"
 
@@ -18,6 +19,7 @@ const Home = () => {
                     <h2>NEWS from your subscribe</h2>
                 </div>
                 <UpcomingBox/>
+                {/* <SportResult className="sports-result"/> */}
                 <div className="sports-section">
                     <h2>Sports</h2>
                 </div>
