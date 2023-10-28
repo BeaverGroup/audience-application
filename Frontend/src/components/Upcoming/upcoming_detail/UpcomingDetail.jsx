@@ -9,10 +9,10 @@ const UpcomingDetail = (props) => {
         <Icon icon="tabler:play-football" className="sport-logo" />
         <div className="match-detail">
           <h3 className="sport-name">Basketball</h3>
-          <p>England vs Thailand</p>
+          <p>England <br /> vs <br /> Thailand</p>
         </div>
         <div className="time">
-          <p>1.00PM - 3.00PM</p>
+          <p>1.00PM <br /> - <br /> 3.00PM</p>
         </div>
       </div>
     );
@@ -22,10 +22,10 @@ const UpcomingDetail = (props) => {
       <Icon icon="tabler:play-football" className="sport-logo" />
       <div className="match-detail">
         <h3 className="sport-name">Basketball</h3>
-        <p>England vs Thailand</p>
+        <p>England <br /> vs <br /> Thailand</p>
       </div>
       <div className="time">
-        <p>1.00PM - 3.00PM</p>
+        <p>1.00PM <br /> - <br /> 3.00PM</p>
       </div>
     </div>
   );

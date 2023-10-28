@@ -16,3 +16,22 @@
     flex-direction: column;
     gap: 8px;
 }
+
+
+@media screen and (max-width: 600px) {
+    .datebox .date {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .datebox .date {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .datebox .date {
+        font-size: 12px;
+    }
+}

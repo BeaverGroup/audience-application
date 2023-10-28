@@ -16,12 +16,18 @@ const Home = () => {
             </div>
             <div className="section-2">
                 <div className="news-section">
-                    <h2>NEWS from your subscribe</h2>
+                    <h2 className='news-title'>NEWS from your subscribe</h2>
+                    <div className='upcoming-box'>
                     <UpcomingBox/>
-                    {/* <SportResult className="sports-result"/> */}
+                    </div>
+                    <div className="result-box">
+                    <SportResult/>
+                    </div>
+                    
+        
                 </div>
                 <div className="sports-section">
-                    <h2>Sports</h2>
+                    <h2 className='sports-title'>Sports</h2>
                 </div>
             </div>
         </div>
