@@ -8,7 +8,7 @@ const UpcomingDetail = (props) => {
       <div className="detail-box-grey">
         <Icon icon="tabler:play-football" className="sport-logo" />
         <div className="match-detail">
-          <h2>Basketball</h2>
+          <h3 className="sport-name">Basketball</h3>
           <p>England vs Thailand</p>
         </div>
         <div className="time">
@@ -21,7 +21,7 @@ const UpcomingDetail = (props) => {
     <div className="detail-box-white">
       <Icon icon="tabler:play-football" className="sport-logo" />
       <div className="match-detail">
-        <h2>Basketball</h2>
+        <h3 className="sport-name">Basketball</h3>
         <p>England vs Thailand</p>
       </div>
       <div className="time">

@@ -1,13 +1,14 @@
 .upcoming {
     width: 500px;
-    border: solid;
     padding-top: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .upcoming-title {
     color: #6677A5;
     padding-bottom: 30px;
-    font-weight: 800;
+    font-weight: 900;
 }

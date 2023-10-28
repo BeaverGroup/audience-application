@@ -20,8 +20,18 @@
 
 .time {
     grid-column: 6 / 9;
+    margin-top: 6px;
 }
 
 .sport-logo {
     margin: auto;
+}
+
+.sport-name {
+    font-size:x-large;
+    font-weight: bold;
+}
+
+.match-detail p {
+    color: grey;
 }
