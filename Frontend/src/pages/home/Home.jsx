@@ -17,9 +17,9 @@ const Home = () => {
             <div className="section-2">
                 <div className="news-section">
                     <h2>NEWS from your subscribe</h2>
+                    <UpcomingBox/>
+                    {/* <SportResult className="sports-result"/> */}
                 </div>
-                <UpcomingBox/>
-                {/* <SportResult className="sports-result"/> */}
                 <div className="sports-section">
                     <h2>Sports</h2>
                 </div>

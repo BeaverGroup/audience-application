@@ -56,6 +56,14 @@
 
 .section-2 .news-section {
     grid-column: 1/-1;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+}
+
+.section-2 .news-section h2 {
+    grid-column: 1/-1;
 }
 
 .section-2 .sports-section {

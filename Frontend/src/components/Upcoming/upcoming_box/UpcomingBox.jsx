@@ -1,5 +1,5 @@
 import React from 'react'
-import DateBox from '../date_box/DateBox'
+import DateBox from "../date_box/DateBox"
 import "./upcoming-box.css";
 
 const UpcomingBox = () => {
