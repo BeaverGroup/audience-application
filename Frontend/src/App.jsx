@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
+import Subscribe from "./pages/subscribe/Subscribe";
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
         <Routes>
             <Route>{/* page */}</Route>
             <Route>{/* page */}</Route>
-            <Route path="/upcoming" element={<UpcomingMatch/>}/>
+            <Route path="/subscribe" element={<Subscribe/>}/>
         </Routes>
         {/* footer here */}
       </BrowserRouter>
