@@ -1,13 +1,12 @@
 .upcoming-page {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(12, 76px);
     gap: 20px;
     justify-content: center;
-    overflow: visible;
-    position: relative;
-    top: 30px;
-
 }
+
+
 
 
 /* tablet */

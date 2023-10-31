@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 const UpcomingMatch = () => {
   return (
     <div className="upcoming-page">
-      test
       <UpcomingMatchDetail/>
     </div>
   );
