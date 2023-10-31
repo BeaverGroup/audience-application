@@ -1,0 +1,11 @@
+.vertical-nav .navigate {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    top: 50%;
+    transform: translate(0%, -50%);
+    margin-left: 1rem;
+    width: 256px;
+    overflow: hidden;
+}

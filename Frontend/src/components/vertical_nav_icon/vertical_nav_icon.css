@@ -1,0 +1,60 @@
+.image-icon {
+
+    overflow: hidden;
+    padding: 14px 16px;
+}
+
+.image-icon img {
+    position: relative;
+    filter: var(--normal-shadow);
+    transition: all 0.2s ease-in-out;
+    z-index: 99999;
+}
+
+.image-icon a:hover img {
+    transform: scale(1.2);
+}
+
+.image-icon a::before {
+    position: absolute;
+    content: "";
+    left: 40px;
+    width: 0px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background-color: var(--white);
+    transition: all 0.3s ease-in-out;
+    filter: var(--normal-shadow);
+    z-index: -1;
+}
+
+.image-icon a:hover::before {
+    z-index: 1;
+    width: 180px;
+}
+
+.image-icon span {
+    opacity: 0;
+    color: var(--white);
+    position: absolute;
+    left: 10%;
+    transform: translateY(80%);
+    font-size: 20px;
+    transition: all 0.1s ease-in-out;
+    font-family: "paris2024-font";
+    z-index: -1;
+}
+
+.image-icon .open {
+    opacity: 1;
+    color: var(--blue);
+    position: absolute;
+    left: 35%;
+    padding-left: 1rem;
+    transform: translateY(80%);
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+    font-family: "paris2024-font";
+    z-index: 1;
+}
