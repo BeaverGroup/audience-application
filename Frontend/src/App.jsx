@@ -21,13 +21,17 @@ const UserStateContext = createContext();
 function App() {
   const [userState, setUserState] = useState(null); // login?
   const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
-
+  console.log(userState);
   useEffect(() => {
     try {
       const authToken = Cookies.get("authToken");
       // console.log("authToken", authToken);
       if (!authToken) {
         console.log("Cookie_token not found");
+        const g_token = localStorage.getItem("accessToken");
+        if (g_token) {
+          localStorage.removeItem("accessToken");
+        }
       } else {
         // use api login user by sent mail and google token for verify
         const authToken = Cookies.get("authToken");
@@ -39,7 +43,7 @@ function App() {
 
           // window.location.reload();
         } else {
-          console.log("DecodedToken : ", decodedToken);
+          // console.log("DecodedToken : ", decodedToken);
           console.log("Token expired or Token not found or Token invalid");
           Cookies.remove("authToken");
           // window.location.reload();

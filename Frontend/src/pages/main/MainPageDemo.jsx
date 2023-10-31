@@ -19,7 +19,7 @@ function MainPage() {
     const host_ip = import.meta.env.VITE_API_HOST_IP;
     try {
       const all_user = await axios.get(`http://${host_ip}:${port}/user/list`, {
-        withCredentials: true, 
+        withCredentials: true,
       });
       console.log(all_user.data);
     } catch (e) {
@@ -28,8 +28,23 @@ function MainPage() {
   };
 
   return (
-    <div>
-      <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: " center",
+      }}
+    >
+      <div
+        style={{
+          border: "0.15rem solid #DCD8FD",
+          // padding: "1rem 7rem 14rem 28rem",
+          padding: "2rem 0rem",
+          borderRadius: "0.8rem",
+          width: "30%",
+          backgroundColor: "#E9E7F8",
+          color: "#545353",
+        }}
+      >
         <h1>MainPage</h1>
         <h3> Token decode data </h3>
         <div>{"Email :  " + userState.Email}</div>
@@ -37,9 +52,15 @@ function MainPage() {
         <div>{"exp :  " + userState.exp}</div>
         <div>{"iat :  " + userState.iat}</div>
         <div>
-          {"** time  : " + new Date(userState.exp * 1000).toLocaleString()}
+          {"** time  : " +
+            new Date(userState.exp * 1000 + 60000).toLocaleString()}
         </div>
-        <button id="button_auth" type="submit" onClick={test}>
+        <button
+          style={{ width: "70%", height: "50px" }}
+          id="button_auth"
+          type="submit"
+          onClick={test}
+        >
           test permission request api
         </button>
       </div>
