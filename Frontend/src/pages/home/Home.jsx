@@ -16,7 +16,10 @@ const getFiltered = (text, items) => {
 
 const Home = () => {
     const element = document.querySelector(":root");
-    element.style.setProperty("--text-horizontal-nav", "white");
+
+    if (!document.querySelector(".scrolled")) {
+        element.style.setProperty("--text-horizontal-nav", "white");
+    }
 
     const [text, setText] = useState("");
 
