@@ -2,48 +2,6 @@
 
 const { user_model } = require("../Models/userModel");
 
-// 1. set bcrypt to to password before sending to database
-// 2. set status code
-// user_model
-// user_model
-//
-
-exports.createUser = async (req, res) => {
-  try {
-    const {
-      Name,
-      Gender,
-      Age,
-      Nationality,
-      Subscribe,
-      Votes,
-      Email,
-      Password,
-    } = req.body;
-
-    const newUser = new user_model({
-      Name,
-      Gender,
-      Age,
-      Nationality,
-      Subscribe,
-      Votes,
-      Email,
-      Password,
-    });
-
-    const savedUser = await newUser.save();
-    res.status(201).json({ message: "User created", user: savedUser });
-  } catch (err) {
-    console.log(err);
-    if (err.code && err.code === 11000) {
-      // MongoDB duplicate key error
-      res.status(409).json({ message: "Email already exists" });
-    } else {
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  }
-};
 
 exports.infoUserByEmail = async (req, res) => {
   try {
@@ -100,6 +58,68 @@ exports.removeUserByID = async (req, res) => {
     const { _id } = UserData;
     const info = await user_model.findOneAndDelete({ _id: _id }).exec();
     res.status(200).json({ message: "User is removed", info });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+exports.updateUserByEmail = async (req, res) => {
+  try {
+    const {
+      Name,
+      Gender,
+      Age,
+      Nationality,
+      Email,
+      // NewEmail, // Use this if the email needs to be updated
+    } = req.body;
+
+    const updatedUser = await user_model.findOneAndUpdate(
+      { Email: Email }, // Find user by this email
+      {
+        Name,
+        Gender,
+        Age,
+        Nationality,
+        // Email: NewEmail || Email, // Update email if NewEmail is provide
+      },
+      {
+        new: true, // Return the updated document
+        runValidators: true, // Validate the updated document before saving
+      }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User updated", user: updatedUser });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+exports.updateUserByID = async (req, res) => {
+  try {
+    const { Name, Gender, Age, Nationality, _id } = req.body;
+
+    const updatedUser = await user_model.findOneAndUpdate(
+      { _id: _id }, // Find user by this email
+      {
+        Name,
+        Gender,
+        Age,
+        Nationality,
+      },
+      {
+        new: true,
+        runValidators: true, // check requirement field of schema
+      }
+    );
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User updated", user: updatedUser });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
