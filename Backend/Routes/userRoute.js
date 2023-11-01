@@ -11,20 +11,18 @@ const {
   updateUserByID,
   updateUserByEmail,
 } = require("../Controllers/userController");
+const { addSub,unSub,allSub  } = require("../Controllers/subController")
+
 const {
   checkTokenGMiddle,
   verifyCookieToken,
 } = require("../Middlewares/authMiddle");
-
-// const { registerUser, loginUser } = require("../Controllers/authController");
-
 const jsonParser = bodyParser.json();
 const {
   addVote,
   removeVote,
   allVotes,
 } = require("../Controllers/voteController");
-
 require("dotenv").config();
 
 //user
@@ -40,5 +38,10 @@ router.delete("/removeByEmail", jsonParser, removeUserByEmail); // register user
 router.delete("/unvote/:id", jsonParser, verifyCookieToken, removeVote);
 router.post("/vote/:id", jsonParser, verifyCookieToken, addVote);
 router.get("/userAllvote/:id", jsonParser, verifyCookieToken, allVotes);
+
+// sub
+router.post("/subscribe/:id", jsonParser, addSub); // add sport into subscribe (http://localhost:3002/user/subscribe/:id)
+router.delete("/unsubscribe/:id", jsonParser, unSub); // unsubcribe sport from subscribe (http://localhost:3002/user/unsubscribe/:id)
+router.get("/userAllsub/:id", jsonParser, allSub); // get all user's subscribetions (http://localhost:3002/user/userAllsub/:id)
 
 module.exports = router;
