@@ -15,6 +15,9 @@ const getFiltered = (text, items) => {
 }
 
 const Home = () => {
+    const element = document.querySelector(":root");
+    element.style.setProperty("--text-horizontal-nav", "white");
+
     const [text, setText] = useState("");
 
     const filteredItems = getFiltered(text, sports)

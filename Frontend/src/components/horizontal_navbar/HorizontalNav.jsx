@@ -16,12 +16,30 @@ function HorizontalNav() {
 
 
     useEffect(() => {
+
+        const element = document.querySelector(":root");
+        const navbar = document.querySelector(".horizontal-nav");
         const onScroll = () => {
             if (window.scrollY > 30) {
                 setScrolled(true);
+                element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+                navbar.style.backgroundColor = "var(--horizontal-nav)";
             } else {
                 setScrolled(false);
+                if (screenWidth > 768) {
+                    element.style.setProperty("--text-horizontal-nav", "var(--white)");
+                    navbar.style.backgroundColor = "inherit";
+                }
             }
+        }
+
+        if (screenWidth <= 768) {
+            element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+            navbar.style.backgroundColor = "var(--horizontal-nav)";
+        }
+        // 
+        else {
+            navbar.style.backgroundColor = "transparent";
         }
 
         const handleResizeWindow = () => {
@@ -64,7 +82,7 @@ function HorizontalNav() {
     return (
         <div>
             <nav className={scrolled ? "horizontal-nav scrolled" : "horizontal-nav"}>
-                <Link to="/">
+                <Link className="logo-navigate" to="/">
                     <ul className="logo">
                         <div className="circle-svg">
                             <svg
@@ -124,7 +142,7 @@ function HorizontalNav() {
             </nav>
 
             {actived ?
-                <nav className="hamburger-nav">
+                <nav className="hamburger-nav open">
                     <ul>
                         {contents.map((content, index) => {
                             return <li id={contents.id} key={index}><Link onClick={closeActive} to={content.to}>{content.name}</Link></li>
@@ -132,7 +150,13 @@ function HorizontalNav() {
                     </ul>
                 </nav>
                 :
-                ""
+                <nav className="hamburger-nav">
+                <ul>
+                    {contents.map((content, index) => {
+                        return <li id={contents.id} key={index}><Link onClick={closeActive} to={content.to}>{content.name}</Link></li>
+                    })}
+                </ul>
+            </nav>
             }
 
         </div>
