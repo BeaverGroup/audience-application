@@ -1,6 +1,5 @@
-// sent vote of user 
 
-// api vote sport and subscribe sport
+
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -65,4 +64,5 @@ exports.allSub = async (req, res) => {
 
     }
 }
+
 
