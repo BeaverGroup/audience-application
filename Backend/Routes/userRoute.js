@@ -11,7 +11,12 @@ const {
   updateUserByID,
   updateUserByEmail,
 } = require("../Controllers/userController");
-const { addSub,unSub,allSub  } = require("../Controllers/subController")
+const {
+  addSub,
+  unSub,
+  allSub,
+  updateSub,
+} = require("../Controllers/subController");
 
 const {
   checkTokenGMiddle,
@@ -43,5 +48,6 @@ router.get("/userAllvote/:id", jsonParser, verifyCookieToken, allVotes);
 router.post("/subscribe/:id", jsonParser, addSub); // add sport into subscribe (http://localhost:3002/user/subscribe/:id)
 router.delete("/unsubscribe/:id", jsonParser, unSub); // unsubcribe sport from subscribe (http://localhost:3002/user/unsubscribe/:id)
 router.get("/userAllsub/:id", jsonParser, allSub); // get all user's subscribetions (http://localhost:3002/user/userAllsub/:id)
+router.post("/updateSub/:id", jsonParser, verifyCookieToken, updateSub);
 
 module.exports = router;
