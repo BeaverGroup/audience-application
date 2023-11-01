@@ -26,7 +26,7 @@ exports.verifyCookieToken = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "Token not provided" });
     }
-    const decodedToken = verifyToken(token, process.env.JWT_SECRET); // Make sure to use your JWT secret here
+    const decodedToken = await verifyToken(token, process.env.JWT_SECRET); // Make sure to use your JWT secret here
     if (!decodedToken) {
       return res.status(401).json({ message: "Token verification failed" });
     }

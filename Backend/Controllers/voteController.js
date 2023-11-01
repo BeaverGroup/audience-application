@@ -1,8 +1,6 @@
 // vote and unvote for matches
 
 const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
 const { user_model } = require("../Models/userModel.js");
 
 exports.addVote = async (req, res) => {
