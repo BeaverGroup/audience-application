@@ -18,7 +18,6 @@ const userRouter = require("./Routes/userRoute");
 const authRouter = require("./Routes/authRoute");
 
 app.use("/user", userRouter); // use and set prefix path of Insurance
-// app.use("/auth", authRouter);
 app.use("/auth", authRouter);
 
 // Listen server

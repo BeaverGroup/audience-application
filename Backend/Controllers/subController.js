@@ -1,7 +1,7 @@
 const { user_model } = require("../Models/userModel.js");
 
 exports.addSub = async (req, res) => {
-  // Purpose	Add a single sport to subscriptions.
+  // Purpose Add a single sport to subscriptions.
   try {
     const User_Id = req.params.id;
     const sportToSubscribe = req.body.Sport;

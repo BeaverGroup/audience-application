@@ -2,7 +2,6 @@
 
 const { user_model } = require("../Models/userModel");
 
-
 exports.infoUserByEmail = async (req, res) => {
   try {
     const UserData = req.body;
@@ -82,7 +81,6 @@ exports.updateUserByEmail = async (req, res) => {
         Gender,
         Age,
         Nationality,
-        // Email: NewEmail || Email, // Update email if NewEmail is provide
       },
       {
         new: true, // Return the updated document
