@@ -2,12 +2,8 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 
 // verify user that request api is authorized from token endpoint
-
 // checkMailUsed -> when client is created user or login or resgister email
-// exports.checkMailUsed = async (req, res,nex) => {
-
 // Google OAuth -> verify token of google ?? opinally check
-
 async function verifyToken(token, secret) {
   try {
     const decoded = jwt.verify(token, secret);
