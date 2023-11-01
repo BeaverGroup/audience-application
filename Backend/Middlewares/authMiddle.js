@@ -68,8 +68,6 @@ exports.checkTokenGMiddle = async (req, res, next) => {
       // next();
       console.log("vaild g token correct");
       return next();
-
-      //   return res.status(400).json({ message: "vaild g token correct" });
     }
     return res.status(400).json({ message: "some error" });
   } catch (err) {
