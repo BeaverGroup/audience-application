@@ -1,0 +1,30 @@
+.upcoming-matches {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    margin: 24px 160px;
+}
+
+.sport-bar {
+    grid-column: 1/4;
+}
+
+.sport-result-medal {
+    grid-column: 4/13;
+    margin: 8px 0;
+}
+
+/* tablet */
+@media screen and (max-width: 1024px) {
+    .upcoming-matches {
+        margin: 24px 32px;
+    }
+}
+
+/* mobile */
+@media screen and (max-width: 744px) {
+    .upcoming-matches {
+        margin: 24px 32px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

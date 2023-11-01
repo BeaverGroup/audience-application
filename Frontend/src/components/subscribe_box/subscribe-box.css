@@ -1,0 +1,18 @@
+.subscribe-box {
+    /* border: solid; */
+    /* border-color: #D9D9D9 ; */
+    /* border-radius: 16px; */
+    padding: 24px 32px;
+}
+
+.subscribe-box h5 {
+    font-size: 18px;
+    font-family: 'paris2024-font';
+    padding: 4px;
+    font-weight: normal;
+}
+
+.subscribe-sport {
+    position: flex;
+    flex-direction: column;
+}

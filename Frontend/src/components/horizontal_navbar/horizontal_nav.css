@@ -7,6 +7,8 @@
     padding: 0 3rem;
     padding-top: 1rem;
     transition: 0.5s ease-in-out;
+    height: 96px;
+    filter: var(--normal-shadow);
 }
 
 .scrolled {
@@ -23,12 +25,16 @@
     gap: 16px;
 
 }
+.horizontal-nav .logo-navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .horizontal-nav .logo .circle-svg {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 96px;
 }
 
 .horizontal-nav .logo span {
@@ -60,6 +66,10 @@
     line-height: normal;
 }
 
+.horizontal-nav .navigate li a svg path{
+    fill: var(--text-horizontal-nav);
+}
+
 
 
 .circle-svg path {
@@ -80,19 +90,28 @@
 .hamburger-nav {
     width: 100%;
     position: fixed;
-    top: 112px;
+    top: -308px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* border: 1px solid black; */
-    /* box-shadow: inset 0 0 1px black; */
     background-color: var(--horizontal-nav);
+    z-index: 111;
+    transition: 0.4s ease-in-out;
 }
+
+.hamburger-nav.open {
+    overflow: visible;
+    top: 96px;
+}
+
 
 .hamburger-nav ul {
     width: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: visible;
     
 }
 
@@ -100,7 +119,7 @@
     border-bottom: 1px solid gray;
     display: block;
     padding: 16px 16px;
-    color: var(--text-horizontal-nav);
+    color: var(--blue);
 }
 
 .hamburger-nav ul li a:hover {
@@ -113,7 +132,10 @@
 @media screen and (max-width: 768px), (max-height: 600px) {
     .horizontal-nav {
         padding: 0 2rem;
-        padding-top: 1rem;
+    }
+
+    .scrolled {
+        padding-top: 0;
     }
 
     .hamburger {
@@ -140,9 +162,15 @@
 
 @media screen and (max-width: 480px) {
     .horizontal-nav {
-        padding: 0 1rem;
-        padding-top: 1rem;
+        padding: 0 1.5rem;
+        height: 72px;
     }
+    
+
+    .scrolled {
+        padding-top: 0;
+    }
+    
     .horizontal-nav .logo .circle-svg {
         width: 64px;
     }
@@ -151,6 +179,10 @@
     }
     .horizontal-nav .navigate li a {
         font-size: 16px;
+    }
+
+    .hamburger-nav.open {
+        top: 72px;
     }
 }
 
