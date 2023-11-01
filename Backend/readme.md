@@ -1,94 +1,205 @@
-# User API Documentation
+# API Documentation
 
-## 1. Register User
-- **Endpoint**: `/user/register`
+## Table of Contents
+
+- [Authentication Endpoints](#authentication-endpoints)
+- [User Endpoints](#user-endpoints)
+- [Vote Endpoints](#vote-endpoints)
+- [Subscription Endpoints](#subscription-endpoints)
+
+---
+
+## Authentication Endpoints
+
+### Register
+
+- **Endpoint**: `/register`
 - **HTTP Method**: `POST`
 - **Description**: Register a new user.
-
+  
   **Request Body**:
-  - `Name` (string) - Name of the user.
-  - `Gender` (string) - Gender of the user (e.g., Male, Female, Other).
-  - `Age` (number) - Age of the user.
-  - `Nationality` (string) - Nationality of the user.
-  - `Password` (string) - Password for the user's account.
-  - `Email` (string) - Email address of the user.
+    - `Name` (string)
+    - `Gender` (string)
+    - `Age` (number)
+    - `Nationality` (string)
+    - `Password` (string)
+    - `Email` (string)
 
-## 2. Login User
-- **Endpoint**: `/user/login`
+### Login
+
+- **Endpoint**: `/login`
 - **HTTP Method**: `POST`
 - **Description**: Authenticate and log in a user.
 
   **Request Body**:
-  - `Password` (string) - Password for the user's account.
-  - `Email` (string) - Email address of the user.
+    - `Password` (string)
+    - `Email` (string)
 
-## 3. Retrieve User Information by Email
-- **Endpoint**: `/user/info/email`
+### Google Login
+
+- **Endpoint**: `/google-login`
+- **HTTP Method**: `POST`
+- **Description**: Authenticate and log in a user using Google OAuth.
+
+  **Request Body**:
+    - `Token` (string)
+    - `Email` (string)
+
+---
+
+## User Endpoints
+
+### Retrieve User Information by Email
+
+- **Endpoint**: `/infoByEmail`
 - **HTTP Method**: `GET`
 - **Description**: Fetch user details using their email address.
 
   **Request Body**:
-  - `Email` (string) - Email address of the user.
+    - `Email` (string)
 
-## 4. Retrieve User Information by ID
-- **Endpoint**: `/user/info/id`
+### Retrieve User Information by ID
+
+- **Endpoint**: `/infoByID`
 - **HTTP Method**: `GET`
 - **Description**: Fetch user details using their unique ID.
 
   **Request Body**:
-  - `_id` (ObjectId) - The unique ID of the user.
+    - `_id` (ObjectId)
 
-## 5. Retrieve All Users' Information
-- **Endpoint**: `/user/info/all`
+### Retrieve All Users' Information
+
+- **Endpoint**: `/list`
 - **HTTP Method**: `GET`
 - **Description**: Fetch details of all users.
 
-## 6. Remove User by Email
-- **Endpoint**: `/user/remove/email`
-- **HTTP Method**: `DELETE`
-- **Description**: Delete a user using their email address.
+### Update User Information by ID
 
-  **Request Body**:
-  - `Email` (string) - Email address of the user.
-
-## 7. Remove User by ID
-- **Endpoint**: `/user/remove/id`
-- **HTTP Method**: `DELETE`
-- **Description**: Delete a user using their unique ID.
-
-  **Request Body**:
-  - `_id` (ObjectId) - The unique ID of the user.
-
-## 8. Update User by Email
-- **Endpoint**: `/user/update/email`
-- **HTTP Method**: `POST`
-- **Description**: Update user details using their email address.
-
-  **Request Body**:
-  - `Name` (string) - Updated name of the user.
-  - `Gender` (string) - Updated gender of the user.
-  - `Age` (number) - Updated age of the user.
-  - `Nationality` (string) - Updated nationality of the user.
-  - `Email` (string) - Email address for identifying the user.
-
-## 9. Update User by ID
-- **Endpoint**: `/user/update/id`
+- **Endpoint**: `/updateByID`
 - **HTTP Method**: `POST`
 - **Description**: Update user details using their unique ID.
 
   **Request Body**:
-  - `Name` (string) - Updated name of the user.
-  - `Gender` (string) - Updated gender of the user.
-  - `Age` (number) - Updated age of the user.
-  - `Nationality` (string) - Updated nationality of the user.
-  - `_id` (ObjectId) - The unique ID for identifying the user.
+    - `Name` (string)
+    - `Gender` (string)
+    - `Age` (number)
+    - `Nationality` (string)
+    - `_id` (ObjectId)
 
-## 10. Google Token Verification
-- **Endpoint**: `/user/verify/google-token`
+### Update User Information by Email
+
+- **Endpoint**: `/updateByEmail`
 - **HTTP Method**: `POST`
-- **Description**: Verify the authenticity of a Google OAuth token.
+- **Description**: Update user details using their email address.
 
   **Request Body**:
-  - `Token` (string) - Google OAuth token.
-  - `Email` (string) - Email address associated with the Google OAuth token.
+    - `Name` (string)
+    - `Gender` (string)
+    - `Age` (number)
+    - `Nationality` (string)
+    - `Email` (string)
 
+### Remove User by ID
+
+- **Endpoint**: `/removeByID`
+- **HTTP Method**: `DELETE`
+- **Description**: Delete a user using their unique ID.
+
+  **Request Body**:
+    - `_id` (ObjectId)
+
+### Remove User by Email
+
+- **Endpoint**: `/removeByEmail`
+- **HTTP Method**: `DELETE`
+- **Description**: Delete a user using their email address.
+
+  **Request Body**:
+    - `Email` (string)
+
+---
+
+## Vote Endpoints
+
+### Add Vote
+
+- **Endpoint**: `/vote/:id`
+- **HTTP Method**: `POST`
+- **Description**: Add or update a vote for a match by a user.
+  
+  **Request Parameters**:
+    - `id`: User ID
+  
+  **Request Body**:
+    - `matchID` (string): The ID of the match.
+    - `vote` (string): The vote value.
+
+### Remove Vote
+
+- **Endpoint**: `/unvote/:id`
+- **HTTP Method**: `DELETE`
+- **Description**: Remove a vote for a match by a user.
+
+  **Request Parameters**:
+    - `id`: User ID
+  
+  **Request Body**:
+    - `matchID` (string): The ID of the match.
+
+### Retrieve All Votes for a User
+
+- **Endpoint**: `/userAllvote/:id`
+- **HTTP Method**: `GET`
+- **Description**: Get all votes associated with a user.
+
+  **Request Parameters**:
+    - `id`: User ID
+
+---
+
+## Subscription Endpoints
+
+### Add Subscription
+
+- **Endpoint**: `/subscribe/:id`
+- **HTTP Method**: `POST`
+- **Description**: Add a single sport to user's subscriptions.
+
+  **Request Parameters**:
+    - `id`: User ID
+  
+  **Request Body**:
+    - `Sport` (string): The sport to be subscribed to.
+
+### Remove Subscription
+
+- **Endpoint**: `/unsubscribe/:id`
+- **HTTP Method**: `DELETE`
+- **Description**: Remove a sport from user's subscriptions.
+
+  **Request Parameters**:
+    - `id`: User ID
+  
+  **Request Body**:
+    - `Sport` (string): The sport to be unsubscribed from.
+
+### Retrieve All Subscriptions for a User
+
+- **Endpoint**: `/userAllsub/:id`
+- **HTTP Method**: `GET`
+- **Description**: Get all sports the user is subscribed to.
+
+  **Request Parameters**:
+    - `id`: User ID
+
+### Update Subscriptions
+
+- **Endpoint**: `/updateSub/:id`
+- **HTTP Method**: `POST`
+- **Description**: Replace all current subscriptions of a user with a new list.
+
+  **Request Parameters**:
+    - `id`: User ID
+  
+  **Request Body**:
+    - `Sport` (array): The updated list of sports to be subscribed to.
