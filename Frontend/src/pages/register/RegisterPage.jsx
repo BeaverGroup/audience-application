@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./RegisterPage.css";
+import "./register-page.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
-import { useLocation } from "react-router-dom";
-
-function AssignPage() {
+function RegisterPage() {
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const email = location.state?.email;
   const [input, setInput] = useState({
-    Email: email,
+    Email: "",
     Name: "",
     Gender: "",
     Age: "",
@@ -87,17 +82,17 @@ function AssignPage() {
     <div className="container_auth">
       <div>
         <div className="form_set_pass" id="login-form">
-          <div id="reset_password_topic">Assign Infomation </div>
+          <div id="reset_password_topic">Sign Up </div>
           <img id="img_auth" src="../../image/setPass_img.jpeg" />
           <form id="form_auth" onSubmit={onSubmit}>
             <label id="label_setInfo">Email</label>
             <input
-              className="input_email_disable"
+              className="input_set_password"
               type="text"
-              id="Mail"
-              name="Mail"
-              disabled
-              value={input.Email}
+              id="Email"
+              onChange={handleChange}
+              name="Email"
+              required
             />
             <label id="label_setInfo">Name</label>
             <input
@@ -166,4 +161,4 @@ function AssignPage() {
     </div>
   );
 }
-export default AssignPage;
+export default RegisterPage;

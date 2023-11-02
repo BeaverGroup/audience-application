@@ -8,13 +8,13 @@ import React, {
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import ProfileBar from "./components/NavAuthDemo";
-import LoginPage from "./pages/auth/LoginPage";
+import LoginPage from "./pages/login/LoginPage";
 
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MainPage from "./pages/main/MainPageDemo";
-import RegisterPage from "./pages/auth/RegisterPage";
-import AssignPage from "./pages/auth/AssignPage";
+import RegisterPage from "./pages/register/RegisterPage";
+import AssignPage from "./pages/assign/AssignPage";
 
 const UserStateContext = createContext();
 

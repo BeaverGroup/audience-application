@@ -56,10 +56,9 @@ body {
 }
 
 .input_auth {
-  padding: 0.7rem;
-
+  padding: 16px 20px 16px 16px;
   border: none;
-  border-radius: 0.4rem;
+  border-radius: 1rem;
   margin-bottom: 0.6rem;
   color: #333;
   background-color: rgba(248, 248, 248, 0.935);

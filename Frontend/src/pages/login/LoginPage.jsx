@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./LoginPage.css";
+import "./login-page.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
@@ -123,21 +123,23 @@ function LoginPage({ setEnableAssignPage }) {
               onSubmit(e, input);
             }}
           >
-            <label id="label_auth">Email</label>
+            {/* <label id="label_auth">Username</label> */}
             <input
               className="input_auth"
               type="text"
               id="Email"
               name="Email"
+              placeholder="username"
               onChange={handleChange}
               required
             />
-            <label id="label_auth">Password</label>
+            {/* <label id="label_auth">Password</label> */}
             <input
               className="input_auth"
               type="password"
               id="password"
               name="Password"
+              placeholder="password"
               onChange={handleChange}
               required
             />
