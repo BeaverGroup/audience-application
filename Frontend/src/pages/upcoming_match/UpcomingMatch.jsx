@@ -7,8 +7,11 @@ import React, { useState, useEffect } from "react";
 const UpcomingMatch = () => {
   return (
     <div className="upcoming-page">
-      <UpcomingDate/>
-      <UpcomingMatchDetail/>
+      <h1>Upcoming Matches</h1>
+      <div className="upcoming-section">
+        <UpcomingDate />
+        <UpcomingMatchDetail />
+      </div>
     </div>
   );
 };

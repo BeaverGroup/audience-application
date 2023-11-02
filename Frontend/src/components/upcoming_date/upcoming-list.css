@@ -1,5 +1,9 @@
 .upcoming-list{
-    
+    padding: 4px;
+}
+.upcoming-list:hover{
+    background-color: rgb(208, 208, 208);
+    border-radius: 8px;
 }
 
 .upcoming-list h4 {
