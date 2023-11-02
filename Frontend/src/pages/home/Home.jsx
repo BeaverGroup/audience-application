@@ -16,8 +16,7 @@ const getFiltered = (text, items) => {
 
 const Home = () => {
     const element = document.querySelector(":root");
-
-    if (!document.querySelector(".scrolled")) {
+    if (!document.querySelector(".scrolled") && window.innerWidth > 768) {
         element.style.setProperty("--text-horizontal-nav", "white");
     }
 
