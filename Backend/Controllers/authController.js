@@ -29,11 +29,19 @@ exports.registerUser = async (req, res) => {
       });
 
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
-      res.status(201).cookie("authToken", token, { maxAge: threeDays }).json({
-        message: "User account created successfully.",
-        token,
-        user: saved_user,
-      });
+      res
+        .status(201)
+        .cookie("authToken", token, {
+          maxAge: threeDays,
+          // httpOnly: true, // Recommended for security reasons
+          secure: true, // Ensure this is true if you are using HTTPS
+          sameSite: "None", // Important for cross-site access if your API and client are on different domains
+        })
+        .json({
+          message: "User account created successfully.",
+          token,
+          user: saved_user,
+        });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
       return res.status(500).json({
@@ -76,9 +84,9 @@ exports.loginUser = async (req, res) => {
           .status(201)
           .cookie("authToken", token, {
             maxAge: threeDays,
-            httpOnly: true,    // Recommended for security reasons
-            secure: true,      // Ensure this is true if you are using HTTPS
-            sameSite: 'None',  // Important for cross-site access if your API and client are on different domains
+            // httpOnly: true, // Recommended for security reasons
+            secure: true, // Ensure this is true if you are using HTTPS
+            sameSite: "None", // Important for cross-site access if your API and client are on different domains
           })
           .json({
             message: "User account created successfully.",
@@ -110,7 +118,12 @@ exports.loginGoogle = async (req, res) => {
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
       return res
         .status(201)
-        .cookie("authToken", token, { maxAge: threeDays })
+        .cookie("authToken", token, {
+          maxAge: threeDays,
+          // httpOnly: true, // Recommended for security reasons
+          secure: true, // Ensure this is true if you are using HTTPS
+          sameSite: "None", // Important for cross-site access if your API and client are on different domains
+        })
         .json({ message: "Login success", token, user });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
