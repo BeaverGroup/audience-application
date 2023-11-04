@@ -75,10 +75,10 @@ exports.loginUser = async (req, res) => {
         res
           .status(201)
           .cookie("authToken", token, {
-            // httpOnly: true,
-            maxAge: threeDays, // set exp of cookie in browser
-            // secure: true,
-            // sameSite: 'None',
+            maxAge: threeDays,
+            httpOnly: true,    // Recommended for security reasons
+            secure: true,      // Ensure this is true if you are using HTTPS
+            sameSite: 'None',  // Important for cross-site access if your API and client are on different domains
           })
           .json({
             message: "User account created successfully.",
