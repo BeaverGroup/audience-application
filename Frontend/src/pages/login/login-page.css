@@ -17,12 +17,13 @@ body {
   display: flex;
   justify-content: center; /* align horizontal  | */
   align-items: center; /* align vertical   _ */
+  border: 5rem;
 }
 
 .form-container_auth {
   width: 23.5rem;
-  padding: 3rem;
-
+  padding: 2rem;
+  border-radius: 1rem;
   background-color: rgb(255, 255, 255);
   backdrop-filter: blur(3rem) !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -36,6 +37,7 @@ body {
   font-size: calc(50% + 5vmin);
   color: #3f3f3f;
   font-weight: bold;
+  font-family: "paris2024-font";
 }
 
 #form_auth {
@@ -43,6 +45,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 5rem;
 }
 
 /* assign label left */
@@ -74,19 +77,20 @@ body {
   padding: 0.8rem;
   width: 95%;
   margin-top: 0.6rem;
-  background-color: rgb(137, 155, 245);
+  background-color: #FA841E;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: #fff;
   border: none;
   border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
-  border-radius: 0.3rem;
+  border-radius: 0.8rem;
   cursor: pointer;
   font-size: 1.2rem;
   transition: background-color 0.2s ease-in-out;
 }
 
 #button_auth:hover {
-  background-color: rgba(137, 155, 245, 0.879);
+  background-color: #535353;
+  /* background-color: rgba(137, 155, 245, 0.879); */
 }
 
 #auth-link :hover {
@@ -108,7 +112,7 @@ body {
   cursor: pointer;
   font-size: 0.9rem;
   text-decoration: none;
-  color: rgb(111, 134, 246);
+  color: #FA841E;
 
   transition: color 0.2s ease-in-out;
 }

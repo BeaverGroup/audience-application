@@ -110,13 +110,13 @@ function LoginPage({ setEnableAssignPage }) {
   return (
     <div className="container_auth">
       <div>
-        <div className="form-container_auth " id="login-form">
-          <div id="auth_topic">Sign In</div>
-          <img
+        <div className="form-container_auth" id="login-form">
+          <div id="auth_topic">PARIS 2024</div>
+          {/* <img
             id="img_auth"
             src="../../image/login_img.png"
             alt="Italian Trulli"
-          />
+          /> */}
           <form
             id="form_auth"
             onSubmit={(e) => {
