@@ -36,7 +36,7 @@ services:
       - mongo_network
 
   beaver-audience-backend:
-    image: rew1234/beaver-audience-application-backend:V2.0H
+    image: rew1234/beaver-audience-application-backend:V3.0
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
