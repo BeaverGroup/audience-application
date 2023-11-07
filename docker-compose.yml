@@ -62,7 +62,7 @@ services:
   beaver-audience-frontend:
     image: rew1234/beaver-audience-application-frontend:V1.0
     ports:
-      - "80:4001"  # You might want to map the port 4001 of the container to port 80 of the host
+      - "4001:4001"  # You might want to map the port 4001 of the container to port 80 of the host
     environment:
       SERVER_PORT: 4001
       SERVER_HOST: "0.0.0.0"
