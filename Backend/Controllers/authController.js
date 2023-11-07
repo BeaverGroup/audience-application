@@ -34,7 +34,7 @@ exports.registerUser = async (req, res) => {
         .cookie("authToken", token, {
           maxAge: threeDays,
           // httpOnly: true, // Recommended for security reasons
-          secure: true, // Ensure this is true if you are using HTTPS
+          secure: false, // Ensure this is true if you are using HTTPS
           sameSite: "None", // Important for cross-site access if your API and client are on different domains
         })
         .json({
@@ -85,7 +85,7 @@ exports.loginUser = async (req, res) => {
           .cookie("authToken", token, {
             maxAge: threeDays,
             // httpOnly: true, // Recommended for security reasons
-            secure: true, // Ensure this is true if you are using HTTPS
+            secure: false, // Ensure this is true if you are using HTTPS
             sameSite: "None", // Important for cross-site access if your API and client are on different domains
           })
           .json({
@@ -121,7 +121,7 @@ exports.loginGoogle = async (req, res) => {
         .cookie("authToken", token, {
           maxAge: threeDays,
           // httpOnly: true, // Recommended for security reasons
-          secure: true, // Ensure this is true if you are using HTTPS
+          secure: false, // Ensure this is true if you are using HTTPS
           sameSite: "None", // Important for cross-site access if your API and client are on different domains
         })
         .json({ message: "Login success", token, user });
