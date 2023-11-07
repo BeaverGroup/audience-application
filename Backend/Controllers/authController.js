@@ -34,8 +34,9 @@ exports.registerUser = async (req, res) => {
         .cookie("authToken", token, {
           maxAge: threeDays,
           // httpOnly: true, // Recommended for security reasons
-          secure: false, // Ensure this is true if you are using HTTPS
-          sameSite: "None", // Important for cross-site access if your API and client are on different domains
+          // secure: false, // Ensure this is true if you are using HTTPS
+          secure: false, // <-- false here when served over HTTP
+          // sameSite: "None", // Important for cross-site access if your API and client are on different domains
         })
         .json({
           message: "User account created successfully.",
@@ -85,8 +86,9 @@ exports.loginUser = async (req, res) => {
           .cookie("authToken", token, {
             maxAge: threeDays,
             // httpOnly: true, // Recommended for security reasons
-            secure: false, // Ensure this is true if you are using HTTPS
-            sameSite: "None", // Important for cross-site access if your API and client are on different domains
+            // secure: false, // Ensure this is true if you are using HTTPS
+            secure: false, // <-- false here when served over HTTP
+            // sameSite: "None", // Important for cross-site access if your API and client are on different domains
           })
           .json({
             message: "User account created successfully.",
@@ -122,7 +124,7 @@ exports.loginGoogle = async (req, res) => {
           maxAge: threeDays,
           // httpOnly: true, // Recommended for security reasons
           secure: false, // Ensure this is true if you are using HTTPS
-          sameSite: "None", // Important for cross-site access if your API and client are on different domains
+          // sameSite: "None", // Important for cross-site access if your API and client are on different domains
         })
         .json({ message: "Login success", token, user });
     } catch (err) {
