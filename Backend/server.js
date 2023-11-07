@@ -13,12 +13,13 @@ app.use(cookieParser());
 const connectDB = require("./Config/db");
 connectDB();
 
+const healthController = require('./Controllers/healthController'); // adjust the path as necessary
 const userRouter = require("./Routes/userRoute");
 const authRouter = require("./Routes/authRoute");
 
 app.use("/user", userRouter); // use and set prefix path of Insurance
 app.use("/auth", authRouter);
-
+app.get('/health', healthController.healthCheck);
 
 
 const IP_ADDRESS = '0.0.0.0'; // Listen on all network interfaces
