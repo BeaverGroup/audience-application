@@ -1,0 +1,28 @@
+FROM node:20.4.0-slim
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# ENV PATH /app/node_modules/.bin:SPATH
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4003
+
+CMD ["npm","run","dev"]
+
+#  docker run -d \
+#   -p 4003:4003 \
+#   --name beaver-audience-backend \
+#   -e DB_HOST=localhost \
+#   -e DB_USER=root \
+#   -e DB_PASSWORD=1234 \
+#   -e DB_NAME=mongo-beaver \
+#   -e DB_PORT=27018 \
+#   -e SERVER_PORT=4003 \
+#   -e JWT_SECRET=JWT_SECRET \
+#   -e DB_DATABASE_Public_URL=mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB \
+#   rew1234/beaver-audience-application-backend:V1.0
