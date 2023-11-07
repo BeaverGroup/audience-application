@@ -9,14 +9,14 @@ const url_connection_public = `${process.env.DB_DATABASE_Public_URL}?authSource=
 const connectDB = async () => {
   try {
     await mongoose.connect(
-        url_connection_public,
+      url_connection_local,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true, // Add this line to use the new MongoDB topology engine
 
       }
     );
-    console.log(`DB Connected : ${url_connection_public}`);
+    console.log(`DB Connected : ${ url_connection_local}`);
   } catch (err) {
     console.log(err);
   }
