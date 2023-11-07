@@ -30,9 +30,33 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo-beaver
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: 1234
-
     depends_on:
       - mongo-beaver
+    networks:
+      - mongo_network
+
+  beaver-audience-backend:
+    image: rew1234/beaver-audience-application-backend:V2.0H
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "4004:4004"
+    environment:
+      DB_HOST: mongo-beaver
+      DB_USER: root
+      DB_PASSWORD: 1234
+      DB_NAME: mongo-beaver
+      DB_PORT: 27018 
+      SERVER_PORT: 4004
+      JWT_SECRET: JWT_SECRET
+      DB_DATABASE_Public_URL: mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB
+    depends_on:
+      - mongo-beaver
+   
     networks:
       - mongo_network
 
