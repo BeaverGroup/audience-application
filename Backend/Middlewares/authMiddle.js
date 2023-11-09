@@ -15,6 +15,28 @@ async function verifyToken(token, secret) {
   }
 }
 
+exports.verifiedPermissionsID = async (req, res, next) => {
+  try {
+    const token = req.cookies.authToken;
+    const decodedToken = await verifyToken(token, process.env.JWT_SECRET);
+    if (decodedToken.Role == "Admin") {
+      return next();
+    } else {
+      const id = req.params.id;
+      if (decodedToken._id == id) {
+        return next();
+      }
+      return res.status(401).json({
+        message:
+          "Your permission not enough for access this api because Not use the owner of this permission.",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Error in token decode" });
+  }
+};
+
 exports.verifyRoleAdmin = async (req, res, next) => {
   try {
     const token = req.cookies.authToken;
@@ -65,7 +87,6 @@ exports.checkTokenGMiddle = async (req, res, next) => {
     );
 
     const token_mail = g_token.data.email;
-    // console.log("token_mail", token_mail);
     if (!Boolean(token_mail)) {
       res.status(401).json({
         token_status: "invalid",
@@ -81,8 +102,6 @@ exports.checkTokenGMiddle = async (req, res, next) => {
       return;
     }
     if (g_token.status === 200) {
-      // next();
-      // console.log("vaild g token correct");
       return next();
     }
     return res.status(400).json({ message: "some error" });
