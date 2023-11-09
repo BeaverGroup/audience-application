@@ -19,7 +19,7 @@ const {
 } = require("../Controllers/subController");
 
 const {
-  verifyCookieToken,
+  verifyCookieToken, verifyRoleAdmin,
 } = require("../Middlewares/authMiddle");
 const jsonParser = bodyParser.json();
 const {
@@ -32,7 +32,7 @@ require("dotenv").config();
 //user
 router.get("/infoByEmail", jsonParser, verifyCookieToken, infoUserByEmail); // register user (http://localhost:3002/user/infoByEmail)
 router.get("/infoByID", jsonParser, verifyCookieToken, infoUserByID); // register user (http://localhost:3002/user/infoByID)
-router.get("/list", jsonParser, verifyCookieToken, allinfoUser); // register user
+router.get("/list", jsonParser, verifyCookieToken,verifyRoleAdmin, allinfoUser); // register user
 router.post("/updateByID", jsonParser, verifyCookieToken, updateUserByID); // update user
 router.post("/updateByEmail", jsonParser, verifyCookieToken, updateUserByEmail); // update user
 router.delete("/removeByID", jsonParser, verifyCookieToken, removeUserByID); // register user (http://localhost:3002/user/infoByID)

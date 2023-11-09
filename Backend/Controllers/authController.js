@@ -18,12 +18,11 @@ exports.registerUser = async (req, res) => {
       Email,
       Password: await bcrypt.hash(Password, 10),
     });
-
     // Using async/await to save the user and generate token
     try {
       const saved_user = await newUser.save();
 
-      const token_payload = { Email: Email, Role: "User" };
+      const token_payload = { Email: Email, Role: newUser.Role };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
@@ -68,7 +67,7 @@ exports.loginUser = async (req, res) => {
     if (!isPasswordMatched) {
       return res.status(400).json({ message: "Password is wrong" });
     }
-    const tokenPayload = { Email: Email, Role: "User" };
+    const tokenPayload = { Email: Email, Role: user.Role };
     jwt.sign(
       tokenPayload,
       process.env.JWT_SECRET,
@@ -112,11 +111,11 @@ exports.loginGoogle = async (req, res) => {
       return res.status(409).json({ message: "Email not used" });
     }
     try {
-      const token_payload = { Email: Email, Role: "User" };
+      const token_payload = { Email: Email, Role: user.Role };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
-
+      console.log("token >>>>>> ", token);
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
       return res
         .status(201)

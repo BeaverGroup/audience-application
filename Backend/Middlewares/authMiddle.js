@@ -7,13 +7,29 @@ const jwt = require("jsonwebtoken");
 async function verifyToken(token, secret) {
   try {
     const decoded = jwt.verify(token, secret);
-    console.log(decoded); // this will print out the payload of the token
+    console.log("Decode :", decoded); // this will print out the payload of the token
     return decoded;
   } catch (err) {
     console.error("Token verification failed:", err.message);
     return null;
   }
 }
+
+exports.verifyRoleAdmin = async (req, res, next) => {
+  try {
+    const token = req.cookies.authToken;
+    const decodedToken = await verifyToken(token, process.env.JWT_SECRET); // Make sure to use your JWT secret here
+    if (decodedToken.Role == "Admin") {
+      return next();
+    }
+    return res
+      .status(401)
+      .json({ message: "Your permission not enough for access this api" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Error in token decode" });
+  }
+};
 
 exports.verifyCookieToken = async (req, res, next) => {
   try {
