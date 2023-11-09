@@ -36,10 +36,10 @@ services:
       - mongo_network
 
   beaver-audience-backend:
-    image: rew1234/beaver-audience-application-backend:V4.0
+    image: rew1234/beaver-audience-application-backend:V4.0P
     restart: always
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://ec2-13-213-77-86.ap-southeast-1.compute.amazonaws.com:4004/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -54,7 +54,7 @@ services:
       SERVER_PORT: 4004
       JWT_SECRET: JWT_SECRET
       DB_DATABASE_Public_URL: mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB
-      FRONTEND_IP: "http://ec2-13-213-77-86.ap-southeast-1.compute.amazonaws.com:4005"
+      FRONTEND_IP: "http://localhost:4005"
     depends_on:
       - mongo-beaver
    
@@ -68,7 +68,7 @@ services:
       SERVER_PORT: 4005
       SERVER_HOST: "0.0.0.0"
       VITE_API_PORT: 4004
-      VITE_API_HOST_IP: ec2-13-213-77-86.ap-southeast-1.compute.amazonaws.com
+      VITE_API_HOST_IP: "localhost"
     depends_on:
       - beaver-audience-backend  
     networks:
