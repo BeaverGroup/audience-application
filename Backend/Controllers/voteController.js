@@ -68,7 +68,7 @@ exports.removeVote = async (req, res) => {
 exports.allVotes = async (req, res) => {
   try {
     const User_Id = req.params.id;
-    const user = await user_model.findById(User_Id);
+    const user = await user_model.findById(User_Id).lean();
     if (!user) {
       return res.status(400).json({ error: `User id ${User_Id} not found.` });
     }
