@@ -58,16 +58,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Role: {
+    type: String,
+    // enum: ["user", "Admin"],
+    default: "User",
+  },
 });
 
-// Hashing the password before saving the user to the database
-// userSchema.pre('save', async function (next) {
-//   if (this.isModified('Password')) {
-//     this.Password = await bcrypt.hash(this.Password, 10);
-//   }
-//   next();
-// });
-
 exports.user_model = mongoose.model("User", userSchema);
-
-
