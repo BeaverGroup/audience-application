@@ -115,7 +115,7 @@ exports.loginGoogle = async (req, res) => {
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
-      console.log("token >>>>>> ", token);
+
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
       return res
         .status(201)

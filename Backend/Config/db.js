@@ -10,13 +10,14 @@ const connectDB = async () => {
   try {
     await mongoose.connect(
       url_connection_public,
+      // url_connection_local,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true, // Add this line to use the new MongoDB topology engine
 
       }
     );
-    console.log(`DB Connected : ${  url_connection_public}`);
+    console.log(`DB Connected <Public> V4.0P`);
   } catch (err) {
     console.log(err);
   }

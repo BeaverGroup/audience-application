@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 async function verifyToken(token, secret) {
   try {
     const decoded = jwt.verify(token, secret);
-    console.log("Decode :", decoded); // this will print out the payload of the token
+    // console.log("Decode :", decoded); // this will print out the payload of the token
     return decoded;
   } catch (err) {
     console.error("Token verification failed:", err.message);
@@ -34,7 +34,7 @@ exports.verifyRoleAdmin = async (req, res, next) => {
 exports.verifyCookieToken = async (req, res, next) => {
   try {
     const token = req.cookies.authToken;
-    console.log("token", token);
+    // console.log("token", token);
     if (!token) {
       return res.status(401).json({ message: "Token not provided" });
     }
@@ -65,7 +65,7 @@ exports.checkTokenGMiddle = async (req, res, next) => {
     );
 
     const token_mail = g_token.data.email;
-    console.log("token_mail", token_mail);
+    // console.log("token_mail", token_mail);
     if (!Boolean(token_mail)) {
       res.status(401).json({
         token_status: "invalid",
@@ -82,7 +82,7 @@ exports.checkTokenGMiddle = async (req, res, next) => {
     }
     if (g_token.status === 200) {
       // next();
-      console.log("vaild g token correct");
+      // console.log("vaild g token correct");
       return next();
     }
     return res.status(400).json({ message: "some error" });
