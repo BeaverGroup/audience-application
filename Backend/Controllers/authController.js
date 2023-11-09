@@ -18,11 +18,16 @@ exports.registerUser = async (req, res) => {
       Email,
       Password: await bcrypt.hash(Password, 10),
     });
+    console.log("newUser", newUser);
     // Using async/await to save the user and generate token
     try {
       const saved_user = await newUser.save();
-
-      const token_payload = { Email: Email, Role: newUser.Role };
+      console.log("saved_user", saved_user);
+      const token_payload = {
+        Email: saved_user.Email,
+        _id: saved_user._id,
+        Role: saved_user.Role,
+      };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
@@ -67,7 +72,8 @@ exports.loginUser = async (req, res) => {
     if (!isPasswordMatched) {
       return res.status(400).json({ message: "Password is wrong" });
     }
-    const tokenPayload = { Email: Email, Role: user.Role };
+
+    const tokenPayload = { Email: user.Email, _id: user._id, Role: user.Role };
     jwt.sign(
       tokenPayload,
       process.env.JWT_SECRET,
@@ -111,7 +117,11 @@ exports.loginGoogle = async (req, res) => {
       return res.status(409).json({ message: "Email not used" });
     }
     try {
-      const token_payload = { Email: Email, Role: user.Role };
+      const token_payload = {
+        Email: user.Email,
+        _id: user._id,
+        Role: user.Role,
+      };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
