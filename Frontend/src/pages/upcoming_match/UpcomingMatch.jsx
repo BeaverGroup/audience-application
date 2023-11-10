@@ -2,7 +2,6 @@
 import AddSubscribeBox from "../../components/add_subscribe_box/AddSubscribeBox";
 import SportResult from "../../components/result_component/SportResult";
 import SubscribeBox from "../../components/subscribe_box/SubscribeBox";
-// import SubscribeSport from "../../components/subscribe_sport/SubscribeSport";
 import "./upcoming-match.css";
 import React, { useState, useEffect } from "react";
 
