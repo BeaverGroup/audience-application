@@ -67,7 +67,7 @@ Clients should authenticate via traditional login or through Google Login for us
 
 ### Retrieve User Information by Email
 
-- **Endpoint**: `user/infoByEmail`
+- **Endpoint**: `user/infoByEmail/:Email`
 - **HTTP Method**: `GET`
 - **Description**: Fetch user details using their email address.
 
@@ -76,7 +76,7 @@ Clients should authenticate via traditional login or through Google Login for us
 
 ### Retrieve User Information by ID
 
-- **Endpoint**: `user/infoByID`
+- **Endpoint**: `user/infoByID/:_id`
 - **HTTP Method**: `GET`
 - **Description**: Fetch user details using their unique ID.
 
