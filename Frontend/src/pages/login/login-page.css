@@ -4,9 +4,16 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "paris2024-font", sans-serif;
+  background-image: url(../../image/sport-bg.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 50%;
+  max-width: 100%;
   /* overflow-y: scroll; */
 }
+
+
 #img_auth {
   object-fit: contain;
   max-width: 100%;
@@ -62,7 +69,7 @@ body {
   padding: 16px 20px 16px 16px;
   border: none;
   border-radius: 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
   color: #333;
   background-color: rgba(248, 248, 248, 0.935);
   width: 90%;
@@ -85,6 +92,7 @@ body {
   border-radius: 0.8rem;
   cursor: pointer;
   font-size: 1.2rem;
+  font-weight: bold;
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -160,7 +168,8 @@ body {
 
 /* Hover effect */
 .g-signin-button:hover {
-  border: rgba(158, 180, 246, 0.581) solid 1px;
+  /* border: rgba(158, 180, 246, 0.581) solid 1px; */
+  border: #FA841E solid 1px;
   background-color: #99bbf21b;
 }
 

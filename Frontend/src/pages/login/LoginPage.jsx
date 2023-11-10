@@ -123,13 +123,13 @@ function LoginPage({ setEnableAssignPage }) {
               onSubmit(e, input);
             }}
           >
-            {/* <label id="label_auth">Username</label> */}
+            {/* <label id="label_auth">Email</label> */}
             <input
               className="input_auth"
               type="text"
               id="Email"
               name="Email"
-              placeholder="username"
+              placeholder="email"
               onChange={handleChange}
               required
             />
