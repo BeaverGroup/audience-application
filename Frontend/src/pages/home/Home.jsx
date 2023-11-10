@@ -19,7 +19,7 @@ const Home = () => {
     if (!document.querySelector(".scrolled") && window.innerWidth > 768) {
         element.style.setProperty("--text-horizontal-nav", "white");
     }
-
+    
     const [text, setText] = useState("");
 
     const filteredItems = getFiltered(text, sports)

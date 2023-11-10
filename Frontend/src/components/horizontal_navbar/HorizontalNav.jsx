@@ -6,6 +6,7 @@ import { widthToChangeNav, heightToChangeNav } from "../../services/constants";
 
 function HorizontalNav() {
     // responsive navbar following window scroll
+    const [path, setPath] = useState(window.location.pathname);
     const [scrolled, setScrolled] = useState(false);
 
     // active hamburger navbar
@@ -16,19 +17,25 @@ function HorizontalNav() {
 
 
     useEffect(() => {
-
         const element = document.querySelector(":root");
         const navbar = document.querySelector(".horizontal-nav");
         const onScroll = () => {
+            setPath(window.location.pathname)
             if (window.scrollY > 30) {
                 setScrolled(true);
                 element.style.setProperty("--text-horizontal-nav", "var(--blue)");
                 navbar.style.backgroundColor = "var(--horizontal-nav)";
             } else {
                 setScrolled(false);
-                if (screenWidth > 768) {
+                if (screenWidth > 768) { 
+                    if (path === "/") {
                     element.style.setProperty("--text-horizontal-nav", "var(--white)");
                     navbar.style.backgroundColor = "inherit";
+                    }
+                    else if (path === "/subscribe") {
+                        element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+                        navbar.style.backgroundColor = "inherit";
+                    }
                 }
             }
         }
@@ -60,7 +67,7 @@ function HorizontalNav() {
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("resize", handleResizeWindow);
         };
-    }, [actived, screenWidth, screenHeight])
+    }, [actived, screenWidth, screenHeight, path])
 
 
     const isActive = () => {

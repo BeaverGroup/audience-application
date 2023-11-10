@@ -1,8 +1,11 @@
 .subscribes {
+    position: relative;
+    top: 96px;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 16px;
-    margin: 24px 160px;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+    justify-content: center;
+
 
 }
 
@@ -17,15 +20,11 @@
 
 /* tablet */
 @media screen and (max-width: 1024px) {
-    .subscribes {
-        margin: 24px 32px;
-    }
 }
 
 /* mobile */
 @media screen and (max-width: 744px) {
     .subscribes {
-        margin: 24px 32px;
         grid-template-columns: repeat(4, 1fr);
     }
 }

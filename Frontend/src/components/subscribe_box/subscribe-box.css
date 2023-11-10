@@ -13,6 +13,6 @@
 }
 
 .subscribe-sport {
-    position: flex;
+    display: flex;
     flex-direction: column;
 }
