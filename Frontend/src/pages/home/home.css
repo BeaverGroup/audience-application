@@ -1,24 +1,219 @@
 .homepage {
+    width: 100%;
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+
+.section-1 {
+    position: relative;
+    height: 820px;
+    background-image: url("../../images/background-picture-2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, #4B4A4A 52.91%, rgba(63, 63, 63, 0.62) 68.13%, rgba(0, 0, 0, 0.00) 96%);
+    mask-image: linear-gradient(180deg, #4B4A4A 52.91%, rgba(63, 63, 63, 0.62) 68.13%, rgba(0, 0, 0, 0.00) 96%);
+}
+
+.section-1 .title {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-1 .title .title-text {
+    color: white;
+    text-align: center;
+    text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    font-family: "paris2024-font";
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 760;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.section-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+    justify-content: center;
+    overflow: visible;
 
 }
 
-/* mobile */
-@media screen and (max-width: 375px) {
-    .homepage{
+.section-2 .news-title, .section-2 .sports-title{
+    font-family: "paris2024-font";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 550;
 
+}
+
+.section-2 .news-section {
+    grid-column: 1/-1;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+}
+
+.section-2 .news-section h2 {
+    grid-column: 1/-1;
+}
+
+
+.section-2 .news-section .upcoming-box {
+    grid-column: span 5;
+    overflow: visible;
+}
+
+.section-2 .news-section .result-box {
+    grid-column: span 7;
+    overflow: visible;
+}
+
+
+/* -----Sport box section----- */
+.section-2 .sports-section {
+    grid-column: 1/-1;
+
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+}
+.section-2 .sports-section .sports-title {
+    grid-column: 1/3;
+}
+
+.section-2 .sports-section .search-sport {
+    grid-column: 9/13;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-2 .sports-section input {
+    width: 100%;
+    border-radius: 20px;
+    padding: 16px;
+    height: 30px;
+}
+
+/* .section-2 .sports-section .sports-box {
+    grid-column: span 4;
+} */
+
+
+@media screen and (max-width: 1200px) {
+    .section-2 {
+        grid-template-columns: repeat(12, 60px);
+    }
+
+    .section-2 .news-section, .section-2 .sports-section {
+        grid-template-columns: repeat(12, 60px);
+    }
+
+    .section-2 .news-section .upcoming-box, .section-2 .news-section .result-box {
+        grid-column: 1/-1;
     }
 }
 
-/* tablet */
-@media screen and (max-width: 744px) {
-    .homepage{
+@media screen and (max-width: 1024px) {
+    .section-2, .section-2 .news-section, .section-2 .sports-section {
+        grid-template-columns: repeat(12, 40px);
+    }
 
+    .section-2 .news-section .upcoming-box, .section-2 .news-section .result-box {
+        grid-column: 1/ -1 ;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .section-1 .title .title-text {
+        font-size: 88px;
+    }
+
+    .section-2 {
+        grid-template-columns: repeat(8, 1fr);
+        margin: 0 48px;
+        gap: 24px;
+    }
+
+    .section-2 .news-section, .section-2 .sports-section {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 24px;
+    }
+
+    .section-2 .news-title, .section-2 .sports-title{
+        font-size: 32px;
+    }
+
+    .section-2 .news-section .upcoming-box, .section-2 .news-section .result-box {
+        grid-column: 1/9;
+    }
+
+    .section-2 .sports-section .search-sport {
+        grid-column: 6/9;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .section-1 .title .title-text {
+        font-size: 72px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .section-1 .title .title-text {
+        font-size: 64px;
     }
 }
 
-/* desktop */
-@media screen and (max-width: 1440px) {
-    .homepage{
-        margin: 160px 0px;
+@media screen and (max-width: 480px) {
+    .section-1 .title .title-text {
+        white-space: normal;
+        font-size: 64px;
+    }
+
+    .section-2 {
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0 48px;
+        gap: 24px;
+    }
+
+    .section-2 .news-section, .section-2 .sports-section {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .section-2 .news-title, .section-2 .sports-title{
+        font-size: 24px;
+    
+    }
+
+    .section-2 .news-section .upcoming-box, .section-2 .news-section .result-box {
+        grid-column: 1/5;
+    }
+
+    .section-2 .sports-section .search-sport {
+        grid-column: 3/5;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .section-1 .title .title-text {
+        white-space: normal;
+        font-size: 56px;
     }
 }

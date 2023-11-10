@@ -1,0 +1,194 @@
+.horizontal-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3rem;
+    padding-top: 1rem;
+    transition: 0.5s ease-in-out;
+    height: 96px;
+    filter: var(--normal-shadow);
+}
+
+.scrolled {
+    padding-top: 0;
+    background-color: var(--horizontal-nav);
+    opacity: 90%;
+    filter: var(--normal-shadow);
+}
+
+.horizontal-nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+}
+.horizontal-nav .logo-navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-nav .logo .circle-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-nav .logo span {
+    color: var(--text-horizontal-nav);
+    font-family: 'paris2024-font';
+    font-weight: 760;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+}
+
+
+.horizontal-nav .navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.horizontal-nav .navigate li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--text-horizontal-nav);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.horizontal-nav .navigate li a svg path{
+    fill: var(--text-horizontal-nav);
+}
+
+
+
+.circle-svg path {
+    stroke: var(--text-horizontal-nav);
+    /* stroke-dasharray: 33;
+    animation: drawLine 0.5s linear forwards infinite; */
+}
+
+/* @keyframes drawLine {
+    to {
+        stroke-dashoffset: 66;
+    }
+} */
+.hamburger {
+    display: none;
+}
+
+.hamburger-nav {
+    width: 100%;
+    position: fixed;
+    top: -308px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--horizontal-nav);
+    z-index: 111;
+    transition: 0.4s ease-in-out;
+}
+
+.hamburger-nav.open {
+    overflow: visible;
+    top: 96px;
+}
+
+
+.hamburger-nav ul {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: visible;
+    
+}
+
+.hamburger-nav ul li a {
+    border-bottom: 1px solid gray;
+    display: block;
+    padding: 16px 16px;
+    color: var(--blue);
+}
+
+.hamburger-nav ul li a:hover {
+    background-color: var(--secondary-text);
+
+}
+
+
+
+@media screen and (max-width: 768px), (max-height: 600px) {
+    .horizontal-nav {
+        padding: 0 2rem;
+    }
+
+    .scrolled {
+        padding-top: 0;
+    }
+
+    .hamburger {
+        display: initial;
+        cursor: pointer;
+    }
+
+    .hamburger div{
+        cursor: pointer;
+        border: none;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background-color: var(--text-horizontal-nav);
+        clip-path: polygon(0% 5%,100% 5%,100% 25%,0% 25%,0% 40%,100% 40%,100% 60%,0% 60%,0% 75%,100% 75%,100% 95%,0% 95%);
+        transition: 0.2s;
+
+    }
+
+    .hamburger .active {
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .horizontal-nav {
+        padding: 0 1.5rem;
+        height: 72px;
+    }
+    
+
+    .scrolled {
+        padding-top: 0;
+    }
+    
+    .horizontal-nav .logo .circle-svg {
+        width: 64px;
+    }
+    .horizontal-nav .logo span {
+        font-size: 16px;
+    }
+    .horizontal-nav .navigate li a {
+        font-size: 16px;
+    }
+
+    .hamburger-nav.open {
+        top: 72px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .horizontal-nav .logo span {
+        display: none;
+    }
+}
