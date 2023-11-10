@@ -6,7 +6,6 @@ import axios from "axios";
 function MainPage() {
   const { userState, setUserState } = useContext(UserStateContext);
   console.log("userState : ", userState);
-
   const test = async () => {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
@@ -48,6 +47,19 @@ function MainPage() {
     );
   }
 
+  const getByEmail = async () => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const userEmail = await axios.get(`http://${host_ip}:${port}/user/infoByEmail/natekrth@gmail.com`, {
+        withCredentials: true,
+      });
+      console.log(userEmail.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div
       style={{
@@ -80,7 +92,7 @@ function MainPage() {
           style={{ width: "70%", height: "50px" }}
           id="button_auth"
           type="submit"
-          onClick={test}
+          onClick={getByEmail}
         >
           test permission request api
         </button>

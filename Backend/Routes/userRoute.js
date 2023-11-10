@@ -32,8 +32,9 @@ const {
 require("dotenv").config();
 
 //user
-router.get("/infoByEmail", jsonParser, verifyCookieToken, infoUserByEmail); 
-router.get("/infoByID", jsonParser, verifyCookieToken, infoUserByID);
+
+router.get("/infoByEmail/:Email", jsonParser, verifyCookieToken, infoUserByEmail); 
+router.get("/infoByID/:_id", jsonParser, verifyCookieToken, infoUserByID);
 router.get(
   "/list",
   jsonParser,
@@ -69,6 +70,8 @@ router.delete(
   verifyRoleAdmin,
   removeUserByEmail
 );
+
+
 
 // vote
 router.delete(
