@@ -1,0 +1,16 @@
+body {
+    background-color: #EEEEEE;
+}
+
+.upcoming-page{
+    margin: 16px 132px;
+}
+
+.upcoming-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 76px);
+    gap: 20px;
+    justify-content: center;
+    margin: 16px;
+}

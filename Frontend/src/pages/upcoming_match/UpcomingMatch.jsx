@@ -10,7 +10,6 @@ const UpcomingMatch = () => {
       <h1>Upcoming Matches</h1>
       <div className="upcoming-section">
         <UpcomingDate />
-        <UpcomingMatchDetail />
       </div>
     </div>
   );

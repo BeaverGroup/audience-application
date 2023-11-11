@@ -1,22 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import "./upcoming_match_detail.css";
+import sampleData from '../../data/sampleData';
+import picture from '../../data/sportPicture';
 
-const UpcomingMatchDetail = () => {
+const UpcomingMatchDetail = (props) => {
+  const getData = sampleData.filter((data)=> data.sport_id === props.sport_id)
+  if (!getData.length){
+    return null
+  }
+  
   return (
     <div className='upcoming-box-detail'>
-      <h2>England vs Thailand</h2>
-      <img src="https://cdn.britannica.com/51/190751-050-147B93F7/soccer-ball-goal.jpg" alt="" className="sport-image" />
+      <h2>{getData[0].sport_name}</h2>
+      <img src={picture[getData[0].sport_type]} alt="" className="sport-image" />
       <div className='detail-box'>
-        <p>Sportname: </p>
+        <p>Sport Name: {getData[0].sport_type}</p>
         <p>Date: </p>
-        <p>Other Detail: </p>
       </div>
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
         <div className='vote'>
-          <div className='participant'>Thailand</div>
-          <div className='participant'>England</div>
+          {getData[0].participating_country.map((data)=> <div className='participant'>{data}</div>)}
         </div>
       </div>
     </div>
