@@ -2,6 +2,13 @@ body {
     background-color: #EEEEEE;
 }
 
+.upcoming-matches {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    margin: 24px 160px;
+}
+
 .upcoming-page{
     margin: 16px 132px;
 }
@@ -15,21 +22,17 @@ body {
     margin: 16px;
 }
 
-
-
-
-
 /* tablet */
-/* @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .upcoming-matches {
         margin: 24px 32px;
     }
-} */
+}
 
 /* mobile */
-/* @media screen and (max-width: 744px) {
+@media screen and (max-width: 744px) {
     .upcoming-matches {
         margin: 24px 32px;
         grid-template-columns: repeat(4, 1fr);
     }
-} */
+}
