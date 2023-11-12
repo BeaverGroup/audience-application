@@ -8,6 +8,9 @@ import React, { useState, useEffect } from "react";
 const UpcomingMatch = () => {
   return (
     <div className="subscribes">
+      <h1 className="page-title">
+        SUBSCRIPTIONS
+      </h1>
       <div className="sport-bar">
         <SubscribeBox />
         <AddSubscribeBox />

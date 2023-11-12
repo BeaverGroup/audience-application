@@ -2,8 +2,12 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
-    margin: 24px 160px;
+    margin: 120px 160px;
+}
 
+.page-title {
+    grid-column: 1/6;
+    color: #E8384F;
 }
 
 .sport-bar {
