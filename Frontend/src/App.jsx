@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
+import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
+import UpcomingMatchShow from "./pages/upcoming_match/UpcomingMatchShow";
 import Subscribe from "./pages/subscribe/Subscribe";
 import Home from "./pages/home/home";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
@@ -34,8 +36,10 @@ function App() {
       <Routes>
             <Route path="/" element={<Home/>}></Route>
             {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
+            <Route path="/upcoming" element={<UpcomingMatch/>}/>
+            <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
             <Route path="/subscribe" element={<Subscribe/>}/>
-        </Routes>
+      </Routes>
         {/* footer here */}
       </BrowserRouter>
 
