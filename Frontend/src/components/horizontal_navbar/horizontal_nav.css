@@ -129,7 +129,7 @@
 
 
 
-@media screen and (max-width: 768px), (max-height: 600px) {
+@media screen and (max-width: 900px) ,(max-width: 768px), (max-height: 600px) {
     .horizontal-nav {
         padding: 0 2rem;
     }

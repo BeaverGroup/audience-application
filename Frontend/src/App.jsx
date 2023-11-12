@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import Subscribe from "./pages/subscribe/Subscribe";
 import Home from "./pages/home/home";
-import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
 import { useState, useEffect } from 'react';
@@ -34,7 +33,7 @@ function App() {
       {/* <VerticalNav/> */}
       <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/upcoming" element={<UpcomingMatch/>}/>
+            {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
             <Route path="/subscribe" element={<Subscribe/>}/>
         </Routes>
         {/* footer here */}

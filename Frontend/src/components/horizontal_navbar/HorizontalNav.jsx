@@ -27,7 +27,7 @@ function HorizontalNav() {
                 navbar.style.backgroundColor = "var(--horizontal-nav)";
             } else {
                 setScrolled(false);
-                if (screenWidth > 768) { 
+                if (screenWidth > widthToChangeNav) { 
                     if (path === "/") {
                     element.style.setProperty("--text-horizontal-nav", "var(--white)");
                     navbar.style.backgroundColor = "inherit";
@@ -40,7 +40,7 @@ function HorizontalNav() {
             }
         }
 
-        if (screenWidth <= 768) {
+        if (screenWidth <= widthToChangeNav) {
             element.style.setProperty("--text-horizontal-nav", "var(--blue)");
             navbar.style.backgroundColor = "var(--horizontal-nav)";
         }
