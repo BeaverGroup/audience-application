@@ -5,7 +5,7 @@ import SubscribeBox from "../../components/subscribe_box/SubscribeBox";
 import "./subscribe.css";
 import React, { useState, useEffect } from "react";
 
-const UpcomingMatch = () => {
+const Subscribe = () => {
   return (
     <div className="subscribes">
       <h1 className="page-title">
@@ -23,4 +23,4 @@ const UpcomingMatch = () => {
   );
 };
 
-export default UpcomingMatch;
+export default Subscribe;
