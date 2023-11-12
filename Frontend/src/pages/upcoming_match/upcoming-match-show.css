@@ -3,14 +3,23 @@ body {
 }
 
 .upcoming-page{
-    margin: 16px 132px;
+    /* margin: 16px 132px; */
 }
 
-.upcoming-section {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 76px);
-    gap: 20px;
-    justify-content: center;
-    margin: 16px;
+.upcoming-detail {
+    grid-column: 5/-1;
+}
+
+
+@media screen and (max-width: 900px) {
+    .upcoming-detail {
+
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .upcoming-detail {
+        grid-column: 1/-1;
+    }
 }

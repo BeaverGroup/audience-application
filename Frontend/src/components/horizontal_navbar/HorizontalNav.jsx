@@ -32,7 +32,7 @@ function HorizontalNav() {
                     element.style.setProperty("--text-horizontal-nav", "var(--white)");
                     navbar.style.backgroundColor = "inherit";
                     }
-                    else if (path === "/subscribe") {
+                    else {
                         element.style.setProperty("--text-horizontal-nav", "var(--blue)");
                         navbar.style.backgroundColor = "inherit";
                     }
