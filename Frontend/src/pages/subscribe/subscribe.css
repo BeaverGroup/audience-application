@@ -9,6 +9,11 @@
     margin-bottom: 32px;
 }
 
+.page-title {
+    grid-column: 1/6;
+    color: #E8384F;
+}
+
 .sport-bar {
     grid-column: 1/4;
     width: 100%;
