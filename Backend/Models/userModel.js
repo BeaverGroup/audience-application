@@ -42,7 +42,6 @@ const userSchema = new mongoose.Schema({
   },
   Subscribe: {
     type: [String],
-    default: undefined,
   },
   Votes: {
     type: [voteSchema], // Array of vote objects
