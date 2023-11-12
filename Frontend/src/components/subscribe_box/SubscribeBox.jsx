@@ -1,5 +1,4 @@
 import "./subscribe-box.css";
-import React from "react";
 import contents from "../../data/upcomingSubscribe";
 import SubscribeSport from "../subscribe_sport/SubscribeSport";
 

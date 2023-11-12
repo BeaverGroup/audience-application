@@ -1,2 +1,2 @@
-export const widthToChangeNav = 768;
+export const widthToChangeNav = 900;
 export const heightToChangeNav = 600;

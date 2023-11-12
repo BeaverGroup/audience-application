@@ -6,6 +6,14 @@ import "./subscribe.css";
 import React, { useState, useEffect } from "react";
 
 const Subscribe = () => {
+    useEffect(() => {
+        const element = document.querySelector(":root");
+        element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+        if (!document.querySelector(".scrolled")) {
+            element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+        }
+    }, []);
+
   return (
     <div className="subscribes">
       <h1 className="page-title">
