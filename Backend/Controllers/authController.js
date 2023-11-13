@@ -18,22 +18,35 @@ exports.registerUser = async (req, res) => {
       Email,
       Password: await bcrypt.hash(Password, 10),
     });
-
+    console.log("newUser", newUser);
     // Using async/await to save the user and generate token
     try {
       const saved_user = await newUser.save();
-
-      const token_payload = { Email: Email, Role: "User" };
+      console.log("saved_user", saved_user);
+      const token_payload = {
+        Email: saved_user.Email,
+        _id: saved_user._id,
+        Role: saved_user.Role,
+      };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
 
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
-      res.status(201).cookie("authToken", token, { maxAge: threeDays }).json({
-        message: "User account created successfully.",
-        token,
-        user: saved_user,
-      });
+      res
+        .status(201)
+        .cookie("authToken", token, {
+          maxAge: threeDays,
+          // httpOnly: true, // Recommended for security reasons
+          // secure: false, // Ensure this is true if you are using HTTPS
+          secure: false, // <-- false here when served over HTTP
+          // sameSite: "None", // Important for cross-site access if your API and client are on different domains
+        })
+        .json({
+          message: "User account created successfully.",
+          token,
+          user: saved_user,
+        });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
       return res.status(500).json({
@@ -59,7 +72,8 @@ exports.loginUser = async (req, res) => {
     if (!isPasswordMatched) {
       return res.status(400).json({ message: "Password is wrong" });
     }
-    const tokenPayload = { Email: Email, Role: "User" };
+
+    const tokenPayload = { Email: user.Email, _id: user._id, Role: user.Role };
     jwt.sign(
       tokenPayload,
       process.env.JWT_SECRET,
@@ -75,10 +89,11 @@ exports.loginUser = async (req, res) => {
         res
           .status(201)
           .cookie("authToken", token, {
-            // httpOnly: true,
-            maxAge: threeDays, // set exp of cookie in browser
-            // secure: true,
-            // sameSite: 'None',
+            maxAge: threeDays,
+            // httpOnly: true, // Recommended for security reasons
+            // secure: false, // Ensure this is true if you are using HTTPS
+            secure: false, // <-- false here when served over HTTP
+            // sameSite: "None", // Important for cross-site access if your API and client are on different domains
           })
           .json({
             message: "User account created successfully.",
@@ -102,7 +117,11 @@ exports.loginGoogle = async (req, res) => {
       return res.status(409).json({ message: "Email not used" });
     }
     try {
-      const token_payload = { Email: Email, Role: "User" };
+      const token_payload = {
+        Email: user.Email,
+        _id: user._id,
+        Role: user.Role,
+      };
       const token = jwt.sign(token_payload, process.env.JWT_SECRET, {
         expiresIn: "3d",
       });
@@ -110,7 +129,12 @@ exports.loginGoogle = async (req, res) => {
       const threeDays = 3 * 24 * 60 * 60 * 1000; // number of milliseconds in 3 days
       return res
         .status(201)
-        .cookie("authToken", token, { maxAge: threeDays })
+        .cookie("authToken", token, {
+          maxAge: threeDays,
+          // httpOnly: true, // Recommended for security reasons
+          secure: false, // Ensure this is true if you are using HTTPS
+          // sameSite: "None", // Important for cross-site access if your API and client are on different domains
+        })
         .json({ message: "Login success", token, user });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
