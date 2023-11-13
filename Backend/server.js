@@ -16,10 +16,12 @@ connectDB();
 const healthController = require("./Controllers/healthController"); // adjust the path as necessary
 const userRouter = require("./Routes/userRoute");
 const authRouter = require("./Routes/authRoute");
+const countryRouter = require("./Routes/countryRoute");
 
 app.use("/user", userRouter); // use and set prefix path of Insurance
 app.use("/auth", authRouter);
 app.get("/health", healthController.healthCheck);
+app.use("/country",countryRouter)
 
 
 const PORT = process.env.SERVER_PORT || 4000; // Use the port from the environment variables or default to 4000
