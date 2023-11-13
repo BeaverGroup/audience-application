@@ -1,28 +1,40 @@
 const { user_model } = require("../Models/userModel.js");
 
 exports.addSub = async (req, res) => {
-  // Purpose Add a single sport to subscriptions.
   try {
     const User_Id = req.params.id;
     const sportToSubscribe = req.body.Sport;
+
+    // Find the user by ID
     const user = await user_model.findById(User_Id);
     if (!user) {
       return res.status(400).json({ error: `User id ${User_Id} not found.` });
     }
 
+    // Initialize the Subscribe array if it does not exist
+    if (!user.Subscribe) {
+      user.Subscribe = [];
+    }
+
+    // Check if the user is already subscribed to the sport
     if (user.Subscribe.includes(sportToSubscribe)) {
       return res.status(400).json({
-        error: `You have been subscribed to this ${sportToSubscribe}.`,
+        error: `You are already subscribed to ${sportToSubscribe}.`,
       });
     }
+
+    // Add the new subscription
     user.Subscribe.push(sportToSubscribe);
     await user.save();
+
+    // Send a success response
     res.json({ message: `Successfully subscribed to ${sportToSubscribe}.` });
   } catch (err) {
-    console.log(err);
+    console.error(err); // Updated to use error logging
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 exports.unSub = async (req, res) => {
   try {
@@ -84,4 +96,3 @@ exports.updateSub = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
