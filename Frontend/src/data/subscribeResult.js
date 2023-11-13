@@ -9,7 +9,8 @@ const picture = {
     Badminton: resultIcon,
     Basketball: matchIcon,
     Athletics: resultIcon,
-    Swimming: subIcon
+    Swimming: subIcon,
+    Test: matchIcon,
 }
 
 export default picture
