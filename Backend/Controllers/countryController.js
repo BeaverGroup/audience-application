@@ -33,3 +33,36 @@ exports.addCountryCount = async (req, res) => {
     throw err; // Rethrow the error to handle it in the calling function
   }
 };
+
+exports.reduceCountryCount = async (req, res, next) => {
+    try {
+      const countryParam = req.params.country;
+  
+      const countryData = await country_model.findOne({ country: countryParam });
+  
+      if (countryData && countryData.count > 0) {
+        // If the country exists and count is greater than 0, decrement the count
+        countryData.count -= 1;
+        await countryData.save();
+        res.json({
+          message: `Successfully decremented ${countryParam}.`,
+          cID: countryData._id,
+          country: countryData.country,
+          count: countryData.count,
+        });
+      } else if (countryData && countryData.count === 0) {
+        // If the country exists but count is already 0, respond appropriately
+        res.status(400).json({
+          message: `Cannot decrement ${countryParam}, count is already at zero.`,
+        });
+      } else {
+        // If the country does not exist, respond with an error message
+        res.status(404).json({
+          message: `Country ${countryParam} not found.`,
+        });
+      }
+    } catch (err) {
+      console.error("Error in reduceCountryCount:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
