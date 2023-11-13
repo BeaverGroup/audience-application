@@ -11,7 +11,7 @@ const UpcomingMatchDetail = (props) => {
   }
   
   return (
-    <div className='upcoming-box-detail'>
+    <div className='upcoming-box-detail' id="match-detail">
       <h2>{getData[0].sport_name}</h2>
       <img src={picture[getData[0].sport_type]} alt="" className="sport-image" />
       <div className='detail-box'>

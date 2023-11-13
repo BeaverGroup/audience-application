@@ -5,7 +5,7 @@ import SubscribeBox from "../../components/subscribe_box/SubscribeBox";
 import "./subscribe.css";
 import React, { useState, useEffect } from "react";
 
-const UpcomingMatch = () => {
+const Subscribe = () => {
     useEffect(() => {
         const element = document.querySelector(":root");
         element.style.setProperty("--text-horizontal-nav", "var(--blue)");
@@ -16,6 +16,9 @@ const UpcomingMatch = () => {
 
   return (
     <div className="subscribes">
+      <h1 className="page-title">
+        SUBSCRIPTIONS
+      </h1>
       <div className="sport-bar">
         <SubscribeBox />
         <AddSubscribeBox />
@@ -28,4 +31,4 @@ const UpcomingMatch = () => {
   );
 };
 
-export default UpcomingMatch;
+export default Subscribe;

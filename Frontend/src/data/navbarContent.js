@@ -20,7 +20,7 @@ const contents = [
         id: "3",
         name: "Match",
         icon: matchIcon,
-        to: "/",
+        to: "/upcoming",
     },
     {
         id: "4",

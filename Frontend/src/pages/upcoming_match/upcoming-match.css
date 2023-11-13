@@ -2,37 +2,56 @@ body {
     background-color: #EEEEEE;
 }
 
-.upcoming-matches {
+/* .upcoming-matches {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
     margin: 24px 160px;
-}
+} */
 
 .upcoming-page{
-    margin: 16px 132px;
-}
-
-.upcoming-section {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(12, 76px);
     gap: 20px;
     justify-content: center;
-    margin: 16px;
+    position: relative;
+    margin-top: 96px
 }
 
-/* tablet */
-@media screen and (max-width: 1024px) {
-    .upcoming-matches {
-        margin: 24px 32px;
+.upcoming-page h1 {
+    grid-column: 1/-1;
+}
+
+.upcoming-section {
+    grid-column: 1/5;
+}
+
+@media screen and (max-width: 1200px) {
+    .upcoming-page {
+        grid-template-columns: repeat(12, 60px);
     }
 }
 
-/* mobile */
-@media screen and (max-width: 744px) {
-    .upcoming-matches {
-        margin: 24px 32px;
-        grid-template-columns: repeat(4, 1fr);
+@media screen and (max-width: 1024px) {
+    .upcoming-page {
+        grid-template-columns: repeat(12, 40px);
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .upcoming-page {
+        grid-template-columns: repeat(8, 1fr);
+        margin: 0 48px;
+        gap: 24px;
+        margin-top: 108px;
+        margin-bottom: 32px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .upcoming-section {
+        grid-column: 1/-1;
     }
 }

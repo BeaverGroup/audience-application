@@ -7,6 +7,12 @@
     gap: 20px;
     justify-content: center;
     margin-bottom: 32px;
+    overflow: visible;
+}
+
+.page-title {
+    grid-column: 1/-1;
+    color: #E8384F;
 }
 
 .sport-bar {

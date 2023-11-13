@@ -1,19 +1,50 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css'
+import React, {
+  Fragment,
+  createContext,
+  useEffect,
+  useState,
+  Navigate,
+} from "react";
+
+import ProfileBar from "./components/NavAuthDemo";
+import LoginPage from "./pages/auth/LoginPage";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import MainPage from "./pages/main/MainPageDemo";
+import RegisterPage from "./pages/auth/RegisterPage";
+import AssignPage from "./pages/auth/AssignPage";
+
+import checkToken from "./services/checkToken";
+import Cookies from "js-cookie";
+
 import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
 import UpcomingMatchShow from "./pages/upcoming_match/UpcomingMatchShow";
 import Subscribe from "./pages/subscribe/Subscribe";
 import Home from "./pages/home/home";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
-import { useState, useEffect } from 'react';
 import { widthToChangeNav, heightToChangeNav } from "./services/constants";
 
 
+const UserStateContext = createContext();
+
 function App() {
+
+  const authToken = Cookies.get("authToken");
+  console.log("Cookie_token :  ", authToken);
+
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
+  const [userState, setUserState] = useState(null); // login?
+  const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
+  console.log(userState);
+
+  useEffect(() => {
+    checkToken(setUserState);
+  }, []);
+  
   useEffect(() => {
     const handleResizeWindow = () => {
       setScreenWidth(window.innerWidth);
@@ -26,24 +57,37 @@ function App() {
       window.removeEventListener("resize", handleResizeWindow);
     }
   }, []);
+  
   return (
-    <BrowserRouter>
-      {/* navigateBar here */}
+    // userState is data of user from token that decoded
+    <UserStateContext.Provider value={{ userState, setUserState }}>
+      <ProfileBar user_email={userState ? userState["Email"] : null} />
       <HorizontalNav />
 
       {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? "" : <VerticalNav />}
-      {/* <VerticalNav/> */}
       <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
-            <Route path="/upcoming" element={<UpcomingMatch/>}/>
-            <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
-            <Route path="/subscribe" element={<Subscribe/>}/>
+        <Route path="/" element={<Home/>}></Route>
+        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
+        <Route path="/upcoming" element={<UpcomingMatch/>}/>
+        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
+        <Route path="/subscribe" element={<Subscribe/>}/>
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
+        {userState ? null : (
+          <Fragment>
+            <Route path="/sign-up" element={<RegisterPage />} />
+            <Route
+              path="/sign-in"
+              element={<LoginPage setEnableAssignPage={setEnableAssignPage} />}
+            />
+            {enableAssignPage ? (
+              <Route path="/assign-info" element={<AssignPage />} />
+            ) : null}
+          </Fragment>
+        )}
       </Routes>
-        {/* footer here */}
-      </BrowserRouter>
-
-  )
+    </UserStateContext.Provider>
+  );
 }
 
-export default App
+export { UserStateContext };
+export default App;
