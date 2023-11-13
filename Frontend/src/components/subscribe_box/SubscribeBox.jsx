@@ -7,7 +7,7 @@ const SubscribeBox = (props) => {
     <div className="subscribe-box">
       <h5>Subscribe Sport</h5>
       <div className="subscribe-sport">
-        {contents.map((content, index) => {
+        {props.subscription.map((content, index) => {
           return <SubscribeSport icon={content.icon} sportname={content.name} key={index}/>;
         })}
       </div>

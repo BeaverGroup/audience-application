@@ -13,7 +13,9 @@ const Subscribe = () => {
   const [id, setId] = useState("");
   const [subscribe, setSubscribe] = useState([]);
   
-  const userEmail = userState?.Email
+  const userId = userState?._id
+  console.log("userId: " + userId)
+
   useEffect(() => {
       const element = document.querySelector(":root");
       element.style.setProperty("--text-horizontal-nav", "var(--blue)");
@@ -23,30 +25,21 @@ const Subscribe = () => {
   }, []);
 
   useEffect(() => {
-    const port = import.meta.env.VITE_API_PORT;
-    const host_ip = import.meta.env.VITE_API_HOST_IP;
-    axios.get(`http://${host_ip}:${port}/user/infoByEmail/${userEmail}`, {
-      withCredentials: true,
-    }).then((response) => {
-      setId(response.data.info._id);
-      console.log(id);
-    }).catch((error) => {
-      // pass
-    });
-  }, [userState]);
-
-  useEffect(() => {
-    const port = import.meta.env.VITE_API_PORT;
-    const host_ip = import.meta.env.VITE_API_HOST_IP;
-    axios.get(`http://${host_ip}:${port}/user/userAllsub/${id}`, {
-      withCredentials: true,
-    }).then((response) => {
-      // console.log(response.data.info._id);
-      setSubscribe(response);
-    }).catch((error) => {
-      // pass
-    });
-  }, [id]);
+    const getAllSubs = async () => {
+      const port = import.meta.env.VITE_API_PORT;
+      const host_ip = import.meta.env.VITE_API_HOST_IP;
+      try {
+        const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userId}`, {
+          withCredentials: true,
+        });
+        setSubscribe(userSub)
+        console.log(subscribe);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAllSubs();
+  }, []);
 
   return (
     <div className="subscribes">
@@ -54,7 +47,7 @@ const Subscribe = () => {
         SUBSCRIPTIONS
       </h1>
       <div className="sport-bar">
-        <SubscribeBox />
+        <SubscribeBox subscription={subscribe}/>
         <AddSubscribeBox />
       </div>
       <div className="sport-result-medal">
