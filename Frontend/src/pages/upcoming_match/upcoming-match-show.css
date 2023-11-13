@@ -1,0 +1,25 @@
+body {
+    background-color: #EEEEEE;
+}
+
+.upcoming-page{
+    /* margin: 16px 132px; */
+}
+
+.upcoming-detail {
+    grid-column: 5/-1;
+}
+
+
+@media screen and (max-width: 900px) {
+    .upcoming-detail {
+
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .upcoming-detail {
+        grid-column: 1/-1;
+    }
+}

@@ -1,0 +1,18 @@
+.upcoming-each-day {
+    border-radius: 16px;
+    margin: 8px;
+    padding: 16px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.each-day-date {
+    grid-column: 1/2;
+    text-align: center;
+}
+
+.each-day-list {
+    grid-column: 2/6;
+}

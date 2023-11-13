@@ -1,0 +1,24 @@
+.upcoming-list{
+    padding: 8px 4px;
+}
+
+.upcoming-list a{
+    color: black;
+}
+
+.upcoming-list:hover{
+    background-color: rgb(208, 208, 208);
+    border-radius: 8px;
+}
+
+.upcoming-list h4 {
+    font-size: 18px;
+}
+
+.upcoming-list h5 {
+    font-size: 18px;
+}
+
+.upcoming-list p {
+    font-size: 12px;
+}
