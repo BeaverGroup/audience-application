@@ -10,12 +10,25 @@ import axios from "axios";
 
 const Subscribe = () => {
   const { userState, setUserState } = useContext(UserStateContext);
-  const [id, setId] = useState("");
-  const [subscribe, setSubscribe] = useState([]);
-  
-  const userId = userState?._id
-  console.log("userId: " + userId)
+  const [ userSubscribe, setSubscribe] = useState([]);
 
+  useEffect(() => {
+    const getAllSubs = async () => {
+      const port = import.meta.env.VITE_API_PORT;
+      const host_ip = import.meta.env.VITE_API_HOST_IP;
+      try {
+        const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+          withCredentials: true,
+        });
+        setSubscribe(userSub.data.subscribe)
+        console.log(userSubscribe);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAllSubs();
+  }, [userState]);
+  
   useEffect(() => {
       const element = document.querySelector(":root");
       element.style.setProperty("--text-horizontal-nav", "var(--blue)");
@@ -24,30 +37,14 @@ const Subscribe = () => {
       }
   }, []);
 
-  useEffect(() => {
-    const getAllSubs = async () => {
-      const port = import.meta.env.VITE_API_PORT;
-      const host_ip = import.meta.env.VITE_API_HOST_IP;
-      try {
-        const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userId}`, {
-          withCredentials: true,
-        });
-        setSubscribe(userSub)
-        console.log(subscribe);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    getAllSubs();
-  }, []);
-
+  
   return (
     <div className="subscribes">
       <h1 className="page-title">
         SUBSCRIPTIONS
       </h1>
       <div className="sport-bar">
-        <SubscribeBox subscription={subscribe}/>
+        <SubscribeBox subscription={userSubscribe}/>
         <AddSubscribeBox />
       </div>
       <div className="sport-result-medal">
