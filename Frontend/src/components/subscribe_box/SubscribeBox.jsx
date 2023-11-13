@@ -2,7 +2,7 @@ import "./subscribe-box.css";
 import contents from "../../data/upcomingSubscribe";
 import SubscribeSport from "../subscribe_sport/SubscribeSport";
 
-const SubscribeBox = () => {
+const SubscribeBox = (props) => {
   return (
     <div className="subscribe-box">
       <h5>Subscribe Sport</h5>
