@@ -36,7 +36,7 @@ services:
       - mongo_network
 
   beaver-audience-backend:
-    image: rew1234/beaver-audience-application-backend:V4.0P
+    image: rew1234/beaver-audience-application-backend:V5.0P
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
@@ -54,6 +54,7 @@ services:
       SERVER_PORT: 4004
       JWT_SECRET: JWT_SECRET
       DB_DATABASE_Public_URL: mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB
+  
       FRONTEND_IP: "http://localhost:4005"
     depends_on:
       - mongo-beaver
@@ -61,7 +62,7 @@ services:
     networks:
       - mongo_network
   beaver-audience-frontend:
-    image: rew1234/beaver-audience-application-frontend:V1.0
+    image: rew1234/beaver-audience-application-frontend:V1.2
     ports:
       - "4005:4005" 
     environment:
@@ -69,6 +70,8 @@ services:
       SERVER_HOST: "0.0.0.0"
       VITE_API_PORT: 4004
       VITE_API_HOST_IP: "localhost"
+      VITE_GOOGLE_CLIENT_ID: 658254688251-u580nla3lgmkgbhjlb20rgbjc19kv8p5.apps.googleusercontent.com
+
     depends_on:
       - beaver-audience-backend  
     networks:
