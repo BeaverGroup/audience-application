@@ -14,7 +14,6 @@ function SportBox(props) {
         const port = import.meta.env.VITE_API_PORT;
         const host_ip = import.meta.env.VITE_API_HOST_IP;
         const sportName = sport.name
-        console.log(sportName);
         const data_format = JSON.stringify({
           Sport: sportName
         })
