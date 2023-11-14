@@ -15,7 +15,7 @@ const SubscribeBox = (props) => {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
     const data_format = JSON.stringify({
-      Sport: "Football"
+      Sport: "3x3 Basketballas"
     })
     try {
       const response = await axios.post(`http://${host_ip}:${port}/user/unsubscribe/${userState._id}`, data_format, {
@@ -26,7 +26,7 @@ const SubscribeBox = (props) => {
       });
       console.log(response);
     } catch (e) {
-      console.log(e);
+      console.log(e.response.data.error);
     }
   }
 
