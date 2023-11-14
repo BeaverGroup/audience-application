@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
+import axios from "axios";
+
 function RegisterPage() {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -40,6 +42,22 @@ function RegisterPage() {
     }
   };
 
+  const userNationality = async (nationality) => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const response = await axios.post(`http://${host_ip}:${port}/country/add/${nationality}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     // Check if the passwords match
@@ -57,6 +75,7 @@ function RegisterPage() {
       // If the user was successfully created, navigate to the home page
       if (new_user) {
         if (new_user.success) {
+          userNationality(new_user.data.user.Nationality)
           navigate("/");
           window.location.reload();
         }
