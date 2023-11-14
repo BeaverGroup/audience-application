@@ -36,7 +36,6 @@ const Subscribe = () => {
           element.style.setProperty("--text-horizontal-nav", "var(--blue)");
       }
   }, []);
-
   
   return (
     <div className="subscribes">

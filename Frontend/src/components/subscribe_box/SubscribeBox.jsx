@@ -1,14 +1,39 @@
 import "./subscribe-box.css";
 import picture from "../../data/subscribeResult";
 import SubscribeSport from "../subscribe_sport/SubscribeSport";
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { UserStateContext } from "../../App";
+import axios from "axios";
 
 const SubscribeBox = (props) => {
+  const { userState, setUserState } = useContext(UserStateContext);
   const sub = props.subscription
   console.log(sub)
+
+  const unSubscibe = async () => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    const data_format = JSON.stringify({
+      Sport: "Football"
+    })
+    try {
+      const response = await axios.post(`http://${host_ip}:${port}/user/unsubscribe/${userState._id}`, data_format, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <div className="subscribe-box">
       <h5>Subscribe Sport</h5>
-      <div className="subscribe-sport">
+      <div className="subscribe-sport" onClick={unSubscibe}>
         {sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index}/>)}
       </div>
     </div>
