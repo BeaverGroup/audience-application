@@ -11,11 +11,11 @@ const SubscribeBox = (props) => {
   const sub = props.subscription
   console.log(sub)
 
-  const unSubscibe = async () => {
+  const unSubscribe = async (sportName) => {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
     const data_format = JSON.stringify({
-      Sport: "3x3 Basketballas"
+      Sport: sportName
     })
     try {
       const response = await axios.post(`http://${host_ip}:${port}/user/unsubscribe/${userState._id}`, data_format, {
@@ -33,8 +33,8 @@ const SubscribeBox = (props) => {
   return (
     <div className="subscribe-box">
       <h5>Subscribe Sport</h5>
-      <div className="subscribe-sport" onClick={unSubscibe}>
-        {sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index}/>)}
+      <div className="subscribe-sport">
+        {sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index} onClick={unSubscribe(content)}/>)}
       </div>
     </div>
   );
