@@ -44,7 +44,7 @@ const Subscribe = () => {
       </h1>
       <div className="sport-bar">
         <SubscribeBox subscription={userSubscribe}/>
-        <AddSubscribeBox />
+        {/* <AddSubscribeBox /> */}
       </div>
       <div className="sport-result-medal">
         <SportResult />
