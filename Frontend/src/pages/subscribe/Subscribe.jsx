@@ -27,7 +27,7 @@ const Subscribe = () => {
       }
     }
     getAllSubs();
-  }, [userState]);
+  }, [userState, userSubscribe]);
   
   useEffect(() => {
       const element = document.querySelector(":root");

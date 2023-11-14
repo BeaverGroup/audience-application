@@ -34,7 +34,7 @@ const SubscribeBox = (props) => {
     <div className="subscribe-box">
       <h5>Subscribe Sport</h5>
       <div className="subscribe-sport">
-        {sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index} onClick={() => unSubscribe(content)}/>)}
+        {sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index}/>)}
       </div>
     </div>
   );
