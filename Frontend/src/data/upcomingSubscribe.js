@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react';
 const contents = [
     {
         id: "1",
-        name: "Home Game",
+        name: "Football",
         icon: homeIcon,
     },
     {
@@ -17,7 +17,7 @@ const contents = [
     },
     {
         id: "3",
-        name: "Match",
+        name: "Basketball",
         icon: matchIcon,
     },
     {
