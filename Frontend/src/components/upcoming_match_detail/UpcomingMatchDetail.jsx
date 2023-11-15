@@ -6,6 +6,7 @@ import picture from '../../data/sportPicture';
 
 const UpcomingMatchDetail = (props) => {
   const getData = sampleData.filter((data)=> data.sport_id === props.sport_id)
+  console.log(getData);
   if (!getData.length){
     return null
   }
@@ -16,7 +17,7 @@ const UpcomingMatchDetail = (props) => {
       <img src={picture[getData[0].sport_type]} alt="" className="sport-image" />
       <div className='detail-box'>
         <p>Sport Name: {getData[0].sport_type}</p>
-        <p>Date: </p>
+        <p>Date: {getData[0].datetime}</p>
       </div>
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
