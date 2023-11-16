@@ -4,9 +4,11 @@ import UpcomingList from "./UpcomingList";
 
 const UpcomingEachDay = (props) => {
     const dataInDay = props.data;
+    console.log(dataInDay);
+    const intToDate = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     return (
         <div className="upcoming-each-day">
-            <div className="each-day-date">{props.date}</div>
+            <div className="each-day-date">{props.date} {intToDate[new Date(dataInDay[0].datetime).getDay()]}</div>
             <div className="each-day-list">
                 {dataInDay.map((day) => {
                     const newTime = new Date(

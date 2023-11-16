@@ -7,18 +7,21 @@ import React, { useState, useEffect } from "react";
 const UpcomingMatch = () => {
 
   useEffect(() => {
-      const element = document.querySelector(":root");
+    const element = document.querySelector(":root");
+    element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+    if (!document.querySelector(".scrolled")) {
       element.style.setProperty("--text-horizontal-nav", "var(--blue)");
-      if (!document.querySelector(".scrolled")) {
-          element.style.setProperty("--text-horizontal-nav", "var(--blue)");
-      }
-    }, []);
+    }
+  }, []);
 
   return (
     <div className="upcoming-page">
       <h1>Upcoming Matches</h1>
       <div className="upcoming-section">
         <UpcomingDate />
+      </div>
+      <div className="upcoming-detail">
+        <p className="upcoming-detail-para">Select a match to see more detail</p>
       </div>
     </div>
   );

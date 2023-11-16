@@ -3,6 +3,9 @@ import React from 'react'
 import "./upcoming_match_detail.css";
 import sampleData from '../../data/sampleData';
 import picture from '../../data/sportPicture';
+import { useContext } from "react";
+import { UserStateContext } from "../../App";
+import axios from "axios";
 
 const UpcomingMatchDetail = (props) => {
   const getData = sampleData.filter((data) => data.sport_id === props.sport_id)

@@ -17,22 +17,24 @@ const UpcomingDate = () => {
         if (index < 10){
             dateIn = `0${index}`
         }
-        const startDateFormat = new Date(`2024-08-${dateIn}T00:00:00.000Z`)
-        const endDateFormat = new Date(`2024-08-${dateIn}T23:59:59.999Z`)
+        const startDateFormat = new Date(`2024-08-${dateIn}T00:00:00.000+07:00`)
+        const endDateFormat = new Date(`2024-08-${dateIn}T23:59:59.999+07:00`)
+
         const todayData = sampleData.filter(dt=> startDateFormat <= new Date(dt.datetime) && new Date(dt.datetime) <= endDateFormat)
+        // console.log(todayData);
         dateData[`${index}`] = todayData
     }
     const dayList = Object.keys(dateData)
     
     return (
         <div className='upcoming-date'>
-            <h1>July</h1>
+            <h1>August 2024</h1>
             {dayList.map((day)=> {
                 if (!dateData[day].length){
                     return null
                 }
                 const dateFormat = `${day}`
-                return <UpcomingEachDay date={dateFormat} data={dateData[day]} />
+                return <UpcomingEachDay date={dateFormat} data={dateData[day].sort( (p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))} />
             })}
         </div>
     )
