@@ -1,0 +1,30 @@
+.add-subscribe {
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: grey;
+    padding: 8px; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-subscribe-sport-logo {
+    min-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.add-subscribe-sport-name {
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.plus-icon {
+    margin-left: auto;
+    min-height: 20px;
+    min-width: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    cursor: pointer;
+}

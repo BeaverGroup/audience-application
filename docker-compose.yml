@@ -30,12 +30,52 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo-beaver
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: 1234
-
     depends_on:
       - mongo-beaver
     networks:
       - mongo_network
 
+  beaver-audience-backend:
+    image: rew1234/beaver-audience-application-backend:V6.0
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "4004:4004"
+    environment:
+      DB_HOST: mongo-beaver
+      DB_USER: root
+      DB_PASSWORD: 1234
+      DB_NAME: mongo-beaver
+      DB_PORT: 27017
+      SERVER_PORT: 4004
+      JWT_SECRET: JWT_SECRET
+      DB_DATABASE_Public_URL: mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB
+  
+      FRONTEND_IP: "http://localhost:4005"
+    depends_on:
+      - mongo-beaver
+   
+    networks:
+      - mongo_network
+  beaver-audience-frontend:
+    image: rew1234/beaver-audience-application-frontend:V1.2
+    ports:
+      - "4005:4005" 
+    environment:
+      SERVER_PORT: 4005
+      SERVER_HOST: "0.0.0.0"
+      VITE_API_PORT: 4004
+      VITE_API_HOST_IP: "localhost"
+      VITE_GOOGLE_CLIENT_ID: 658254688251-u580nla3lgmkgbhjlb20rgbjc19kv8p5.apps.googleusercontent.com
+
+    depends_on:
+      - beaver-audience-backend  
+    networks:
+      - mongo_network
 networks:
   mongo_network:
     driver: bridge

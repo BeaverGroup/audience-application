@@ -6,14 +6,6 @@ import axios from "axios";
 function MainPage() {
   const { userState, setUserState } = useContext(UserStateContext);
   console.log("userState : ", userState);
-  if (!userState) {
-    return (
-      <div>
-        <h1>MainPage</h1>
-        <h3> Not found cookie token pls sign in </h3>
-      </div>
-    );
-  }
   const test = async () => {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
@@ -22,6 +14,47 @@ function MainPage() {
         withCredentials: true,
       });
       console.log(all_user.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const health = async () => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const all_user = await axios.get(`http://${host_ip}:${port}/health`, {
+        withCredentials: true,
+      });
+      console.log(all_user.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  if (!userState) {
+    return (
+      <div>
+        <h1>MainPage</h1>
+        <h3> Not found cookie token pls sign in </h3>
+        <button
+          style={{ width: "70%", height: "50px" }}
+          id="button_auth"
+          type="submit"
+          onClick={health}
+        >
+          test request api (non auth)
+        </button>
+      </div>
+    );
+  }
+
+  const getByEmail = async () => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const userEmail = await axios.get(`http://${host_ip}:${port}/user/infoByEmail/natekrth@gmail.com`, {
+        withCredentials: true,
+      });
+      console.log(userEmail.data);
     } catch (e) {
       console.log(e);
     }
@@ -59,7 +92,7 @@ function MainPage() {
           style={{ width: "70%", height: "50px" }}
           id="button_auth"
           type="submit"
-          onClick={test}
+          onClick={getByEmail}
         >
           test permission request api
         </button>
