@@ -17,7 +17,8 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Women's 20km Race Walk",
     "participating_country": [
-      
+      "Thailand",
+      "England"
     ],
     "datetime": "2024-08-01T07:30:00.000Z"
   },
