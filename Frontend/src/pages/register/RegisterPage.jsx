@@ -82,12 +82,12 @@ function RegisterPage() {
     <div className="container_auth">
       <div>
         <div className="form_set_pass" id="login-form">
-          <div id="reset_password_topic">Sign Up </div>
-          <img id="img_auth" src="../../image/setPass_img.jpeg" />
+          <div id="regis_topic"> Sign Up </div>
+          {/* <img id="img_auth" src="../../image/setPass_img.jpeg" /> */}
           <form id="form_auth" onSubmit={onSubmit}>
             <label id="label_setInfo">Email</label>
             <input
-              className="input_set_password"
+              className="input_set_info"
               type="text"
               id="Email"
               onChange={handleChange}
@@ -96,7 +96,7 @@ function RegisterPage() {
             />
             <label id="label_setInfo">Name</label>
             <input
-              className="input_set_password"
+              className="input_set_info"
               type="text"
               id="Name"
               name="Name"
@@ -105,7 +105,7 @@ function RegisterPage() {
             />{" "}
             <label id="label_setInfo">Gender</label>
             <input
-              className="input_set_password"
+              className="input_set_info"
               type="text"
               id="Gender"
               name="Gender"
@@ -114,7 +114,7 @@ function RegisterPage() {
             />
             <label id="label_setInfo">Age</label>
             <input
-              className="input_set_password"
+              className="input_set_info"
               type="text"
               id="Age"
               name="Age"
@@ -123,7 +123,7 @@ function RegisterPage() {
             />
             <label id="label_setInfo">Nationality</label>
             <input
-              className="input_set_password"
+              className="input_set_info"
               type="text"
               id="Nationality"
               name="Nationality"
@@ -133,7 +133,7 @@ function RegisterPage() {
             <label id="label_setInfo">Password</label>
             <input
               className={
-                passwordsMatch ? "input_set_password" : "input_warning"
+                passwordsMatch ? "input_set_info" : "input_warning"
               }
               type="password"
               id="Password"
@@ -144,7 +144,7 @@ function RegisterPage() {
             <label id="label_setInfo">Confirm Password</label>
             <input
               className={
-                passwordsMatch ? "input_set_password" : "input_warning"
+                passwordsMatch ? "input_set_info" : "input_warning"
               }
               type="password"
               id="Confirm Password"

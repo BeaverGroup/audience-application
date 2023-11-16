@@ -5,7 +5,6 @@
 
 body {
   font-family: "paris2024-font", sans-serif;
-  background-image: url(../../image/sport-bg.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: 50%;
@@ -20,11 +19,17 @@ body {
 }
 
 .container_auth {
-  margin: 2.4rem;
   display: flex;
-  justify-content: center; /* align horizontal  | */
-  align-items: center; /* align vertical   _ */
-  border: 5rem;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+  height: 820px;
+  background-image: url("../../images/background-picture-2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* -webkit-mask-image: linear-gradient(180deg, #4B4A4A 52.91%, rgba(63, 63, 63, 0.62) 68.13%, rgba(0, 0, 0, 0.00) 96%); */
+  mask-image: linear-gradient(180deg, #4B4A4A 52.91%, rgba(63, 63, 63, 0.62) 68.13%, rgba(0, 0, 0, 0.00) 96%);
 }
 
 .form-container_auth {
@@ -98,7 +103,6 @@ body {
 
 #button_auth:hover {
   background-color: #535353;
-  /* background-color: rgba(137, 155, 245, 0.879); */
 }
 
 #auth-link :hover {
