@@ -29,7 +29,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's 20km Race Walk",
     "participating_country": [
-      
+      "Thailand",
+      "Germany",
+      "Canada"
     ],
     "datetime": "2024-08-01T07:30:00.000Z"
   },
@@ -40,7 +42,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's Hammer Throw",
     "participating_country": [
-      
+      "Canada",
+      "Thailand",
+      "Germany"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
@@ -51,7 +55,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Women's 100m",
     "participating_country": [
-      
+      "Canada",
+      "Thailand",
+      "Germany"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
