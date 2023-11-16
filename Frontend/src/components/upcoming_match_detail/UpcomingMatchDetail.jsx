@@ -59,7 +59,7 @@ const UpcomingMatchDetail = (props) => {
       }
     }
     getUserVote();
-  }, [userVote]);
+  }, [userVote, userState]);
 
   return (
     <div className='upcoming-box-detail' id="match-detail">
