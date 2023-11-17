@@ -4,7 +4,7 @@ import UpcomingList from "./UpcomingList";
 
 const UpcomingEachDay = (props) => {
     const dataInDay = props.data;
-    console.log(dataInDay);
+    // console.log(dataInDay);
     const intToDate = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     return (
         <div className="upcoming-each-day">
