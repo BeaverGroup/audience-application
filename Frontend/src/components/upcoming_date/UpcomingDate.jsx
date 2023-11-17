@@ -10,22 +10,44 @@ const UpcomingDate = () => {
     const { userState, setUserState } = useContext(UserStateContext);
     const [userSubscribe, setSubscribe] = useState([]);
     useEffect(() => {
-        const getAllSubs = async () => {
-            const port = import.meta.env.VITE_API_PORT;
-            const host_ip = import.meta.env.VITE_API_HOST_IP;
-            try {
-                const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
-                    withCredentials: true,
-                });
-                setSubscribe(userSub.data.subscribe)
-                console.log(userSubscribe);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getAllSubs();
-    }, [userState, userSubscribe]);
+        const intervalId = setInterval(async () => {
+            const getAllSubs = async () => {
+                const port = import.meta.env.VITE_API_PORT;
+                const host_ip = import.meta.env.VITE_API_HOST_IP;
+                try {
+                    const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+                        withCredentials: true,
+                    });
+                    setSubscribe(userSub.data.subscribe);
+                    // console.log(userSub.data.subscribe);
+                } catch (e) {
+                    console.log(e);
+                }
+            };
+            getAllSubs();
+        }, 3000);
+        // Clear the interval when the component unmounts or when userState changes
+        return () => clearInterval(intervalId);
+        // Only include userState in the dependency array
+    }, [userState]);
+    // useEffect(() => {
+    //     const getAllSubs = async () => {
+    //         const port = import.meta.env.VITE_API_PORT;
+    //         const host_ip = import.meta.env.VITE_API_HOST_IP;
+    //         try {
+    //             const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+    //                 withCredentials: true,
+    //             });
+    //             setSubscribe(userSub.data.subscribe)
+    //             console.log(userSubscribe);
+    //         } catch (e) {
+    //             console.log(e);
+    //         }
+    //     }
+    //     getAllSubs();
+    // }, [userSubscribe]);
 
+    let userSportList = userSubscribe
     const today = new Date();
     const thisMonth = today.getMonth() + 1;
     const thisYear = today.getFullYear();
@@ -42,7 +64,7 @@ const UpcomingDate = () => {
         const startDateFormat = new Date(`2024-08-${dateIn}T00:00:00.000+07:00`)
         const endDateFormat = new Date(`2024-08-${dateIn}T23:59:59.999+07:00`)
 
-        const todayData = sampleData.filter(dt => startDateFormat <= new Date(dt.datetime) && new Date(dt.datetime) <= endDateFormat)
+        const todayData = sampleData.filter(dt => startDateFormat <= new Date(dt.datetime) && new Date(dt.datetime) <= endDateFormat && userSportList.includes(dt.sport_type))
         // console.log(todayData);
         dateData[`${index}`] = todayData
     }
