@@ -6,7 +6,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's 1500m",
     "participating_country": [
-      
+      "Thailand",
+      "Canada",
+      "Greece"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },

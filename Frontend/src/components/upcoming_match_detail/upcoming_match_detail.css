@@ -50,3 +50,7 @@
 .change-background {
     background-color: #ddcc8f;
 }
+
+.change-background:hover {
+    background-color: #ddcc8f;
+}
