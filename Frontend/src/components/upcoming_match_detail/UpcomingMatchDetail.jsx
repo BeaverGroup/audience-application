@@ -11,6 +11,7 @@ const UpcomingMatchDetail = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
   const [ userVote, setUserVote ] = useState([]);
   const [ isVoted, setIsVoted ] = useState(false);
+  const [ voteCountry, setVoteCountry ] = useState("");
   const getData = sampleData.filter((data) => data.sport_id === props.sport_id)
   if (!getData.length) {
     return null
@@ -51,7 +52,7 @@ const UpcomingMatchDetail = (props) => {
         const myvote = await axios.get(`http://${host_ip}:${port}/user/userAllvote/${userState._id}`, {
           withCredentials: true,
         });
-        setUserVote(myvote)
+        setUserVote(myvote.data.votes)
         setIsVoted(true)
         console.log(myvote.data.votes);
       } catch (e) {
@@ -60,6 +61,22 @@ const UpcomingMatchDetail = (props) => {
     }
     getUserVote();
   }, [userVote, userState]);
+
+  const matchIDToCheck = props.sport_id;
+
+  useEffect(() => {
+    const isMatchIDExist = userVote.find(item => item.matchID === matchIDToCheck) !== undefined;
+    const index = userVote.findIndex(item => item.matchID === matchIDToCheck);
+
+    if (isMatchIDExist) {
+      const voteCountry = userVote[index].vote;
+      setVoteCountry(voteCountry);
+      console.log(voteCountry);
+      console.log(`MatchID ${matchIDToCheck} exists in the array at index ${index}.`);
+    } else {
+      console.log(`MatchID ${matchIDToCheck} does not exist in the array.`);
+    }
+  }, [props.sport_id]);
 
   return (
     <div className='upcoming-box-detail' id="match-detail">
@@ -73,7 +90,7 @@ const UpcomingMatchDetail = (props) => {
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
         <div className='vote'>
-          {getData[0].participating_country.map((data) => <div className='participant' onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
+          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'greenBackground' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
         </div>
       </div>
     </div>
