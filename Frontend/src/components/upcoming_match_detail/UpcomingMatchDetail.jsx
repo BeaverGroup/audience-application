@@ -62,12 +62,11 @@ const UpcomingMatchDetail = (props) => {
     getUserVote();
   }, [userVote, userState]);
 
-  const matchIDToCheck = props.sport_id;
 
   useEffect(() => {
+    const matchIDToCheck = props.sport_id;
     const isMatchIDExist = userVote.find(item => item.matchID === matchIDToCheck) !== undefined;
     const index = userVote.findIndex(item => item.matchID === matchIDToCheck);
-
     if (isMatchIDExist) {
       const voteCountry = userVote[index].vote;
       setVoteCountry(voteCountry);
@@ -76,7 +75,7 @@ const UpcomingMatchDetail = (props) => {
     } else {
       console.log(`MatchID ${matchIDToCheck} does not exist in the array.`);
     }
-  }, [props.sport_id]);
+  }, [props.sport_id ,userVote]);
 
   return (
     <div className='upcoming-box-detail' id="match-detail">
@@ -90,7 +89,7 @@ const UpcomingMatchDetail = (props) => {
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
         <div className='vote'>
-          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'greenBackground' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
+          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'change-background' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
         </div>
       </div>
     </div>
