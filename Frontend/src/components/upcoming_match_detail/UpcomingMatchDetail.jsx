@@ -54,7 +54,7 @@ const UpcomingMatchDetail = (props) => {
         });
         setUserVote(myvote.data.votes)
         setIsVoted(true)
-        console.log(myvote.data.votes);
+        // console.log(myvote.data.votes);
       } catch (e) {
         console.log(e);
       }
@@ -70,7 +70,7 @@ const UpcomingMatchDetail = (props) => {
     if (isMatchIDExist) {
       const voteCountry = userVote[index].vote;
       setVoteCountry(voteCountry);
-      console.log(voteCountry);
+      // console.log(voteCountry);
       console.log(`MatchID ${matchIDToCheck} exists in the array at index ${index}.`);
     } else {
       console.log(`MatchID ${matchIDToCheck} does not exist in the array.`);
