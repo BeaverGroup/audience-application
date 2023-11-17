@@ -44,27 +44,6 @@ const UpcomingMatchDetail = (props) => {
     }
   }
 
-  const unVote = async (matchid) => {
-    const port = import.meta.env.VITE_API_PORT;
-    const host_ip = import.meta.env.VITE_API_HOST_IP;
-    const data_format = JSON.stringify({
-      matchID: matchid
-    })
-    try {
-      const response = await axios.post(`http://${host_ip}:${port}/user/unvote/${userState._id}`, data_format, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      setIsVoted(true)
-      // console.log(matchid);
-      console.log(response);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
     const getUserVote = async () => {
       const port = import.meta.env.VITE_API_PORT;
@@ -74,6 +53,7 @@ const UpcomingMatchDetail = (props) => {
           withCredentials: true,
         });
         setUserVote(myvote.data.votes)
+        // setIsVoted(true)
         // console.log(myvote.data.votes);
       } catch (e) {
         console.log(e);
@@ -109,7 +89,7 @@ const UpcomingMatchDetail = (props) => {
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
         <div className='vote'>
-          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'change-background' : ''}`} onClick={() => (isVoted ? addVote(getData[0].sport_id, data) : unVote(getData[0].sport_id))}>{data}</div>)}
+          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'change-background' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
         </div>
       </div>
     </div>
