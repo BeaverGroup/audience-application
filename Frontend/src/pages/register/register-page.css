@@ -11,6 +11,21 @@ body {
   max-width: 100%;
   /* overflow-y: scroll; */
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-right {
+  margin-right: 0.5rem;
+}
+
 #img_auth {
   object-fit: contain;
   max-width: 100%;
@@ -31,8 +46,9 @@ body {
 }
 
 .form_set_pass {
-  width: 23.5rem;
-  padding: 3rem 4rem;
+  width: 25rem;
+  padding: 0 2rem;
+  padding-bottom: 1rem;
   border-radius: 1rem; 
   background-color: rgb(255, 255, 255);
   backdrop-filter: blur(3rem) !important;
@@ -43,7 +59,7 @@ body {
 
 #regis_topic {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin: 1rem 0;
   font-size: calc(50% + 5vmin);
   color: #3f3f3f;
   font-weight: bold;
@@ -62,33 +78,34 @@ body {
 #label_setInfo {
   position: relative;
   left: 5.5px;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
   margin-bottom: 0.3rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-right: auto;
   color: #333;
   font-size: calc(60% + 0.5vmin);
 }
 
 .input_set_info {
-  padding: 0.7rem;
+  padding: 0.6rem;
   border: none;
   border-radius: 0.75rem;
   margin-bottom: 0.6rem;
   color: #333;
   background-color: rgba(248, 248, 248, 0.935);
-  width: 90%;
+  width: 96%;
   border: none;
   border: cap;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  font-family: 'Source Code Pro', monospace;
   border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
 }
 
 #button_submit {
   margin-bottom: 1rem;
-  padding: 0.8rem;
-  width: 95%;
-  margin-top: 1rem;
+  padding: 0.6rem;
+  width: 96%;
+  margin-top: 1.2rem;
   background-color:#FA841E;;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: #fff;
@@ -96,7 +113,7 @@ body {
   border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
   border-radius: 0.8rem;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-in-out;
 }
@@ -107,7 +124,6 @@ body {
 
 .input_email_disable {
   padding: 0.7rem;
-
   border: none;
   border-radius: 0.4rem;
   margin-bottom: 0.6rem;

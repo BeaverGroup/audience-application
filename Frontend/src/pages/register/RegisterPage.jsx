@@ -103,24 +103,30 @@ function RegisterPage() {
               onChange={handleChange}
               required
             />{" "}
-            <label id="label_setInfo">Gender</label>
-            <input
-              className="input_set_info"
-              type="text"
-              id="Gender"
-              name="Gender"
-              onChange={handleChange}
-              required
-            />
-            <label id="label_setInfo">Age</label>
-            <input
-              className="input_set_info"
-              type="text"
-              id="Age"
-              name="Age"
-              onChange={handleChange}
-              required
-            />
+            <div className="flex-row">
+              <div className="flex-column margin-right">
+                <label id="label_setInfo">Gender</label>
+                <input
+                  className="input_set_info"
+                  type="text"
+                  id="Gender"
+                  name="Gender"
+                  onChange={handleChange}
+                  required
+                />          
+              </div>
+              <div className="flex-column">
+                <label id="label_setInfo">Age</label>
+                <input
+                  className="input_set_info"
+                  type="text"
+                  id="Age"
+                  name="Age"
+                  onChange={handleChange}
+                  required
+                />    
+              </div>                            
+            </div>
             <label id="label_setInfo">Nationality</label>
             <input
               className="input_set_info"
