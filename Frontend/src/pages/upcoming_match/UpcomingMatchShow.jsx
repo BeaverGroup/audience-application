@@ -12,7 +12,7 @@ const UpcomingMatchShow = () => {
     useEffect(() => {
         const contactSection = document.getElementById("match-detail");
         contactSection.scrollIntoView({ behavior: "smooth", block: "end"})
-        console.log(contactSection)
+        // console.log(contactSection) 
     }, [sport_id]);
 
     return (
