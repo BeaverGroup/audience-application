@@ -152,7 +152,7 @@ function RegisterPage() {
               onChange={handleChange}
               required
             />
-            <button id="button_setPassword" type="submit">
+            <button id="button_submit" type="submit">
               Submit
             </button>
           </form>

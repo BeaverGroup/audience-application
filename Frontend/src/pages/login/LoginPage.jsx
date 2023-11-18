@@ -112,18 +112,12 @@ function LoginPage({ setEnableAssignPage }) {
       <div>
         <div className="form-container_auth" id="login-form">
           <div id="auth_topic">PARIS 2024</div>
-          {/* <img
-            id="img_auth"
-            src="../../image/login_img.png"
-            alt="Italian Trulli"
-          /> */}
           <form
             id="form_auth"
             onSubmit={(e) => {
               onSubmit(e, input);
             }}
           >
-            {/* <label id="label_auth">Email</label> */}
             <input
               className="input_auth"
               type="text"
@@ -133,7 +127,6 @@ function LoginPage({ setEnableAssignPage }) {
               onChange={handleChange}
               required
             />
-            {/* <label id="label_auth">Password</label> */}
             <input
               className="input_auth"
               type="password"
@@ -184,9 +177,9 @@ function LoginPage({ setEnableAssignPage }) {
               justifyContent: "center",
             }}
           >
-            <span href="/register" id="signup-link">
-              Sign up
-            </span>
+            <a href="/sign-up" id="signup-link">
+              Sign Up
+            </a>
           </div>
         </div>
       </div>
