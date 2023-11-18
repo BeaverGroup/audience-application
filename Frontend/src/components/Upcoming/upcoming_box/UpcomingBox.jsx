@@ -7,7 +7,7 @@ const UpcomingBox = () => {
     <div className='upcoming'>
         <h1 className='upcoming-title'>Upcoming Matches</h1>
         <DateBox/>
-        <DateBox/>
+        {/* <DateBox/> */}
     </div>
   )
 }
