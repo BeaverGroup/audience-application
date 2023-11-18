@@ -11,7 +11,7 @@
     font-weight: 600;
 }
 
-.upcoming-list {
+.upcoming-list-datebox {
     display: flex;
     flex-direction: column;
     gap: 8px;

@@ -18,7 +18,7 @@ const DateBox = (props) => {
           withCredentials: true,
         });
         setSubscribe(userSub.data.subscribe);
-        console.log(userSub.data.subscribe);
+        // console.log(userSub.data.subscribe);
       } catch (e) {
         console.log(e);
       }
@@ -39,17 +39,42 @@ const DateBox = (props) => {
     )
   }
   else {
-
-    let nearMatch = sampleData.filter((dt) => userSportList.includes(dt.sport_type)).sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))
-    const nearDate = nearMatch[0]
-    console.log(nearDate);
-
+    const todayDate = new Date('2024-08-01T01:00:00Z')
+    let todayDateNum = todayDate.getDate()
+    let todayMonth = todayDate.getMonth()+1
+    const todayYear = todayDate.getFullYear()
+    if (todayMonth < 10) {
+      todayMonth = `0${todayMonth}`
+    }
+    if (todayDateNum < 10) {
+      todayDateNum = `0${todayDateNum}`
+    }
+    const startDateTime = new Date(`${todayYear}-${todayMonth}-${todayDateNum}T00:00:00.000+07:00`)
+    const endDateTime = new Date(`${todayYear}-${todayMonth}-${todayDateNum}T23:59:59.999+07:00`)
+    // console.log(endDateTime);
+    const nearMatch = sampleData.filter((dt) => userSportList.includes(dt.sport_type) && new Date(dt.datetime) >= startDateTime && new Date(dt.datetime) <= endDateTime).sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))
+    // NOT USE IN DEMO BECAUSE OF MANY FUTURE DATA
+    // const nearDate = nearMatch[0]
+    // const convertTimeFormat = nearDate?.datetime
+    // if (!convertTimeFormat) {
+    //   return (
+    //     <div className='datebox'>
+    //       <div className='upcoming-list'>
+    //         <h3>No upcoming Match</h3>
+    //         <h3>Please subscribe sport</h3>
+    //       </div>
+    //     </div>
+    //   )
+    // }
+    // const datetimeFormat = new Date(
+    //   convertTimeFormat.slice(0, 19).concat("Z")
+    // )
+    // console.log(nearMatch);
     return (
       <div className='datebox'>
-        <h2 className='date'>1 October</h2>
-        <div className='upcoming-list'>
-          <UpcomingDetail first={true} />
-          <UpcomingDetail />
+        <h2 className='date'>1 August</h2>
+        <div className='upcoming-list-datebox'>
+          {nearMatch.map((match) => <UpcomingDetail key={match.sport_id} data={match} />)}
         </div>
       </div>
     )

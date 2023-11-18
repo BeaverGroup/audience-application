@@ -59,7 +59,7 @@ const UpcomingDate = () => {
                     return null
                 }
                 const dateFormat = `${day}`
-                return <UpcomingEachDay date={dateFormat} data={dateData[day].sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))} />
+                return <UpcomingEachDay key={day} date={dateFormat} data={dateData[day].sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))} />
             })}
         </div>
     )
