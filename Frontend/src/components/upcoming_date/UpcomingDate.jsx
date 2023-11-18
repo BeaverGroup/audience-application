@@ -10,42 +10,23 @@ const UpcomingDate = () => {
     const { userState, setUserState } = useContext(UserStateContext);
     const [userSubscribe, setSubscribe] = useState([]);
     useEffect(() => {
-        const intervalId = setInterval(async () => {
-            const getAllSubs = async () => {
-                const port = import.meta.env.VITE_API_PORT;
-                const host_ip = import.meta.env.VITE_API_HOST_IP;
-                try {
-                    const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
-                        withCredentials: true,
-                    });
-                    setSubscribe(userSub.data.subscribe);
-                    // console.log(userSub.data.subscribe);
-                } catch (e) {
-                    console.log(e);
-                }
-            };
-            getAllSubs();
-        }, 3000);
-        // Clear the interval when the component unmounts or when userState changes
-        return () => clearInterval(intervalId);
-        // Only include userState in the dependency array
+        const getAllSubs = async () => {
+            const port = import.meta.env.VITE_API_PORT;
+            const host_ip = import.meta.env.VITE_API_HOST_IP;
+            try {
+                const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+                    withCredentials: true,
+                });
+                setSubscribe(userSub.data.subscribe);
+                console.log(userSub.data.subscribe);
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        getAllSubs();
+        // Remove userSubscribe from the dependency array
     }, [userState]);
-    // useEffect(() => {
-    //     const getAllSubs = async () => {
-    //         const port = import.meta.env.VITE_API_PORT;
-    //         const host_ip = import.meta.env.VITE_API_HOST_IP;
-    //         try {
-    //             const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
-    //                 withCredentials: true,
-    //             });
-    //             setSubscribe(userSub.data.subscribe)
-    //             console.log(userSubscribe);
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //     }
-    //     getAllSubs();
-    // }, [userSubscribe]);
+
 
     let userSportList = userSubscribe
     const today = new Date();
