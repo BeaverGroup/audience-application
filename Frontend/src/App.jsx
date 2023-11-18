@@ -21,16 +21,14 @@ import Cookies from "js-cookie";
 import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
 import UpcomingMatchShow from "./pages/upcoming_match/UpcomingMatchShow";
 import Subscribe from "./pages/subscribe/Subscribe";
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
 import { widthToChangeNav, heightToChangeNav } from "./services/constants";
 
-
 const UserStateContext = createContext();
 
 function App() {
-
   const authToken = Cookies.get("authToken");
   console.log("Cookie_token :  ", authToken);
 
@@ -44,7 +42,7 @@ function App() {
   useEffect(() => {
     checkToken(setUserState);
   }, []);
-  
+
   useEffect(() => {
     const handleResizeWindow = () => {
       setScreenWidth(window.innerWidth);
@@ -52,25 +50,23 @@ function App() {
     };
     window.addEventListener("resize", handleResizeWindow);
 
-
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
-    }
+    };
   }, []);
-  
+
   return (
     // userState is data of user from token that decoded
     <UserStateContext.Provider value={{ userState, setUserState }}>
       <ProfileBar user_email={userState ? userState["Email"] : null} />
       <HorizontalNav />
 
-      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? "" : <VerticalNav />}
+      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? (
+        ""
+      ) : (
+        <VerticalNav />
+      )}
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
-        <Route path="/upcoming" element={<UpcomingMatch/>}/>
-        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
-        <Route path="/subscribe" element={<Subscribe/>}/>
         {/* <Route path="*" element={<Navigate to="/" />} /> */}
         {userState ? null : (
           <Fragment>
@@ -84,6 +80,12 @@ function App() {
             ) : null}
           </Fragment>
         )}
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/main" element={<MainPage />}></Route>
+        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
+        <Route path="/upcoming" element={<UpcomingMatch />} />
+        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow />} />
+        <Route path="/subscribe" element={<Subscribe />} />
       </Routes>
     </UserStateContext.Provider>
   );
