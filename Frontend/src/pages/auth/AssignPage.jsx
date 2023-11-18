@@ -56,12 +56,12 @@ function AssignPage() {
         },
         withCredentials: true,
       });
-      console.log(countNationality);
+      // console.log(countNationality);
       const sending = JSON.stringify({
         country: countNationality.data.country,
         count: countNationality.data.count
       })
-      console.log(sending);
+      // console.log(sending);
       const UserDataForIoc = await axios.post("http://nongnop.azurewebsites.net/user_statistic/", sending, {
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function AssignPage() {
         if (new_user.success) {
           userNationality(new_user.data.user.Nationality)
           navigate("/");
-          // window.location.reload();
+          window.location.reload();
         }
 
         if (!new_user.success && new_user.message == "Email is already used") {
