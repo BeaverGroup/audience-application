@@ -5,8 +5,7 @@ import React, {
   useState,
   Navigate,
 } from "react";
-import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
+
 import ProfileBar from "./components/NavAuthDemo";
 import LoginPage from "./pages/auth/LoginPage";
 
@@ -15,10 +14,14 @@ import "./App.css";
 import MainPage from "./pages/main/MainPageDemo";
 import RegisterPage from "./pages/auth/RegisterPage";
 import AssignPage from "./pages/auth/AssignPage";
+
+import checkToken from "./services/checkToken";
+import Cookies from "js-cookie";
+
 import UpcomingMatch from "./pages/upcoming_match/UpcomingMatch";
 import UpcomingMatchShow from "./pages/upcoming_match/UpcomingMatchShow";
 import Subscribe from "./pages/subscribe/Subscribe";
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
 import { widthToChangeNav, heightToChangeNav } from "./services/constants";
@@ -26,44 +29,20 @@ import { widthToChangeNav, heightToChangeNav } from "./services/constants";
 const UserStateContext = createContext();
 
 function App() {
+  const authToken = Cookies.get("authToken");
+  console.log("Cookie_token :  ", authToken);
+
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+
   const [userState, setUserState] = useState(null); // login?
   const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
   console.log(userState);
+
   useEffect(() => {
-    try {
-      const authToken = Cookies.get("authToken");
-      // console.log("authToken", authToken);
-      if (!authToken) {
-        console.log("Cookie_token not found");
-        const g_token = localStorage.getItem("accessToken");
-        if (g_token) {
-          localStorage.removeItem("accessToken");
-        }
-      } else {
-        // use api login user by sent mail and google token for verify
-        const authToken = Cookies.get("authToken");
-        const decodedToken = jwt_decode(authToken);
-
-        if (decodedToken) {
-          // console.log("DecodedToken : ", decodedToken);
-          setUserState(decodedToken);
-
-          // window.location.reload();
-        } else {
-          // console.log("DecodedToken : ", decodedToken);
-          console.log("Token expired or Token not found or Token invalid");
-          Cookies.remove("authToken");
-          // window.location.reload();
-        }
-      }
-    } catch (e) {
-      console.log(e);
-      Cookies.remove("authToken");
-    }
+    checkToken(setUserState);
   }, []);
-  
+
   useEffect(() => {
     const handleResizeWindow = () => {
       setScreenWidth(window.innerWidth);
@@ -71,25 +50,23 @@ function App() {
     };
     window.addEventListener("resize", handleResizeWindow);
 
-
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
-    }
+    };
   }, []);
-  
+
   return (
     // userState is data of user from token that decoded
     <UserStateContext.Provider value={{ userState, setUserState }}>
       <ProfileBar user_email={userState ? userState["Email"] : null} />
       <HorizontalNav />
 
-      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? "" : <VerticalNav />}
+      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? (
+        ""
+      ) : (
+        <VerticalNav />
+      )}
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
-        <Route path="/upcoming" element={<UpcomingMatch/>}/>
-        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
-        <Route path="/subscribe" element={<Subscribe/>}/>
         {/* <Route path="*" element={<Navigate to="/" />} /> */}
         {userState ? null : (
           <Fragment>
@@ -103,6 +80,12 @@ function App() {
             ) : null}
           </Fragment>
         )}
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/main" element={<MainPage />}></Route>
+        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
+        <Route path="/upcoming" element={<UpcomingMatch />} />
+        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow />} />
+        <Route path="/subscribe" element={<Subscribe />} />
       </Routes>
     </UserStateContext.Provider>
   );
