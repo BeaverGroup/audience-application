@@ -89,7 +89,7 @@ const UpcomingMatchDetail = (props) => {
       <div className='match-poll-box'>
         <h4>Match Polls</h4>
         <div className='vote'>
-          {getData[0].participating_country.map((data) => <div className={`participant ${voteCountry === data ? 'change-background' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
+          {getData[0].participating_country.map((data, index) => <div key={index} className={`participant ${voteCountry === data ? 'change-background' : ''}`} onClick={() => addVote(getData[0].sport_id, data)}>{data}</div>)}
         </div>
       </div>
     </div>
