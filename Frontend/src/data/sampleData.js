@@ -8,7 +8,10 @@ const sampleData = [
     "participating_country": [
       "Thailand",
       "Canada",
-      "Greece"
+      "Greece",
+      "Japan",
+      "China",
+      "South Korea"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
@@ -668,7 +671,10 @@ const sampleData = [
     "sport_type": "Archery",
     "sport_name": "Women's Individual",
     "participating_country": [
-      
+      "United States",
+      "Canada",
+      "Brazil",
+      "Finland"
     ],
     "datetime": "2024-07-31T17:45:00.000Z"
   },
