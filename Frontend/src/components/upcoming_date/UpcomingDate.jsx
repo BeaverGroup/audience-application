@@ -5,10 +5,12 @@ import sampleData from '../../data/sampleData'
 import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import axios from "axios";
+import { sportData } from "../../data/importAPIData";
 
 const UpcomingDate = () => {
     const { userState, setUserState } = useContext(UserStateContext);
     const [userSubscribe, setSubscribe] = useState([]);
+    const [sportList, setSportList] = useState([])
     useEffect(() => {
         const getAllSubs = async () => {
             const port = import.meta.env.VITE_API_PORT;
@@ -18,7 +20,7 @@ const UpcomingDate = () => {
                     withCredentials: true,
                 });
                 setSubscribe(userSub.data.subscribe);
-                console.log(userSub.data.subscribe);
+                // console.log(userSub.data.subscribe);
             } catch (e) {
                 console.log(e);
             }
@@ -27,17 +29,20 @@ const UpcomingDate = () => {
         // Remove userSubscribe from the dependency array
     }, [userState]);
 
-
+    useEffect(()=> {
+        sportData().then((data)=> setSportList(data))
+    }, [])
+    // console.log(sportList);
     let userSportList = userSubscribe
-    if (!userSportList){
+    if (!userSportList) {
         return (
             <div className='upcoming-date'>
-            <h1>August 2024</h1>
-            <p>No subscribe sport</p>
-        </div>
+                <h1>August 2024</h1>
+                <p>No subscribe sport</p>
+            </div>
         )
     }
-    
+
     const today = new Date();
     const thisMonth = today.getMonth() + 1;
     const thisYear = today.getFullYear();
@@ -54,12 +59,11 @@ const UpcomingDate = () => {
         const startDateFormat = new Date(`2024-08-${dateIn}T00:00:00.000+07:00`)
         const endDateFormat = new Date(`2024-08-${dateIn}T23:59:59.999+07:00`)
 
-        const todayData = sampleData.filter(dt => startDateFormat <= new Date(dt.datetime) && new Date(dt.datetime) <= endDateFormat && userSportList.includes(dt.sport_type))
+        const todayData = sportList.filter(dt => startDateFormat <= new Date(dt.datetime) && new Date(dt.datetime) <= endDateFormat && userSportList.includes(dt.sport_type))
         // console.log(todayData);
         dateData[`${index}`] = todayData
     }
     const dayList = Object.keys(dateData)
-
     return (
         <div className='upcoming-date'>
             <h1>August 2024</h1>

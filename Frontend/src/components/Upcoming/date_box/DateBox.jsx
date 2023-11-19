@@ -5,10 +5,12 @@ import { useContext } from "react";
 import { UserStateContext } from "../../../App";
 import axios from "axios";
 import sampleData from '../../../data/sampleData'
+import { sportData } from '../../../data/importAPIData';
 
 const DateBox = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
   const [userSubscribe, setSubscribe] = useState([]);
+  const [sportList, setSportList] = useState([]);
   useEffect(() => {
     const getAllSubs = async () => {
       const port = import.meta.env.VITE_API_PORT;
@@ -26,6 +28,10 @@ const DateBox = (props) => {
     getAllSubs();
     // Remove userSubscribe from the dependency array
   }, [userState]);
+  useEffect(() => {
+    sportData().then((data) => setSportList(data))
+  }, [])
+
   let userSportList = userSubscribe
 
   if (!userSportList) {
@@ -41,7 +47,7 @@ const DateBox = (props) => {
   else {
     const todayDate = new Date('2024-08-01T01:00:00Z')
     let todayDateNum = todayDate.getDate()
-    let todayMonth = todayDate.getMonth()+1
+    let todayMonth = todayDate.getMonth() + 1
     const todayYear = todayDate.getFullYear()
     if (todayMonth < 10) {
       todayMonth = `0${todayMonth}`
@@ -52,7 +58,7 @@ const DateBox = (props) => {
     const startDateTime = new Date(`${todayYear}-${todayMonth}-${todayDateNum}T00:00:00.000+07:00`)
     const endDateTime = new Date(`${todayYear}-${todayMonth}-${todayDateNum}T23:59:59.999+07:00`)
     // console.log(endDateTime);
-    const nearMatch = sampleData.filter((dt) => userSportList.includes(dt.sport_type) && new Date(dt.datetime) >= startDateTime && new Date(dt.datetime) <= endDateTime).sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))
+    const nearMatch = sportList.filter((dt) => userSportList.includes(dt.sport_type) && new Date(dt.datetime) >= startDateTime && new Date(dt.datetime) <= endDateTime).sort((p1, p2) => new Date(p1.datetime) - new Date(p2.datetime))
     // NOT USE IN DEMO BECAUSE OF MANY FUTURE DATA
     // const nearDate = nearMatch[0]
     // const convertTimeFormat = nearDate?.datetime

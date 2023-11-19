@@ -9,7 +9,7 @@ import axios from "axios";
 const SubscribeBox = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
   const sub = props.subscription
-  console.log(sub)
+  // console.log(sub)
 
   const unSubscribe = async (sportName) => {
     const port = import.meta.env.VITE_API_PORT;

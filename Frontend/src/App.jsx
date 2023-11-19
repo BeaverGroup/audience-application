@@ -30,14 +30,14 @@ const UserStateContext = createContext();
 
 function App() {
   const authToken = Cookies.get("authToken");
-  console.log("Cookie_token :  ", authToken);
+  // console.log("Cookie_token :  ", authToken);
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   const [userState, setUserState] = useState(null); // login?
   const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
-  console.log(userState);
+  // console.log(userState);
 
   useEffect(() => {
     checkToken(setUserState);

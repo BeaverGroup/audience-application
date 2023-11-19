@@ -6,22 +6,14 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import axios from "axios";
+import { sportData } from "../../data/importAPIData";
 
 const UpcomingMatchDetail = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
-  const [ userVote, setUserVote ] = useState([]);
-  const [ isVoted, setIsVoted ] = useState(false);
-  const [ voteCountry, setVoteCountry ] = useState("");
-  const getData = sampleData.filter((data) => data.sport_id === props.sport_id)
-  if (!getData.length) {
-    return null
-  }
-  const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  const dateAndTime = new Date(getData[0].datetime)
-  const getDayOfWeek = dayOfWeek[dateAndTime.getDay()] // Example: Monday
-  const timeString = dateAndTime.toTimeString()
-  const dateString = dateAndTime.toDateString().slice(3) // slice day of the week out
-  const finalTime = `${getDayOfWeek}, ${dateString}`
+  const [userVote, setUserVote] = useState([]);
+  const [isVoted, setIsVoted] = useState(false);
+  const [voteCountry, setVoteCountry] = useState("");
+  const [sportList, setSportList] = useState([])
 
   const addVote = async (matchid, votefor) => {
     const port = import.meta.env.VITE_API_PORT;
@@ -79,7 +71,26 @@ const UpcomingMatchDetail = (props) => {
     } else {
       setUserVote([])
     }
-  }, [props.sport_id ,userVote]);
+  }, [props.sport_id, userVote]);
+
+  useEffect(() => {
+    sportData().then((data) => setSportList(data))
+  }, [])
+  const getData = sportList.filter((data) => data.sport_id === props.sport_id)
+  // console.log(getData);
+  if (!getData.length) {
+    return (
+      <div className='upcoming-box-detail' id="match-detail">
+        <h2>Don't find sport detail</h2>
+      </div>
+    )
+  }
+  const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const dateAndTime = new Date(getData[0].datetime)
+  const getDayOfWeek = dayOfWeek[dateAndTime.getDay()] // Example: Monday
+  const timeString = dateAndTime.toTimeString()
+  const dateString = dateAndTime.toDateString().slice(3) // slice day of the week out
+  const finalTime = `${getDayOfWeek}, ${dateString}`
 
   return (
     <div className='upcoming-box-detail' id="match-detail">

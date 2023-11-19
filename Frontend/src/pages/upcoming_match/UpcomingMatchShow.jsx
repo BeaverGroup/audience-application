@@ -14,7 +14,7 @@ const UpcomingMatchShow = () => {
         contactSection.scrollIntoView({ behavior: "smooth", block: "end"})
         // console.log(contactSection)
     }, [sport_id]);
-
+    
     return (
         <div className="upcoming-page">
             <h1>Upcoming Matches</h1>
