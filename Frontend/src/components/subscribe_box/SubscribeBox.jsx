@@ -33,6 +33,7 @@ const SubscribeBox = (props) => {
   return (
     <div className="subscribe-box">
       <h5>My Subscribe</h5>
+      <p className="description">Unsubscribe</p>
       <div className="subscribe-sport">
         {sub && sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index}/>)}
       </div>
