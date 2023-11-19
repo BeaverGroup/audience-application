@@ -25,6 +25,11 @@ body {
 .upcoming-section {
     grid-column: 1/5;
 }
+.upcoming-detail-para {
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px;
+}
 
 @media screen and (max-width: 1200px) {
     .upcoming-page {

@@ -26,11 +26,9 @@ import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
 import { widthToChangeNav, heightToChangeNav } from "./services/constants";
 
-
 const UserStateContext = createContext();
 
 function App() {
-
   const authToken = Cookies.get("authToken");
   console.log("Cookie_token :  ", authToken);
 
@@ -44,7 +42,7 @@ function App() {
   useEffect(() => {
     checkToken(setUserState);
   }, []);
-  
+
   useEffect(() => {
     const handleResizeWindow = () => {
       setScreenWidth(window.innerWidth);
@@ -52,19 +50,22 @@ function App() {
     };
     window.addEventListener("resize", handleResizeWindow);
 
-
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
-    }
+    };
   }, []);
-  
+
   return (
     // userState is data of user from token that decoded
     <UserStateContext.Provider value={{ userState, setUserState }}>
       <ProfileBar user_email={userState ? userState["Email"] : null} />
       <HorizontalNav />
 
-      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? "" : <VerticalNav />}
+      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? (
+        ""
+      ) : (
+        <VerticalNav />
+      )}
       <Routes>
         {/* <Route path="*" element={<Navigate to="/" />} /> */}
         {userState ? null : (
