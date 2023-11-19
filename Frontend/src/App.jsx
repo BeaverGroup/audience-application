@@ -58,34 +58,35 @@ function App() {
   return (
     // userState is data of user from token that decoded
     <UserStateContext.Provider value={{ userState, setUserState }}>
-      <ProfileBar user_email={userState ? userState["Email"] : null} />
-      <HorizontalNav />
-
-      {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? (
-        ""
+      {/* <ProfileBar user_email={userState ? userState["Email"] : null} /> */}
+      {userState ? (
+        <Fragment>
+          <HorizontalNav user_email={userState ? userState["Email"] : null} />
+          {screenWidth < widthToChangeNav || screenHeight < heightToChangeNav ? (
+            ""
+          ) : (
+            <VerticalNav />
+          )}       
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
+          <Route path="/upcoming" element={<UpcomingMatch/>}/>
+          <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
+          <Route path="/subscribe" element={<Subscribe/>}/>
+        </Routes>
+      </Fragment>
       ) : (
-        <VerticalNav />
-      )}
-      <Routes>
-        {/* <Route path="*" element={<Navigate to="/" />} /> */}
-        {userState ? null : (
-          <Fragment>
-            <Route path="/sign-up" element={<RegisterPage />} />
-            <Route
-              path="/sign-in"
-              element={<LoginPage setEnableAssignPage={setEnableAssignPage} />}
-            />
-            {enableAssignPage ? (
-              <Route path="/assign-info" element={<AssignPage />} />
-            ) : null}
-          </Fragment>
-        )}
-        <Route path="/" element={<Home/>}></Route>
-        {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
-        <Route path="/upcoming" element={<UpcomingMatch/>}/>
-        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
-        <Route path="/subscribe" element={<Subscribe/>}/>
-      </Routes>
+        <Routes>
+          <Route path="/sign-up" element={<RegisterPage />} />
+          <Route
+            path="/"
+            element={<LoginPage setEnableAssignPage={setEnableAssignPage} />}
+          />
+          {enableAssignPage ? (
+            <Route path="/assign-info" element={<AssignPage />} />
+          ) : null}
+        </Routes>
+   )}
     </UserStateContext.Provider>
   );
 }
