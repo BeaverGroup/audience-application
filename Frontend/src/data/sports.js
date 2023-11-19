@@ -5,16 +5,6 @@ const sports = [
         "image_url": "https://mir-s3-cdn-cf.behance.net/projects/404/63dcf7128656315.Y3JvcCwxOTk5LDE1NjQsMCw0.png"
     },
     {
-        "name": "Artistic Gymnastics",
-        "description": "Gymnastic discipline that emphasizes balance, strength, and creative routines on various apparatus.",
-        "image_url": "https://mir-s3-cdn-cf.behance.net/projects/404/63dcf7128656315.Y3JvcCwxOTk5LDE1NjQsMCw0.png"
-    },
-    {
-        "name": "Artistic Swimming",
-        "description": "Synchronized swimming discipline where athletes perform synchronized routines in the water.",
-        "image_url": "https://mir-s3-cdn-cf.behance.net/projects/404/63dcf7128656315.Y3JvcCwxOTk5LDE1NjQsMCw0.png"
-    },
-    {
         "name": "Athletics",
         "description": "Track and field events that encompass running, jumping, throwing, and more.",
         "image_url": "https://mir-s3-cdn-cf.behance.net/projects/404/63dcf7128656315.Y3JvcCwxOTk5LDE1NjQsMCw0.png"
