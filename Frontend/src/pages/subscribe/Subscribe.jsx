@@ -27,7 +27,7 @@ const Subscribe = () => {
       }
     }
     getAllSubs();
-  }, [userState]);
+  }, [userState, userSubscribe]);
   
   useEffect(() => {
       const element = document.querySelector(":root");
@@ -36,7 +36,6 @@ const Subscribe = () => {
           element.style.setProperty("--text-horizontal-nav", "var(--blue)");
       }
   }, []);
-
   
   return (
     <div className="subscribes">
@@ -45,7 +44,7 @@ const Subscribe = () => {
       </h1>
       <div className="sport-bar">
         <SubscribeBox subscription={userSubscribe}/>
-        <AddSubscribeBox />
+        {/* <AddSubscribeBox /> */}
       </div>
       <div className="sport-result-medal">
         <SportResult />

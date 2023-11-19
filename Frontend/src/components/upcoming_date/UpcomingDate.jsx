@@ -29,6 +29,15 @@ const UpcomingDate = () => {
 
 
     let userSportList = userSubscribe
+    if (!userSportList){
+        return (
+            <div className='upcoming-date'>
+            <h1>August 2024</h1>
+            <p>No subscribe sport</p>
+        </div>
+        )
+    }
+    
     const today = new Date();
     const thisMonth = today.getMonth() + 1;
     const thisYear = today.getFullYear();

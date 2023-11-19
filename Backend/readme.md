@@ -190,7 +190,7 @@ Clients should authenticate via traditional login or through Google Login for us
 ### Remove Subscription
 
 - **Endpoint**: `user/unsubscribe/:id`
-- **HTTP Method**: `DELETE`
+- **HTTP Method**: `POST`
 - **Description**: Remove a sport from user's subscriptions.
 
   **Request Parameters**:
