@@ -10,7 +10,6 @@ const picture = {
     "Basketball": matchIcon,
     "Athletics": resultIcon,
     "Swimming": subIcon,
-    "Test": matchIcon,
     "3x3 Basketball": matchIcon,
 }
 

@@ -80,12 +80,11 @@ function App() {
             ) : null}
           </Fragment>
         )}
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/main" element={<MainPage />}></Route>
+        <Route path="/" element={<Home/>}></Route>
         {/* <Route path="/upcoming" element={<UpcomingMatch/>}/> */}
-        <Route path="/upcoming" element={<UpcomingMatch />} />
-        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow />} />
-        <Route path="/subscribe" element={<Subscribe />} />
+        <Route path="/upcoming" element={<UpcomingMatch/>}/>
+        <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
+        <Route path="/subscribe" element={<Subscribe/>}/>
       </Routes>
     </UserStateContext.Provider>
   );
