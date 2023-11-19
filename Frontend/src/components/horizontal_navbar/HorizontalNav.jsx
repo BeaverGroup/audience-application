@@ -41,6 +41,7 @@ function HorizontalNav({ user_email }) {
     // localStorage.removeItem("accessToken");
     Cookies.remove("authToken");
     console.log("logout");
+    navigate("/");
     window.location.reload();
   };
   const [anchorEl, setAnchorEl] = useState(null);
