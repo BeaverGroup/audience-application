@@ -9,7 +9,7 @@ import axios from "axios";
 const SubscribeBox = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
   const sub = props.subscription
-  console.log(sub)
+  // console.log(sub)
 
   const unSubscribe = async (sportName) => {
     const port = import.meta.env.VITE_API_PORT;
@@ -33,8 +33,9 @@ const SubscribeBox = (props) => {
   return (
     <div className="subscribe-box">
       <h5>My Subscribe</h5>
+      <p className="description">Unsubscribe</p>
       <div className="subscribe-sport">
-        {sub && sub.map((content, index) => <SubscribeSport icon={picture[content]} sportname={content} key={index}/>)}
+        {sub && sub.map((content, index) => <SubscribeSport sportname={content} key={index}/>)}
       </div>
     </div>
   );

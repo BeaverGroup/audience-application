@@ -25,19 +25,20 @@ import Home from "./pages/home/Home";
 import HorizontalNav from "./components/horizontal_navbar/HorizontalNav";
 import VerticalNav from "./components/vertical_navbar/VerticalNav";
 import { widthToChangeNav, heightToChangeNav } from "./services/constants";
+import PageNotFound from "./pages/page_not_found/PageNotFound";
 
 const UserStateContext = createContext();
 
 function App() {
   const authToken = Cookies.get("authToken");
-  console.log("Cookie_token :  ", authToken);
+  // console.log("Cookie_token :  ", authToken);
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   const [userState, setUserState] = useState(null); // login?
   const [enableAssignPage, setEnableAssignPage] = useState(false); // login?
-  console.log(userState);
+  // console.log(userState);
 
   useEffect(() => {
     checkToken(setUserState);
@@ -73,6 +74,8 @@ function App() {
           <Route path="/upcoming" element={<UpcomingMatch/>}/>
           <Route path="/upcoming/:sport_id" element={<UpcomingMatchShow/>}/>
           <Route path="/subscribe" element={<Subscribe/>}/>
+          
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Fragment>
       ) : (
@@ -85,6 +88,7 @@ function App() {
           {enableAssignPage ? (
             <Route path="/assign-info" element={<AssignPage />} />
           ) : null}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
    )}
     </UserStateContext.Provider>

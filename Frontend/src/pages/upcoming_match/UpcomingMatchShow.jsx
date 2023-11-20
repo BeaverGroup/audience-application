@@ -12,9 +12,9 @@ const UpcomingMatchShow = () => {
     useEffect(() => {
         const contactSection = document.getElementById("match-detail");
         contactSection.scrollIntoView({ behavior: "smooth", block: "end"})
-        // console.log(contactSection) 
+        // console.log(contactSection)
     }, [sport_id]);
-
+    
     return (
         <div className="upcoming-page">
             <h1>Upcoming Matches</h1>
