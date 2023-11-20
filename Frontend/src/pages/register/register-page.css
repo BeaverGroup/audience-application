@@ -9,12 +9,39 @@ body {
   background-size: auto;
   background-position: 50%;
   max-width: 100%;
-  /* overflow-y: scroll; */
 }
 
 .flex-row {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.width-set {
+  width: 96%;
+}
+
+.drop-down {
+  width: 96%;
+  border-radius: 0.75rem;
+  border: none;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
+  background-color: rgba(248, 248, 248, 0.935);
+  margin-bottom: 0.6rem;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.drop-down-96 {
+  width: 96%;
+  border-radius: 0.75rem;
+  border: none;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
+  background-color: rgba(248, 248, 248, 0.935);
+  margin-bottom: 0.6rem;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .flex-column {
@@ -94,6 +121,21 @@ body {
   color: #333;
   background-color: rgba(248, 248, 248, 0.935);
   width: 96%;
+  border: none;
+  border: cap;
+  font-size: 0.8rem;
+  font-family: 'Source Code Pro', monospace;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.12);
+}
+
+.input_set_info_100 {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.75rem;
+  margin-bottom: 0.6rem;
+  color: #333;
+  background-color: rgba(248, 248, 248, 0.935);
+  width: 100%;
   border: none;
   border: cap;
   font-size: 0.8rem;

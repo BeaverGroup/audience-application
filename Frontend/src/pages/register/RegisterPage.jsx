@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./register-page.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
+import countryList from 'react-select-country-list'
+
+
 function RegisterPage() {
+  const options = useMemo(() => countryList().getData(), [])
+
   const navigate = useNavigate();
   const [input, setInput] = useState({
     Email: "",
@@ -22,6 +27,22 @@ function RegisterPage() {
     setInput({ ...input, [name]: value });
     console.log(input);
   };
+
+  const getValue = () => {
+    const value = document.getElementById("select1").value;
+    const name = document.getElementById("select1").name;
+    setInput({ ...input, [name]: value });
+    console.log(input);
+  };
+
+  const getValueCountry = () => {
+    const value = document.getElementById("select2").value;
+    const name = document.getElementById("select2").name;
+    setInput({ ...input, [name]: value });
+    console.log(input);
+  };
+
+  
 
   const checkPasswordDuplicate = () => {
     const { Password, ConfirmPassword } = input;
@@ -103,39 +124,37 @@ function RegisterPage() {
               onChange={handleChange}
               required
             />{" "}
-            <div className="flex-row">
+            <div className="flex-row width-set">
               <div className="flex-column margin-right">
                 <label id="label_setInfo">Gender</label>
-                <input
-                  className="input_set_info"
-                  type="text"
-                  id="Gender"
-                  name="Gender"
-                  onChange={handleChange}
-                  required
-                />          
+                <select className="drop-down" onChange={getValue} name="Gender" id="select1">
+                  <option value=""></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
               <div className="flex-column">
                 <label id="label_setInfo">Age</label>
                 <input
-                  className="input_set_info"
+                  className="input_set_info_100"
                   type="text"
                   id="Age"
                   name="Age"
                   onChange={handleChange}
                   required
-                />    
-              </div>                            
+                />
+              </div>
             </div>
             <label id="label_setInfo">Nationality</label>
-            <input
-              className="input_set_info"
-              type="text"
-              id="Nationality"
-              name="Nationality"
-              onChange={handleChange}
-              required
-            />
+            <select className="drop-down-96" onChange={getValueCountry} name="Nationality" id="select2">
+              <option value=""></option>
+              {options.map((option, index) => (
+                <option key={index} value={option.label}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
             <label id="label_setInfo">Password</label>
             <input
               className={
