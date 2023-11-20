@@ -182,7 +182,7 @@ function LoginPage({ setEnableAssignPage }) {
               justifyContent: "center",
             }}
           >
-            <span href="/register" id="signup-link">
+            <span href="/sign-up" id="signup-link">
               Sign up
             </span>
           </div>
