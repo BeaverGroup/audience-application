@@ -104,7 +104,6 @@ function RegisterPage() {
       <div>
         <div className="form_set_pass" id="login-form">
           <div id="regis_topic"> Sign Up </div>
-          {/* <img id="img_auth" src="../../image/setPass_img.jpeg" /> */}
           <form id="form_auth" onSubmit={onSubmit}>
             <label id="label_setInfo">Email</label>
             <input
