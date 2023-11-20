@@ -3,10 +3,9 @@
 const { user_model } = require("../Models/userModel");
 
 exports.infoUserByEmail = async (req, res) => {
+  let info
   try {
-    const UserData = req.body;
-    const { Email } = UserData; //
-    const info = await user_model.findOne({ Email: Email }).exec();
+    info = await user_model.findOne({ Email: req.params.Email });
     res.status(200).json({ message: "User information", info });
   } catch (err) {
     console.log(err);
@@ -15,10 +14,9 @@ exports.infoUserByEmail = async (req, res) => {
 };
 
 exports.infoUserByID = async (req, res) => {
+  let info
   try {
-    const UserData = req.body;
-    const { _id } = UserData;
-    const info = await user_model.findOne({ _id: _id }).exec();
+    info = await user_model.findOne({ _id: req.params._id});
     res.status(200).json({ message: "User information", info });
   } catch (err) {
     console.log(err);

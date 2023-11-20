@@ -27,7 +27,7 @@ export default function ProfileBar({ user_email }) {
     setAnchorEl(null);
     // localStorage.removeItem("accessToken");
     Cookies.remove("authToken");
-    console.log("logout");
+    // console.log("logout");
     window.location.reload();
   };
   const [anchorEl, setAnchorEl] = React.useState(null);

@@ -1,0 +1,8 @@
+.upcoming-date{
+    grid-column: 1/5;
+    font-size: 24px;
+}
+.upcoming-date h1{
+    font-family: 'paris2024-font';
+    color: #071E3E;
+}

@@ -19,7 +19,9 @@ const {
 } = require("../Controllers/subController");
 
 const {
-  verifyCookieToken, verifyRoleAdmin,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  verifiedPermissionsID,
 } = require("../Middlewares/authMiddle");
 const jsonParser = bodyParser.json();
 const {
@@ -30,23 +32,98 @@ const {
 require("dotenv").config();
 
 //user
-router.get("/infoByEmail", jsonParser, verifyCookieToken, infoUserByEmail); // register user (http://localhost:3002/user/infoByEmail)
-router.get("/infoByID", jsonParser, verifyCookieToken, infoUserByID); // register user (http://localhost:3002/user/infoByID)
-router.get("/list", jsonParser, verifyCookieToken,verifyRoleAdmin, allinfoUser); // register user
-router.post("/updateByID", jsonParser, verifyCookieToken, updateUserByID); // update user
-router.post("/updateByEmail", jsonParser, verifyCookieToken, updateUserByEmail); // update user
-router.delete("/removeByID", jsonParser, verifyCookieToken, removeUserByID); // register user (http://localhost:3002/user/infoByID)
-router.delete("/removeByEmail", jsonParser,verifyCookieToken ,removeUserByEmail); // register user (http://localhost:3002/user/infoByID)
+
+router.get("/infoByEmail/:Email", jsonParser, verifyCookieToken, infoUserByEmail); 
+router.get("/infoByID/:_id", jsonParser, verifyCookieToken, infoUserByID);
+router.get(
+  "/list",
+  jsonParser,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  allinfoUser
+); // register user
+router.post(
+  "/updateByID",
+  jsonParser,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  updateUserByID
+); // update user
+router.post(
+  "/updateByEmail",
+  jsonParser,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  updateUserByEmail
+); // update user
+router.post(
+  "/removeByID",
+  jsonParser,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  removeUserByID
+);
+router.post(
+  "/removeByEmail",
+  jsonParser,
+  verifyCookieToken,
+  verifyRoleAdmin,
+  removeUserByEmail
+);
+
+
 
 // vote
-router.delete("/unvote/:id", jsonParser, verifyCookieToken, removeVote);
-router.post("/vote/:id", jsonParser, verifyCookieToken, addVote);
-router.get("/userAllvote/:id", jsonParser, verifyCookieToken, allVotes);
+router.post(
+  "/unvote/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  removeVote
+);
+router.post(
+  "/vote/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  addVote
+);
+router.get(
+  "/userAllvote/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  allVotes
+);
 
 // sub
-router.post("/subscribe/:id", jsonParser, verifyCookieToken, addSub); // add sport into subscribe (http://localhost:3002/user/subscribe/:id)
-router.delete("/unsubscribe/:id", jsonParser, verifyCookieToken, unSub); // unsubcribe sport from subscribe (http://localhost:3002/user/unsubscribe/:id)
-router.get("/userAllsub/:id", jsonParser, verifyCookieToken, allSub); // get all user's subscribetions (http://localhost:3002/user/userAllsub/:id)
-router.post("/updateSub/:id", jsonParser, verifyCookieToken, updateSub);
+router.post(
+  "/subscribe/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  addSub
+);
+router.post(
+  "/unsubscribe/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  unSub
+);
+router.get(
+  "/userAllsub/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  allSub
+);
+router.post(
+  "/updateSub/:id",
+  jsonParser,
+  verifyCookieToken,
+  verifiedPermissionsID,
+  updateSub
+);
 
 module.exports = router;

@@ -5,8 +5,7 @@ import axios from "axios";
 
 function MainPage() {
   const { userState, setUserState } = useContext(UserStateContext);
-  console.log("userState : ", userState);
-
+  // console.log("userState : ", userState);
   const test = async () => {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
@@ -14,7 +13,7 @@ function MainPage() {
       const all_user = await axios.get(`http://${host_ip}:${port}/user/list`, {
         withCredentials: true,
       });
-      console.log(all_user.data);
+      // console.log(all_user.data);
     } catch (e) {
       console.log(e);
     }
@@ -26,7 +25,7 @@ function MainPage() {
       const all_user = await axios.get(`http://${host_ip}:${port}/health`, {
         withCredentials: true,
       });
-      console.log(all_user.data);
+      // console.log(all_user.data);
     } catch (e) {
       console.log(e);
     }
@@ -47,6 +46,19 @@ function MainPage() {
       </div>
     );
   }
+
+  const getByEmail = async () => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const userEmail = await axios.get(`http://${host_ip}:${port}/user/infoByEmail/natekrth@gmail.com`, {
+        withCredentials: true,
+      });
+      // console.log(userEmail.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div
@@ -80,7 +92,7 @@ function MainPage() {
           style={{ width: "70%", height: "50px" }}
           id="button_auth"
           type="submit"
-          onClick={test}
+          onClick={getByEmail}
         >
           test permission request api
         </button>
