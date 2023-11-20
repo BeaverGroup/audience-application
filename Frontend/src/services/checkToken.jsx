@@ -6,7 +6,7 @@ const checkToken = (setUserState) => {
         const authToken = Cookies.get("authToken");
         // console.log("authToken", authToken);
         if (!authToken) {
-          console.log("Cookie_token not found");
+          // console.log("Cookie_token not found");
           const g_token = localStorage.getItem("accessToken");
           if (g_token) {
             localStorage.removeItem("accessToken");
@@ -23,7 +23,7 @@ const checkToken = (setUserState) => {
             // window.location.reload();
           } else {
             // console.log("DecodedToken : ", decodedToken);
-            console.log("Token expired or Token not found or Token invalid");
+            // console.log("Token expired or Token not found or Token invalid");
             Cookies.remove("authToken");
             // window.location.reload();
           }

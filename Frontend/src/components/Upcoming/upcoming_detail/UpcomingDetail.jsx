@@ -1,33 +1,28 @@
 import React from "react";
 import "./upcoming-detail.css";
 import { Icon } from "@iconify/react";
+import { Link } from 'react-router-dom'
+import sports from "../../../data/sports";
 
 const UpcomingDetail = (props) => {
-  if (props.first) {
-    return (
-      <div className="detail-box-grey">
-        <Icon icon="tabler:play-football" className="sport-logo" />
-        <div className="match-detail">
-          <h3 className="sport-name">Basketball</h3>
-          <p>England <br /> vs <br /> Thailand</p>
-        </div>
-        <div className="time">
-          <p>1.00PM <br /> - <br /> 3.00PM</p>
-        </div>
-      </div>
-    );
-  }
+  const sportMatch = props.data
+  // console.log(sportMatch);
+  const newTime = new Date(
+    sportMatch.datetime.slice(0, 19).concat("Z")
+  );
+  const findSport = sports.find((data)=> data.name === sportMatch.sport_type)
+  // const findSport = sports.find((data)=> data.name === "BMX")
   return (
-    <div className="detail-box-white">
-      <Icon icon="tabler:play-football" className="sport-logo" />
-      <div className="match-detail">
-        <h3 className="sport-name">Basketball</h3>
-        <p>England <br /> vs <br /> Thailand</p>
+    <Link to={`/upcoming/${sportMatch.sport_id}`}>
+      <div className="detail-box-white">
+        <Icon icon={findSport.icon?findSport.icon:"game-icons:sport-medal"} className="sport-logo" />
+        <div className="match-detail">
+          <h3 className="sport-name">{sportMatch.sport_name}</h3>
+          <h5>{sportMatch.sport_type}</h5>
+          <h4>{newTime.toLocaleTimeString()}</h4>
+        </div>
       </div>
-      <div className="time">
-        <p>1.00PM <br /> - <br /> 3.00PM</p>
-      </div>
-    </div>
+    </Link>
   );
 };
 

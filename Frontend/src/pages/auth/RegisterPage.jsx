@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
+import axios from "axios";
+
 function RegisterPage() {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -20,7 +22,7 @@ function RegisterPage() {
     const value = e.target.value;
     const name = e.target.name;
     setInput({ ...input, [name]: value });
-    console.log(input);
+    // console.log(input);
   };
 
   const checkPasswordDuplicate = () => {
@@ -40,6 +42,33 @@ function RegisterPage() {
     }
   };
 
+  const userNationality = async (nationality) => {
+    const port = import.meta.env.VITE_API_PORT;
+    const host_ip = import.meta.env.VITE_API_HOST_IP;
+    try {
+      const countNationality = await axios.post(`http://${host_ip}:${port}/country/add/${nationality}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      // console.log(countNationality);
+      const sending = JSON.stringify({
+        country: countNationality.data.country,
+        count: countNationality.data.count
+      })
+      // console.log(sending);
+      const UserDataForIoc = await axios.post("http://nongnop.azurewebsites.net/user_statistic/", sending, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      // console.log(UserDataForIoc);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     // Check if the passwords match
@@ -52,11 +81,12 @@ function RegisterPage() {
     try {
       // Create a new user
       const new_user = await CreateAuthUser({ ...input, Role: "user" });
-      console.log(new_user);
+      // console.log(new_user);
 
       // If the user was successfully created, navigate to the home page
       if (new_user) {
         if (new_user.success) {
+          userNationality(new_user.data.user.Nationality)
           navigate("/");
           window.location.reload();
         }
