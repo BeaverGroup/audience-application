@@ -37,7 +37,7 @@ const sports = [
     {
         "name": "Skateboarding",
         "description": "Extreme sport involving performing tricks on a skateboard.",
-        "image_url": "https://mir-s3-cdn-cf.behance.net/projects/404/63dcf7128656315.Y3JvcCwxOTk5LDE1NjQsMCw0.png",
+        "image_url": "https://api.time.com/wp-content/uploads/2021/08/us-skateboarding.jpg",
     },
     {
         "name": "Taekwondo",
