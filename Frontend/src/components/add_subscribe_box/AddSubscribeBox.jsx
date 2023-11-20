@@ -22,7 +22,7 @@ const AddSubscribeBox = () => {
         },
         withCredentials: true,
       });
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e);
     }

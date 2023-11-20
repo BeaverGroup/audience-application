@@ -38,7 +38,7 @@ const Home = () => {
               withCredentials: true,
             });
             setSubscribe(userSub.data.subscribe)
-            console.log(userSubscribe);
+            // console.log(userSubscribe);
           } catch (e) {
             console.log(e);
           }

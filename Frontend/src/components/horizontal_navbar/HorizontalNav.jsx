@@ -40,7 +40,7 @@ function HorizontalNav({ user_email }) {
     setAnchorEl(null);
     // localStorage.removeItem("accessToken");
     Cookies.remove("authToken");
-    console.log("logout");
+    // console.log("logout");
     navigate("/");
     window.location.reload();
   };

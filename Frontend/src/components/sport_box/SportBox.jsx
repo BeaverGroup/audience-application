@@ -25,7 +25,7 @@ function SportBox(props) {
         },
         withCredentials: true,
       });
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e.response.data.error);
     }
@@ -34,7 +34,7 @@ function SportBox(props) {
   if (!userSubscribeList) {
     userSubscribeList = []
   }
-  console.log(userSubscribeList);
+  // console.log(userSubscribeList);
 
   return (
     <div className="sport-card" onClick={addSub}>

@@ -26,7 +26,7 @@ function AssignPage() {
     const value = e.target.value;
     const name = e.target.name;
     setInput({ ...input, [name]: value });
-    console.log(input);
+    // console.log(input);
   };
 
   const checkPasswordDuplicate = () => {
@@ -67,7 +67,7 @@ function AssignPage() {
           "Content-Type": "application/json",
         },
       })
-      console.log(UserDataForIoc);
+      // console.log(UserDataForIoc);
     } catch (e) {
       console.log(e);
     }
@@ -85,7 +85,7 @@ function AssignPage() {
     try {
       // Create a new user
       const new_user = await CreateAuthUser({ ...input, Role: "user" });
-      console.log(new_user);
+      // console.log(new_user);
 
       // If the user was successfully created, navigate to the home page
       if (new_user) {

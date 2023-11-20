@@ -30,7 +30,7 @@ const UpcomingMatchDetail = (props) => {
         withCredentials: true,
       });
       // console.log(matchid);
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e);
     }

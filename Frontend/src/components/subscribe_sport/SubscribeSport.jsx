@@ -21,7 +21,7 @@ const SubscribeSport = (props) => {
         },
         withCredentials: true,
       });
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e.response.data.error);
     }
