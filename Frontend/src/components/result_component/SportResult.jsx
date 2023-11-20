@@ -30,6 +30,22 @@ const SportResult = () => {
         };
         getAllSubs();
     }, [userState]);
+    if (!userSubscribe) {
+        return (
+            <div className='sport-result-card'>
+                <h1>Sport Result</h1>
+                <table className="sport-result-table">
+                    <tr>
+                        <th><h2>Sport</h2></th>
+                        <th><Icon className="country-flag" icon="twemoji:1st-place-medal" /></th>
+                        <th><Icon className="country-flag" icon="twemoji:2nd-place-medal" /></th>
+                        <th><Icon className="country-flag" icon="twemoji:3rd-place-medal" /></th>
+                    </tr>
+                    <h3>You not subscribe any sport</h3>
+                </table>
+            </div>
+        )
+    }
     if (!userSubscribe.length) {
         return (
             <div className='sport-result-card'>
@@ -46,7 +62,7 @@ const SportResult = () => {
             </div>
         )
     }
-    const sportSubscribe = result.filter((match) => userSubscribe.includes(match.sport_type) && match.round ==="Final")
+    const sportSubscribe = result.filter((match) => userSubscribe.includes(match.sport_type) && match.round === "Final")
     return (
         <div className='sport-result-card'>
             <h1>Sport Result</h1>
@@ -58,7 +74,7 @@ const SportResult = () => {
                     <th><Icon className="country-flag" icon="twemoji:3rd-place-medal" /></th>
                 </tr>
                 {/* <SportMedal name="Badminton" first="China" second="Thailand" third="Japan" /> */}
-                {sportSubscribe.map((data)=> <SportMedal key={data.sport_type+data.sport_id} data={data}/>)}
+                {sportSubscribe.map((data) => <SportMedal key={data.sport_type + data.sport_id} data={data} />)}
             </table>
             <div>
 
