@@ -1,6 +1,6 @@
 import "./sport_box.css"
 import addIcon from "../../icons/add.svg"
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserStateContext } from "../../App";
 // import AddSubscribe from "../add_subscribe/AddSubscribe";
 import axios from "axios";
@@ -8,7 +8,7 @@ import axios from "axios";
 function SportBox(props) {
     const { sport } = props;
     const { userState, setUserState } = useContext(UserStateContext);
-    const [ userSubscribe, setSubscribe] = useState([]);
+    const [ userSubscribe, setSubscribe ] = useState([]);
 
     const addSub = async () => {
         const port = import.meta.env.VITE_API_PORT;
@@ -28,8 +28,17 @@ function SportBox(props) {
         } catch (e) {
           console.log(e.response.data.error);
         }
+        try {
+          const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+            withCredentials: true,
+          });
+          // console.log(userSub.data.subscribe);
+          setSubscribe(userSub.data.subscribe)
+        } catch (e) {
+          console.log(e);
+        }
       }
-
+      
     return (
         <div className="sport-card" onClick={addSub}>
             <div className="img-box">
