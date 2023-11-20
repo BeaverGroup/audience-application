@@ -3,8 +3,10 @@ import SportResult from '../../components/result_component/SportResult'
 import './home.css'
 import parisIcon from "../../icons/paris-icon.svg"
 import sports from "../../data/sports"
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import SportBox from '../../components/sport_box/SportBox'
+import { UserStateContext } from "../../App";
+import axios from "axios";
 
 
 const getFiltered = (text, items) => {
@@ -20,10 +22,29 @@ const Home = () => {
         element.style.setProperty("--text-horizontal-nav", "white");
     }
     
+    const { userState, setUserState } = useContext(UserStateContext);
+    const [ userSubscribe, setSubscribe ] = useState([]);
+
     const [text, setText] = useState("");
 
     const filteredItems = getFiltered(text, sports)
 
+    useEffect(() => {
+        const getAllSubs = async () => {
+          const port = import.meta.env.VITE_API_PORT;
+          const host_ip = import.meta.env.VITE_API_HOST_IP;
+          try {
+            const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+              withCredentials: true,
+            });
+            setSubscribe(userSub.data.subscribe)
+            console.log(userSubscribe);
+          } catch (e) {
+            console.log(e);
+          }
+        }
+        getAllSubs();
+      }, [userState, userSubscribe]);
 
     return (
         <div className='homepage'>
@@ -53,7 +74,7 @@ const Home = () => {
                         <input placeholder='Search...' type="text" onChange={(e) => setText(e.target.value)} />
                     </div>
                     {filteredItems.map((item, index) => {
-                        return <SportBox sport={item} key={index}/>
+                        return <SportBox sport={item} key={index} subscribed={userSubscribe}/>
                     })}
                 </div>
             </div>
