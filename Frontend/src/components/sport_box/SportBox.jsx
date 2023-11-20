@@ -1,5 +1,6 @@
 import "./sport_box.css"
 import addIcon from "../../icons/add.svg"
+import checked from "../../icons/check.svg"
 import React, { useState, useContext, useEffect } from "react";
 import { UserStateContext } from "../../App";
 // import AddSubscribe from "../add_subscribe/AddSubscribe";
@@ -9,6 +10,23 @@ function SportBox(props) {
     const { sport } = props;
     const { userState, setUserState } = useContext(UserStateContext);
     const [ userSubscribe, setSubscribe ] = useState([]);
+
+    useEffect(() => {
+      const getAllSubs = async () => {
+        const port = import.meta.env.VITE_API_PORT;
+        const host_ip = import.meta.env.VITE_API_HOST_IP;
+        try {
+          const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
+            withCredentials: true,
+          });
+          setSubscribe(userSub.data.subscribe)
+          console.log(userSubscribe);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      getAllSubs();
+    }, [userState, userSubscribe]);
 
     const addSub = async () => {
         const port = import.meta.env.VITE_API_PORT;
@@ -28,18 +46,9 @@ function SportBox(props) {
         } catch (e) {
           console.log(e.response.data.error);
         }
-        try {
-          const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
-            withCredentials: true,
-          });
-          // console.log(userSub.data.subscribe);
-          setSubscribe(userSub.data.subscribe)
-        } catch (e) {
-          console.log(e);
-        }
       }
       
-    return (
+    return(
         <div className="sport-card" onClick={addSub}>
             <div className="img-box">
                 <img src={sport.image_url} alt="" />
@@ -47,7 +56,7 @@ function SportBox(props) {
             <div className="sport-name">{sport.name}</div>
             <div className="sport-detail">{sport.name} <div className="description"> {sport.description} </div></div>
             <div className="add-icon">
-                <img src={addIcon} alt="" />
+              {userSubscribe.includes(sport.name) ? <img src={checked} alt="" /> : <img src={addIcon} alt="" />}
             </div>
         </div>
     );
