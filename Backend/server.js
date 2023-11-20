@@ -24,7 +24,7 @@ app.get("/health", healthController.healthCheck);
 app.use("/country",countryRouter)
 
 
-const PORT = process.env.SERVER_PORT || 4000; // Use the port from the environment variables or default to 4000
+const PORT = process.env.SERVER_PORT ; // Use the port from the environment variables or default to 4000
 
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT} V3`);
