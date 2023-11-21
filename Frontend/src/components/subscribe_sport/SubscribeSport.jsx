@@ -26,12 +26,19 @@ const SubscribeSport = (props) => {
       console.log(e.response.data.error);
     }
   }
-  const findSport = sports.find((data)=> data.name === props.sportname)
+  const findSport = sports.find((data) => data.name === props.sportname)
+  if (!findSport) {
+    return (
+      <div className="subscribe">
+        <p>No subscribe list</p>
+      </div>
+    )
+  }
   return (
     <div className="subscribe">
-      <Icon icon={findSport.icon?findSport.icon:"game-icons:sport-medal"}  width="20" height="20"/>
+      <Icon icon={findSport.icon ? findSport.icon : "game-icons:sport-medal"} width="20" height="20" />
       <p className="sport-name">{props.sportname}</p>
-      <Icon className="icon-x" icon="octicon:x-12" width="20" height="20" onClick={() => unSubscribe(props.sportname)}/>
+      <Icon className="icon-x" icon="octicon:x-12" width="20" height="20" onClick={() => unSubscribe(props.sportname)} />
     </div>
   );
 };
