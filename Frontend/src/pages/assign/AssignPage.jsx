@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./assign-page.css";
 import Swal from "`sweetalert2`";
@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import countryList from 'react-select-country-list'
 
 function AssignPage() {
-  // const options = useMemo(() => countryList().getData(), [])
+  const options = useMemo(() => countryList().getData(), [])
 
   const navigate = useNavigate();
 
@@ -147,14 +147,14 @@ function AssignPage() {
               </div>
             </div>
             <label id="label_setInfo">Nationality</label>
-            {/* <select className="drop-down-96" onChange={getValueCountry} name="Nationality" id="select2">
+            <select className="drop-down-96" onChange={getValueCountry} name="Nationality" id="select2">
               <option value=""></option>
               {options.map((option, index) => (
                 <option key={index} value={option.label}>
                   {option.label}
                 </option>
               ))}
-            </select> */}
+            </select>
             <label id="label_setInfo">Password</label>
             <input
               className={
@@ -172,7 +172,7 @@ function AssignPage() {
                 passwordsMatch ? "input_set_password" : "input_warning"
               }
               type="password"
-              id="Confirm Password"
+              id="Confirm-Password"
               name="ConfirmPassword"
               onChange={handleChange}
               required
