@@ -85,7 +85,7 @@ function AssignPage() {
       })
       // console.log(UserDataForIoc);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 

@@ -9,7 +9,7 @@ export const getAllSubs = async (userState) => {
       });
       return userSub.data
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 

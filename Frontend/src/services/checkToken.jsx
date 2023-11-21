@@ -29,7 +29,7 @@ const checkToken = (setUserState) => {
           }
         }
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         Cookies.remove("authToken");
       }
 }   

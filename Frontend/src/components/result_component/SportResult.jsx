@@ -27,7 +27,7 @@ const SportResult = () => {
                 });
                 setSubscribe(userSub.data.subscribe);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
             }
         };
         getAllSubs();

@@ -32,7 +32,7 @@ export const TokenDecodeGOOGLE = async (token) => {
     }
     // return response;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     // console.log("Failed to decode token");
     return null;
   }

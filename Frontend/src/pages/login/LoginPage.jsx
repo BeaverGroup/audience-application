@@ -49,7 +49,7 @@ function LoginPage({ setEnableAssignPage }) {
               // console.log(response_google_login);
             }
           } catch (err) {
-            console.log(err);
+            // console.log(err);
           }
         }
       }
@@ -103,7 +103,7 @@ function LoginPage({ setEnableAssignPage }) {
         // console.log("wrong password");
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 

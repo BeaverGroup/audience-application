@@ -22,7 +22,7 @@ const UpcomingDate = () => {
                 setSubscribe(userSub.data.subscribe);
                 // console.log(userSub.data.subscribe);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
             }
         };
         getAllSubs();

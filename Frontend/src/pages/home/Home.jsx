@@ -40,7 +40,7 @@ const Home = () => {
             setSubscribe(userSub.data.subscribe)
             // console.log(userSubscribe);
           } catch (e) {
-            console.log(e);
+            // console.log(e);
           }
         }
         getAllSubs();

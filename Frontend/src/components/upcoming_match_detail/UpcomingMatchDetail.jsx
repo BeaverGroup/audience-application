@@ -32,7 +32,7 @@ const UpcomingMatchDetail = (props) => {
       // console.log(matchid);
       // console.log(response);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
@@ -48,7 +48,7 @@ const UpcomingMatchDetail = (props) => {
         // setIsVoted(true)
         // console.log(myvote.data.votes);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     }
     getUserVote();
