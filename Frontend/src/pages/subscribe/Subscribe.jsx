@@ -7,43 +7,52 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import axios from "axios";
+import { getAllSubs } from "../../services/Services";
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+
 
 const Subscribe = () => {
   const { userState, setUserState } = useContext(UserStateContext);
-  const [ userSubscribe, setSubscribe] = useState([]);
+  const [userSubscribe, setSubscribe] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  console.log(userSubscribe)
+
+
 
   useEffect(() => {
-    const getAllSubs = async () => {
-      const port = import.meta.env.VITE_API_PORT;
-      const host_ip = import.meta.env.VITE_API_HOST_IP;
-      try {
-        const userSub = await axios.get(`http://${host_ip}:${port}/user/userAllsub/${userState._id}`, {
-          withCredentials: true,
-        });
-        setSubscribe(userSub.data.subscribe)
-        // console.log(userSubscribe);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    getAllSubs();
-  }, [userState, userSubscribe]);
-  
-  useEffect(() => {
-      const element = document.querySelector(":root");
-      element.style.setProperty("--text-horizontal-nav", "var(--blue)");
-      if (!document.querySelector(".scrolled")) {
-          element.style.setProperty("--text-horizontal-nav", "var(--blue)");
-      }
+    getAllSubs(userState).then((data) => {
+      setSubscribe(data.subscribe)
+      setLoading(false)
+    }).catch((err) => {
+      console.log(err);
+    });
   }, []);
-  
+
+  useEffect(() => {
+    const element = document.querySelector(":root");
+    element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+    if (!document.querySelector(".scrolled")) {
+      element.style.setProperty("--text-horizontal-nav", "var(--blue)");
+    }
+  }, []);
+
   return (
     <div className="subscribes">
       <h1 className="page-title">
         SUBSCRIPTIONS
       </h1>
       <div className="sport-bar">
-        <SubscribeBox subscription={userSubscribe}/>
+        {loading ?
+        <Stack spacing={1}>
+        <Skeleton animation="wave" variant="rounded" width="100%" height="50px"  /> 
+        <Skeleton animation="wave" variant="rounded" width="100%" height="30px"  /> 
+        <Skeleton animation="wave" variant="rounded" width="100%" height="30px"  /> 
+        </Stack>
+        : 
+        <SubscribeBox subscription={userSubscribe} />}
+
         {/* <AddSubscribeBox /> */}
       </div>
       <div className="sport-result-medal">

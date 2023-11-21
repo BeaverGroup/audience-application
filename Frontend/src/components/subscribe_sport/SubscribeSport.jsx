@@ -5,40 +5,20 @@ import { UserStateContext } from "../../App";
 import axios from "axios";
 import { Icon } from '@iconify/react';
 import sports from "../../data/sports";
+import { unSubscribe } from "../../services/Services";
 
 const SubscribeSport = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
-  const unSubscribe = async (sportName) => {
-    const port = import.meta.env.VITE_API_PORT;
-    const host_ip = import.meta.env.VITE_API_HOST_IP;
-    const data_format = JSON.stringify({
-      Sport: sportName
-    })
-    try {
-      const response = await axios.post(`http://${host_ip}:${port}/user/unsubscribe/${userState._id}`, data_format, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      // console.log(response);
-    } catch (e) {
-      console.log(e.response.data.error);
-    }
-  }
-  const findSport = sports.find((data) => data.name === props.sportname)
-  if (!findSport) {
-    return (
-      <div className="subscribe">
-        <p>No subscribe list</p>
-      </div>
-    )
+  const findSport = sports.find((data)=> data.name === props.sportname)
+  const unSubscribeSport = () => {
+    unSubscribe(userState, props.sportname)
+    location.reload()
   }
   return (
     <div className="subscribe">
       <Icon icon={findSport.icon ? findSport.icon : "game-icons:sport-medal"} width="20" height="20" />
       <p className="sport-name">{props.sportname}</p>
-      <Icon className="icon-x" icon="octicon:x-12" width="20" height="20" onClick={() => unSubscribe(props.sportname)} />
+      <Icon className="icon-x" icon="octicon:x-12" width="20" height="20" onClick={unSubscribeSport}/>
     </div>
   );
 };
