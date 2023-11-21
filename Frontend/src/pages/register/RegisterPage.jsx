@@ -171,7 +171,7 @@ function RegisterPage() {
                 passwordsMatch ? "input_set_info" : "input_warning"
               }
               type="password"
-              id="Confirm Password"
+              id="Confirm-Password"
               name="ConfirmPassword"
               onChange={handleChange}
               required
