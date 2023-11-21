@@ -36,6 +36,7 @@ const sports = [
     },
     {
         "name": "BMX Racing",
+        "icon": "game-icons:sport-medal",
         "description": "BMX bike racing on a dirt track with jumps and obstacles.",
         "image_url": "https://medias.paris2024.org/uploads/2020/11/1331385293-min-scaled.jpeg?x-oss-process=image/resize,w_2560,h_1555,m_lfit/format,webp"
     },
@@ -71,6 +72,7 @@ const sports = [
     },
     {
         "name": "Weightlifting",
+        "icon": "game-icons:sport-medal",
         "description": "Sport involving the lifting of heavy weights in a specified manner.",
         "image_url": "https://www.usatoday.com/gcdn/presto/2021/07/25/USAT/a5516acb-5283-443b-ab58-352fd1314412-GTY_1330515254.jpg?width=1320&height=944&fit=crop&format=pjpg&auto=webp"
     },
