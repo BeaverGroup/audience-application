@@ -4,8 +4,11 @@ import "./assign-page.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
 import { useLocation } from "react-router-dom";
+import countryList from 'react-select-country-list'
 
 function AssignPage() {
+  // const options = useMemo(() => countryList().getData(), [])
+
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -24,6 +27,19 @@ function AssignPage() {
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
+    setInput({ ...input, [name]: value });
+    console.log(input);
+  };
+  const getValue = () => {
+    const value = document.getElementById("select1").value;
+    const name = document.getElementById("select1").name;
+    setInput({ ...input, [name]: value });
+    console.log(input);
+  };
+
+  const getValueCountry = () => {
+    const value = document.getElementById("select2").value;
+    const name = document.getElementById("select2").name;
     setInput({ ...input, [name]: value });
     console.log(input);
   };
@@ -88,11 +104,11 @@ function AssignPage() {
       <div>
         <div className="form_set_pass" id="login-form">
           <div id="reset_password_topic">Assign Infomation </div>
-          <img id="img_auth" src="../../image/setPass_img.jpeg" />
+          <div id="assign_topic"> Assign </div>
           <form id="form_auth" onSubmit={onSubmit}>
             <label id="label_setInfo">Email</label>
             <input
-              className="input_email_disable"
+              className="input_set_password"
               type="text"
               id="Mail"
               name="Mail"
@@ -108,33 +124,37 @@ function AssignPage() {
               onChange={handleChange}
               required
             />{" "}
-            <label id="label_setInfo">Gender</label>
-            <input
-              className="input_set_password"
-              type="text"
-              id="Gender"
-              name="Gender"
-              onChange={handleChange}
-              required
-            />
-            <label id="label_setInfo">Age</label>
-            <input
-              className="input_set_password"
-              type="text"
-              id="Age"
-              name="Age"
-              onChange={handleChange}
-              required
-            />
+            <div className="flex-row width-set">
+              <div className="flex-column margin-right">
+                <label id="label_setInfo">Gender</label>
+                <select className="drop-down" onChange={getValue} name="Gender" id="select1">
+                  <option value=""></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="flex-column">
+                <label id="label_setInfo">Age</label>
+                <input
+                  className="input_set_info_100"
+                  type="number"
+                  id="Age"
+                  name="Age"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
             <label id="label_setInfo">Nationality</label>
-            <input
-              className="input_set_password"
-              type="text"
-              id="Nationality"
-              name="Nationality"
-              onChange={handleChange}
-              required
-            />
+            {/* <select className="drop-down-96" onChange={getValueCountry} name="Nationality" id="select2">
+              <option value=""></option>
+              {options.map((option, index) => (
+                <option key={index} value={option.label}>
+                  {option.label}
+                </option>
+              ))}
+            </select> */}
             <label id="label_setInfo">Password</label>
             <input
               className={

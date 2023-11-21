@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,  } from "react-router-dom";
 import "./register-page.css";
 import Swal from "`sweetalert2`";
 import { CreateAuthUser } from "../../services/Api";
