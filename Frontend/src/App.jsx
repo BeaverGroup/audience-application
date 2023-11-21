@@ -7,13 +7,13 @@ import React, {
 } from "react";
 
 import ProfileBar from "./components/NavAuthDemo";
-import LoginPage from "./pages/auth/LoginPage";
+import LoginPage from "./pages/login/LoginPage";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import MainPage from "./pages/main/MainPageDemo";
-import RegisterPage from "./pages/auth/RegisterPage";
-import AssignPage from "./pages/auth/AssignPage";
+import RegisterPage from "./pages/register/RegisterPage";
+import AssignPage from "./pages/assign/AssignPage";
 
 import checkToken from "./services/checkToken";
 import Cookies from "js-cookie";

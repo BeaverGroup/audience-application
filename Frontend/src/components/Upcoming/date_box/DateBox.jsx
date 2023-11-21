@@ -32,7 +32,7 @@ const DateBox = (props) => {
     sportData().then((data) => setSportList(data))
   }, [])
 
-  let userSportList = userSubscribe
+  let userSportList = userSubscribe.map((re)=> re.toUpperCase());
 
   if (!userSportList) {
     return (

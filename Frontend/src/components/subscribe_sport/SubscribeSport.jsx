@@ -16,7 +16,7 @@ const SubscribeSport = (props) => {
   }
   return (
     <div className="subscribe">
-      <Icon icon={findSport.icon?findSport.icon:"game-icons:sport-medal"}  width="20" height="20"/>
+      <Icon icon={findSport.icon ? findSport.icon : "game-icons:sport-medal"} width="20" height="20" />
       <p className="sport-name">{props.sportname}</p>
       <Icon className="icon-x" icon="octicon:x-12" width="20" height="20" onClick={unSubscribeSport}/>
     </div>

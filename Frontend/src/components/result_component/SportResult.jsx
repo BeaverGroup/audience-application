@@ -69,7 +69,11 @@ const SportResult = () => {
             </div>
         )
     }
-    const sportSubscribe = result.filter((match) => userSubscribe.includes(match.sport_type) && match.round === "Final")
+    // console.log(userSubscribe);
+    const upperSubscribe = userSubscribe.map((sub)=> sub.toUpperCase())
+    // console.log(upperSubscribe);
+    const sportSubscribe = result.filter((match) => upperSubscribe.includes(match.sport_type))
+    // console.log(sportSubscribe);
     return (
         <div className='sport-result-card'>
             <h1>Sport Result</h1>

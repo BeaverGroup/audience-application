@@ -10,7 +10,7 @@ const UpcomingDetail = (props) => {
   const newTime = new Date(
     sportMatch.datetime.slice(0, 19).concat("Z")
   );
-  const findSport = sports.find((data)=> data.name === sportMatch.sport_type)
+  const findSport = sports.find((data)=> data.name.toUpperCase() === sportMatch.sport_type)
   // const findSport = sports.find((data)=> data.name === "BMX")
   return (
     <Link to={`/upcoming/${sportMatch.sport_id}`}>
