@@ -68,7 +68,7 @@ const Home = () => {
 
 
                 </div>
-                <div className="sports-section">
+                <div className="sports-section" id="scroll-sport-section">
                     <h2 className='sports-title'>Sports</h2>
                     <div className='search-sport'>
                         <input placeholder='Search...' type="text" onChange={(e) => setText(e.target.value)} />

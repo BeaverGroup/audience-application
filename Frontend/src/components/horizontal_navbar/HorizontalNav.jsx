@@ -123,6 +123,11 @@ function HorizontalNav({ user_email }) {
     }
   };
 
+  const handleScroll = () => {
+    const element = document.getElementById("sprots-scroll");
+    element.scrollIntoView();
+}
+
   return (
     <div>
       <nav className={scrolled ? "horizontal-nav scrolled" : "horizontal-nav"}>
@@ -327,7 +332,7 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick={closeActive} to={content.to}>
+                  <Link onClick="closeActive();handleScroll();" to={content.to}>
                     {content.name}
                   </Link>
                 </li>
@@ -341,7 +346,7 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick={closeActive} to={content.to}>
+                  <Link onClick="closeActive();handleScroll();" to={content.to}>
                     {content.name}
                   </Link>
                 </li>
