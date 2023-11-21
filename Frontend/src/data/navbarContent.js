@@ -26,7 +26,7 @@ const contents = [
         id: "4",
         name: "Result",
         icon: resultIcon,
-        to: "/",
+        to: "/subscribe",
     },
 ];
 
