@@ -56,8 +56,8 @@ function HorizontalNav({ user_email }) {
   useEffect(() => {
     const element = document.querySelector(":root");
     const navbar = document.querySelector(".horizontal-nav");
+    setPath(window.location.pathname);
     const onScroll = () => {
-      setPath(window.location.pathname);
       if (window.scrollY > 30) {
         setScrolled(true);
         element.style.setProperty("--text-horizontal-nav", "var(--blue)");
@@ -68,6 +68,7 @@ function HorizontalNav({ user_email }) {
           if (path === "/") {
             element.style.setProperty("--text-horizontal-nav", "var(--white)");
             navbar.style.backgroundColor = "inherit";
+            console.log("whiteee")
           } else {
             element.style.setProperty("--text-horizontal-nav", "var(--blue)");
             navbar.style.backgroundColor = "inherit";
