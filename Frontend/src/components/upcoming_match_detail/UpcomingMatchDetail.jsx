@@ -81,7 +81,7 @@ const UpcomingMatchDetail = (props) => {
   if (!getData.length) {
     return (
       <div className='upcoming-box-detail' id="match-detail">
-        <h2>Don't find sport detail</h2>
+        <h2>Sport detail loading...</h2>
       </div>
     )
   }
