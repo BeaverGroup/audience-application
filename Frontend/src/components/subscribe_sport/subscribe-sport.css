@@ -5,6 +5,11 @@
     padding: 8px; 
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+.subscribe p{
+    margin-left: 8px;
 }
 
 .sport-logo {
@@ -17,6 +22,15 @@
 .sport-name {
     text-align: left;
     word-wrap: break-word;
+}
+
+.icon-x {
+    margin-left: auto;
+    /* margin: 0px 8px; */
+}
+
+.icon-x:hover {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1200px) {

@@ -56,7 +56,7 @@ exports.verifyRoleAdmin = async (req, res, next) => {
 exports.verifyCookieToken = async (req, res, next) => {
   try {
     const token = req.cookies.authToken;
-    // console.log("token", token);
+    console.log("tokenCokie", token);
     if (!token) {
       return res.status(401).json({ message: "Token not provided" });
     }

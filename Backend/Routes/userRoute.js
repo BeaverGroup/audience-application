@@ -56,14 +56,14 @@ router.post(
   verifyRoleAdmin,
   updateUserByEmail
 ); // update user
-router.delete(
+router.post(
   "/removeByID",
   jsonParser,
   verifyCookieToken,
   verifyRoleAdmin,
   removeUserByID
 );
-router.delete(
+router.post(
   "/removeByEmail",
   jsonParser,
   verifyCookieToken,
@@ -74,7 +74,7 @@ router.delete(
 
 
 // vote
-router.delete(
+router.post(
   "/unvote/:id",
   jsonParser,
   verifyCookieToken,
@@ -104,7 +104,7 @@ router.post(
   verifiedPermissionsID,
   addSub
 );
-router.delete(
+router.post(
   "/unsubscribe/:id",
   jsonParser,
   verifyCookieToken,

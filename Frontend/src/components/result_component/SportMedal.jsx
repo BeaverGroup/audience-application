@@ -3,29 +3,56 @@
 import React from 'react'
 import { Icon } from '@iconify/react';
 import "./sport-medal.css";
+import country from '../../data/country';
 
 const SportMedal = (props) => {
+    const dataMedal = props.data
+    const result = dataMedal.result
+    if (!result) {
+        // return (
+        //     <tr>
+        //         <td className="sport-result-table-name">
+        //             <h2>{dataMedal.sport_name}</h2>
+        //             <p>{dataMedal.sport_type}</p>
+        //         </td>
+        //         <td></td>
+        //         <td></td>
+        //         <td></td>
+        //     </tr>
+        // )
+        return null
+    }
+    const gold = result.gold
+    const silver = result.silver
+    const bronze = result.bronze
     return (
         <tr>
             <td className="sport-result-table-name">
-                <h2>{props.name}</h2>
+                <h2>{dataMedal.sport_name}</h2>
+                <p>{dataMedal.sport_type}</p>
             </td>
             <td>
                 <div>
-                    <Icon className="country-flag" icon={"twemoji:flag-" + props.first.toLowerCase()} />
-                    <p>{props.first}</p>
+                    {gold.map((med) => <div key={med}>
+                        <Icon className="country-flag" icon={country[`${med}`] ? country[`${med}`] : "twemoji:flag-" + med.toLowerCase() } />
+                        <p>{med}</p>
+                    </div>)}
                 </div>
             </td>
             <td>
                 <div>
-                    <Icon className="country-flag" icon={"twemoji:flag-" + props.second.toLowerCase()} />
-                    <p>{props.second}</p>
+                    {silver.map((med) => <div key={med}>
+                        <Icon className="country-flag" icon={country[`${med}`] ? country[`${med}`] : "twemoji:flag-" + med.toLowerCase() } />
+                        <p>{med}</p>
+                    </div>)}
                 </div>
             </td>
             <td>
                 <div>
-                    <Icon className="country-flag" icon={"twemoji:flag-" + props.third.toLowerCase()} />
-                    <p>{props.third}</p>
+                    {bronze.map((med) => <div key={med}>
+                        <Icon className="country-flag" icon={country[`${med}`] ? country[`${med}`] : "twemoji:flag-" + med.toLowerCase() } />
+                        <p>{med}</p>
+                    </div>)}
                 </div>
             </td>
         </tr>

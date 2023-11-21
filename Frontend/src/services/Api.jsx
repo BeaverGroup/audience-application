@@ -23,7 +23,7 @@ export const TokenDecodeGOOGLE = async (token) => {
       return response;
     } else {
       if (response.status === 401) {
-        console.log("Token expired or Token not found or Token invalid");
+        // console.log("Token expired or Token not found or Token invalid");
       } else {
         // Handle unexpected response status codes
         console.error("Unexpected response status:", response.status);
@@ -33,7 +33,7 @@ export const TokenDecodeGOOGLE = async (token) => {
     // return response;
   } catch (e) {
     console.log(e);
-    console.log("Failed to decode token");
+    // console.log("Failed to decode token");
     return null;
   }
 };
@@ -43,11 +43,11 @@ export const TokenDecodeGOOGLE = async (token) => {
 // // -> font call this api -> by sent user id password
 
 export const login_api = async (data) => {
-  console.log(data);
+  // console.log(data);
   const baseURL = `http://${host_ip}:${port}/auth/login`;
 
   if (!data) {
-    console.log("Missing required field(s)");
+    // console.log("Missing required field(s)");
     return false;
   }
   var data_format = JSON.stringify(data);
@@ -62,13 +62,13 @@ export const login_api = async (data) => {
         return status >= 200 && status < 500; // ยอมรับ status codes ระหว่าง 200-499
       },
     });
-    console.log("status", response.status);
+    // console.log("status", response.status);
 
     if (response.status === 201) {
-      console.log("login_api : Success");
+      // console.log("login_api : Success");
       return response;
     } else {
-      console.log("status code : " + response.status);
+      // console.log("status code : " + response.status);
       // console.log("Error : " + response.error);
       // console.log(response);
       return response;
@@ -76,7 +76,7 @@ export const login_api = async (data) => {
 
     // console.log("status", response.status);
   } catch (e) {
-    console.log("Error axios fail : ", e);
+    // console.log("Error axios fail : ", e);
 
     // console.log("Error respose : ", e.response);
   }
@@ -111,17 +111,17 @@ export const CreateAuthUser = async (userData) => {
       response.status === 400 &&
       response.data.message === "Email is already used"
     ) {
-      console.log("Email is already used");
+      // console.log("Email is already used");
       return { success: false, message: "Email is already used" };
     } else if (response.status === 400) {
-      console.log("Bad Request: ", response.data);
+      // console.log("Bad Request: ", response.data);
       return { success: false, message: "Bad request" };
     } else {
-      console.log("Unhandled response status:", response.status);
+      // console.log("Unhandled response status:", response.status);
       return false;
     }
   } catch (error) {
-    console.error("Failed to submit data", error);
+    // console.error("Failed to submit data", error);
     return {
       success: false,
       message: "Error occurred while making the request",
@@ -133,7 +133,7 @@ export const CreateAuthUser = async (userData) => {
 export const Login_api_google = async (data) => {
   const baseURL = `http://${host_ip}:${port}/auth/google-login`;
   if (!data) {
-    console.log("Missing required field(s)");
+    // console.log("Missing required field(s)");
     return false;
   }
   var data_format = JSON.stringify(data);
@@ -155,18 +155,18 @@ export const Login_api_google = async (data) => {
       response.status === 409 &&
       response.data.message === "Email not used"
     ) {
-      console.log("This email is not yet in db.");
+      // console.log("This email is not yet in db.");
       return response;
     } else {
       // สำหรับ status codes อื่น ๆ ที่ไม่ได้จัดการใน if และ else if ข้างต้น
-      console.log("Response with status:", response.status);
+      // console.log("Response with status:", response.status);
       return response;
     }
   } catch (err) {
     if (err.code === "ECONNABORTED") {
       console.error("Request timed out");
     } else {
-      console.log("Error:", err);
+      // console.log("Error:", err);
     }
     return false;
   }

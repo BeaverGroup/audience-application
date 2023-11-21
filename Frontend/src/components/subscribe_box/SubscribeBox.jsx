@@ -1,15 +1,22 @@
 import "./subscribe-box.css";
-import contents from "../../data/upcomingSubscribe";
+import picture from "../../data/subscribeResult";
 import SubscribeSport from "../subscribe_sport/SubscribeSport";
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { UserStateContext } from "../../App";
+import axios from "axios";
 
-const SubscribeBox = () => {
+const SubscribeBox = (props) => {
+  const { userState, setUserState } = useContext(UserStateContext);
+  const sub = props.subscription
+  // console.log(sub)
+
   return (
     <div className="subscribe-box">
-      <h5>Subscribe Sport</h5>
+      <h5>My Subscribe</h5>
+      <p className="description">Unsubscribe</p>
       <div className="subscribe-sport">
-        {contents.map((content, index) => {
-          return <SubscribeSport icon={content.icon} sportname={content.name} key={index}/>;
-        })}
+        {sub && sub.map((content, index) => <SubscribeSport sportname={content} key={index}/>)}
       </div>
     </div>
   );
