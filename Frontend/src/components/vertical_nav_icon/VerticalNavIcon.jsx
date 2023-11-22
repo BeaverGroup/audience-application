@@ -27,10 +27,15 @@ function VerticalNavIcon(props) {
         };
     }, [content.id]);
 
+    const handleScroll = () => {
+        const element = document.getElementById("sprots-scroll");
+        element.scrollIntoView();
+    }
+
     return (
         <li>
             <div className="image-icon">
-                <Link to={content.to} id={content.id}>
+                <Link to={content.to} id={content.id} onClick={handleScroll}>
                     <img src={content.icon} alt="" />
                     <span className={hovered ? "open" : ""}>{content.name}</span>
                 </Link>

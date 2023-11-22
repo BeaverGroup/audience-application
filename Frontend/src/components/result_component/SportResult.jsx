@@ -7,6 +7,8 @@ import { sportData } from "../../data/importAPIData";
 import { UserStateContext } from "../../App";
 import { useContext } from "react";
 import axios from "axios";
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
 
 const SportResult = () => {
     const { userState, setUserState } = useContext(UserStateContext);
@@ -25,7 +27,7 @@ const SportResult = () => {
                 });
                 setSubscribe(userSub.data.subscribe);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
             }
         };
         getAllSubs();
@@ -57,12 +59,21 @@ const SportResult = () => {
                         <th><Icon className="country-flag" icon="twemoji:2nd-place-medal" /></th>
                         <th><Icon className="country-flag" icon="twemoji:3rd-place-medal" /></th>
                     </tr>
-                    <h3>No sport result found</h3>
                 </table>
+                <br />
+                <Stack spacing={1}>
+                        <Skeleton animation="wave" variant="rounded" width="100%" height="50px" />
+                        <Skeleton animation="wave" variant="rounded" width="100%" height="50px" />
+                        <Skeleton animation="wave" variant="rounded" width="100%" height="50px" />
+                    </Stack>
             </div>
         )
     }
-    const sportSubscribe = result.filter((match) => userSubscribe.includes(match.sport_type) && match.round === "Final")
+    // console.log(userSubscribe);
+    const upperSubscribe = userSubscribe.map((sub)=> sub.toUpperCase())
+    // console.log(upperSubscribe);
+    const sportSubscribe = result.filter((match) => upperSubscribe.includes(match.sport_type))
+    // console.log(sportSubscribe);
     return (
         <div className='sport-result-card'>
             <h1>Sport Result</h1>

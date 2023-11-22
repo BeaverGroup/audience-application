@@ -9,17 +9,18 @@ const SportMedal = (props) => {
     const dataMedal = props.data
     const result = dataMedal.result
     if (!result) {
-        return (
-            <tr>
-                <td className="sport-result-table-name">
-                    <h2>{dataMedal.sport_name}</h2>
-                    <p>{dataMedal.sport_type}</p>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        )
+        // return (
+        //     <tr>
+        //         <td className="sport-result-table-name">
+        //             <h2>{dataMedal.sport_name}</h2>
+        //             <p>{dataMedal.sport_type}</p>
+        //         </td>
+        //         <td></td>
+        //         <td></td>
+        //         <td></td>
+        //     </tr>
+        // )
+        return null
     }
     const gold = result.gold
     const silver = result.silver
