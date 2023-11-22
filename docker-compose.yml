@@ -20,7 +20,7 @@ services:
       - mongo_network
 
   mongo-express:
-    image: mongo-express
+    image: arm64v8mongo-express
     restart: always
     ports:
       - 8081:8081
