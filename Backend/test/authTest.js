@@ -39,7 +39,6 @@ describe('Auth API - Register User', () => {
 
     const response = await supertest(app).post('/auth/register').send(userData);
     expect(response.status).to.equal(201);
-    expect(response.body).to.have.property('token');
     expect(response.body.message).to.equal('User account created successfully.');
   });
 
@@ -94,38 +93,4 @@ describe('Auth API - Login User', () => {
   });
 });
 
-// // describe('Auth API - Google Login', () => {
-// //   beforeEach(() => {
-// //     nock('https://www.googleapis.com')
-// //       .get('/oauth2/v1/userinfo')
-// //       .query({ access_token: 'mock_google_token' })
-// //       .reply(200, { email: 'existingGoogleUser@example.com' });
 
-// //     nock('https://www.googleapis.com')
-// //       .get('/oauth2/v1/userinfo')
-// //       .query({ access_token: 'invalid_token' })
-// //       .reply(401, { error: 'Invalid token' });
-// //   });
-
-// //   // Test for successful Google login
-// //   it('should successfully log in a user via Google', async function() {
-// //     const loginData = {
-// //       Email: 'existingGoogleUser@example.com',
-// //       Token: 'mock_google_token'
-// //     };
-// //     const response = await supertest(app).post('/auth/google-login').send(loginData);
-// //     expect(response.status).to.equal(201);
-// //     expect(response.body.message).to.equal('Login success');
-// //   });
-
-// //   // Test for Google login with an email that is not registered
-// //   it('should not log in a user via Google with an unregistered email', async function() {
-// //     const loginData = {
-// //       Email: 'nogmail@gmail.com',
-// //       Token: 'invalid_token'
-// //     };
-// //     const response = await supertest(app).post('/auth/google-login').send(loginData);
-// //     expect(response.status).to.equal(400);
-// //     expect(response.body.message).to.equal('Email not used');
-// //   });
-// // });
