@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   mongo-beaver:
-    image: arm64v8/mongo
+    image: mongo
     volumes:
       - mongo_data:/data/db
     ports:
@@ -20,7 +20,7 @@ services:
       - mongo_network
 
   mongo-express:
-    image: arm64v8/mongo-express
+    image: mongo-express
     restart: always
     ports:
       - 8081:8081
