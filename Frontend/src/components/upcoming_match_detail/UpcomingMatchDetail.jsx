@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import axios from "axios";
 import { sportData } from "../../data/importAPIData";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const UpcomingMatchDetail = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
@@ -82,6 +83,7 @@ const UpcomingMatchDetail = (props) => {
     return (
       <div className='upcoming-box-detail' id="match-detail">
         <h2>Sport detail loading...</h2>
+        <CircularProgress />
       </div>
     )
   }
