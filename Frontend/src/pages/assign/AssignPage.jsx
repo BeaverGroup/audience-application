@@ -138,7 +138,7 @@ function AssignPage() {
             <label id="label_setInfo">Email</label>
             <input
               className="input_set_password"
-              type="text"
+              type="email"
               id="Mail"
               name="Mail"
               disabled
