@@ -138,7 +138,7 @@ function AssignPage() {
             <label id="label_setInfo">Email</label>
             <input
               className="input_set_password"
-              type="text"
+              type="email"
               id="Mail"
               name="Mail"
               disabled
@@ -168,6 +168,7 @@ function AssignPage() {
                 <input
                   className="input_set_info_100"
                   type="number"
+                  min="1"
                   id="Age"
                   name="Age"
                   onChange={handleChange}

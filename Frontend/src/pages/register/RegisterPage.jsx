@@ -136,7 +136,7 @@ function RegisterPage() {
             <label id="label_setInfo">Email</label>
             <input
               className="input_set_info"
-              type="text"
+              type="email"
               id="Email"
               onChange={handleChange}
               name="Email"
@@ -166,6 +166,7 @@ function RegisterPage() {
                 <input
                   className="input_set_info_100"
                   type="number"
+                  min="1"
                   id="Age"
                   name="Age"
                   onChange={handleChange}

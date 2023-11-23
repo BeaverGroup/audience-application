@@ -123,10 +123,15 @@ function HorizontalNav({ user_email }) {
     }
   };
 
-  const handleScroll = () => {
-    const element = document.getElementById("sprots-scroll");
-    element.scrollIntoView();
-}
+  const handleScroll = async () => {
+    if (actived) {
+      setActived(false);
+    }
+    await navigate("/");
+    const element = document.getElementById("scroll-sport-section");
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
 
   return (
     <div>
@@ -288,7 +293,7 @@ function HorizontalNav({ user_email }) {
                     aria-controls={open ? "account-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
-                    style={{color: "white"}}
+                    style={{ color: "white" }}
                   >
                     Sign In
                   </Button>
@@ -308,7 +313,7 @@ function HorizontalNav({ user_email }) {
                     aria-controls={open ? "account-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
-                    style={{color: "white"}}
+                    style={{ color: "white" }}
                   >
                     Sign Up
                   </Button>
@@ -332,9 +337,12 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick="closeActive();handleScroll();" to={content.to}>
+                  {content.name === "Subscribe" ? <Link onClick={handleScroll} to={content.to}>
                     {content.name}
-                  </Link>
+                  </Link> : <Link onClick={closeActive} to={content.to}>
+                    {content.name}
+                  </Link>}
+
                 </li>
               );
             })}
@@ -346,9 +354,11 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick="closeActive();handleScroll();" to={content.to}>
+                  {content.name === "Subscribe" ? <Link onClick="closeActive();handleScroll();" to={content.to}>
                     {content.name}
-                  </Link>
+                  </Link> : <Link onClick={closeActive} to={content.to}>
+                    {content.name}
+                  </Link>}
                 </li>
               );
             })}

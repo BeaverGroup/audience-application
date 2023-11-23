@@ -14,7 +14,7 @@ const contents = [
         id: "2",
         name: "Subscribe",
         icon: subIcon,
-        to: "/#scroll-sport-section",
+        to: "/",
     },
     {
         id: "3",
