@@ -166,6 +166,7 @@ function RegisterPage() {
                 <input
                   className="input_set_info_100"
                   type="number"
+                  min="1"
                   id="Age"
                   name="Age"
                   onChange={handleChange}
