@@ -1,0 +1,93 @@
+.sport-card {
+    grid-column: span 4;
+    width: 100%;
+    height: 192px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+
+.sport-card .img-box::after {
+    content: "";
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
+    position: absolute;
+    width: 100%;
+    height: 0;
+    transition: 0.3s ease-in-out;
+
+    
+}
+
+.sport-card:hover .img-box::after {
+    height: 100%;
+}
+
+.sport-card .img-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    
+}
+
+.sport-card .sport-name {
+    font-family: "paris2024-font";
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 760;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    line-height: 16px;
+    overflow: visible;
+    transition: 0.2s ease-in-out;
+}
+
+.sport-card .sport-name::after {
+    content: "\aOLYMPIC GAME";
+    white-space: pre;
+    font-size: 16px;
+    color: #CEC5C5;
+}
+
+.sport-card .sport-detail {
+    text-align: center;
+    color: white;
+    opacity: 0;
+    position: absolute;
+    font-size: 24px;
+    font-family: "paris2024-font";
+    font-weight: 760;
+    width: 80%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s ease-in-out;
+}
+
+.sport-card .sport-detail .description {
+    color: #CEC5C5;
+    font-size: 16px;
+}
+
+.sport-card:hover .sport-name{
+    opacity: 0;
+
+}
+.sport-card:hover .sport-detail{
+    top: 50%;
+    opacity: 1;
+
+}
+
+.sport-card .add-icon {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
