@@ -62,7 +62,7 @@ services:
     networks:
       - mongo_network
   beaver-audience-frontend:
-    image: natekrth/beaver-audience-app:1.0
+    image: rew1234/beaver-audience-application-backend:VF
     ports:
       - "4005:4005" 
     environment:
@@ -70,7 +70,7 @@ services:
       SERVER_HOST: "0.0.0.0"
       VITE_API_PORT: 4004
       VITE_API_HOST_IP: "3.27.37.55"
-      VITE_GOOGLE_CLIENT_ID: 658254688251-u580nla3lgmkgbhjlb20rgbjc19kv8p5.apps.googleusercontent.com
+      VITE_GOOGLE_CLIENT_ID: 684559178288-ma6f967proboh0gh1jntpcnenfjttoe3.apps.googleusercontent.com
       VITE_IOC_API: https://nongnop.azurewebsites.net/match_table
       
     depends_on:
