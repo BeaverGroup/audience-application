@@ -76,6 +76,7 @@ function RegisterPage() {
         country: countNationality.data.country,
         count: countNationality.data.count
       })
+      console.log("asdsdssd");
       console.log(sending);
       const UserDataForIoc = await axios.post("https://nongnop.azurewebsites.net/user_statistic/", sending, {
         headers: {
