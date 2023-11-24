@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./LoginPage.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +8,7 @@ import {
   login_api,
 } from "../../services/Api";
 import Swal from "`sweetalert2`";
+import "./login-page.css";
 
 function LoginPage({ setEnableAssignPage }) {
   const [googleTokenOfUser, setGoolgeTokenOfUser] = useState(null); // useEffective when google login for local
