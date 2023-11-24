@@ -44,8 +44,6 @@ exports.registerUser = async (req, res) => {
         })
         .json({
           message: "User account created successfully.",
-          token,
-          user: saved_user,
         });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
@@ -97,7 +95,6 @@ exports.loginUser = async (req, res) => {
           })
           .json({
             message: "User account created successfully.",
-            user,
           });
       }
     );
@@ -135,7 +132,7 @@ exports.loginGoogle = async (req, res) => {
           secure: false, // Ensure this is true if you are using HTTPS
           // sameSite: "None", // Important for cross-site access if your API and client are on different domains
         })
-        .json({ message: "Login success", token, user });
+        .json({ message: "Login success" });
     } catch (err) {
       console.error("Error saving user or generating token:", err);
       return res.status(500).json({
