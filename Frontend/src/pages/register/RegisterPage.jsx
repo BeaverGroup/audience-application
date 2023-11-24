@@ -32,14 +32,14 @@ function RegisterPage() {
     const value = document.getElementById("select1").value;
     const name = document.getElementById("select1").name;
     setInput({ ...input, [name]: value });
-    console.log(input);
+    // console.log(input);
   };
 
   const getValueCountry = () => {
     const value = document.getElementById("select2").value;
     const name = document.getElementById("select2").name;
     setInput({ ...input, [name]: value });
-    console.log(input);
+    // console.log(input);
   };
 
   
