@@ -9,6 +9,7 @@ import { useContext } from "react";
 import axios from "axios";
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
+import { Link } from "react-router-dom";
 
 const SportResult = () => {
     const { userState, setUserState } = useContext(UserStateContext);
@@ -35,7 +36,9 @@ const SportResult = () => {
     if (!userSubscribe) {
         return (
             <div className='sport-result-card'>
-                <h1>Sport Result</h1>
+                <Link to="/subscribe">
+                    <h1>Sport Result</h1>
+                </Link>
                 <table className="sport-result-table">
                     <tr>
                         <th><h2>Sport</h2></th>
@@ -51,7 +54,9 @@ const SportResult = () => {
     if (!userSubscribe.length) {
         return (
             <div className='sport-result-card'>
-                <h1>Sport Result</h1>
+                <Link to="/subscribe">
+                    <h1>Sport Result</h1>
+                </Link>
                 <table className="sport-result-table">
                     <tr>
                         <th><h2>Sport</h2></th>
@@ -76,7 +81,9 @@ const SportResult = () => {
     // console.log(sportSubscribe);
     return (
         <div className='sport-result-card'>
-            <h1>Sport Result</h1>
+            <Link to="/subscribe">
+                <h1>Sport Result</h1>
+            </Link>
             <table className="sport-result-table">
                 <tr>
                     <th><h2>Sport</h2></th>
