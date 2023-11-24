@@ -6,7 +6,12 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's 1500m",
     "participating_country": [
-      
+      "Thailand",
+      "Canada",
+      "Greece",
+      "Japan",
+      "China",
+      "South Korea"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
@@ -17,7 +22,8 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Women's 20km Race Walk",
     "participating_country": [
-      
+      "Thailand",
+      "England"
     ],
     "datetime": "2024-08-01T07:30:00.000Z"
   },
@@ -28,7 +34,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's 20km Race Walk",
     "participating_country": [
-      
+      "Thailand",
+      "Germany",
+      "Canada"
     ],
     "datetime": "2024-08-01T07:30:00.000Z"
   },
@@ -39,7 +47,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Men's Hammer Throw",
     "participating_country": [
-      
+      "Canada",
+      "Thailand",
+      "Germany"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
@@ -50,7 +60,9 @@ const sampleData = [
     "sport_type": "Athletics",
     "sport_name": "Women's 100m",
     "participating_country": [
-      
+      "Canada",
+      "Thailand",
+      "Germany"
     ],
     "datetime": "2024-08-02T10:00:00.000Z"
   },
@@ -314,7 +326,11 @@ const sampleData = [
     "sport_type": "Badminton",
     "sport_name": "Mixed Doubles",
     "participating_country": [
-      
+      "Thailand",
+      "Canada",
+      "United States",
+      "Spain",
+      "Japan"
     ],
     "datetime": "2024-08-01T18:30:00.000Z"
   },
@@ -655,7 +671,10 @@ const sampleData = [
     "sport_type": "Archery",
     "sport_name": "Women's Individual",
     "participating_country": [
-      
+      "United States",
+      "Canada",
+      "Brazil",
+      "Finland"
     ],
     "datetime": "2024-07-31T17:45:00.000Z"
   },

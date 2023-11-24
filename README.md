@@ -21,7 +21,36 @@ This is a sample of our audience application, complete with responsive design.
 <p align="center"><img width="694" alt="up-coming" src="https://github.com/BeaverGroup/.github/assets/92836354/e1935cd5-ca16-4d1e-80ab-0d7cf8e4a2d3"><p/>
 
 
+## How to use
 
+### Running Backend
+- Change directory
+    ```
+    cd Backend/
+    ```
+- Create a env file in Backend folder like simple_env
+- Install node module
+    ```
+    npm i
+    ```
+- Run server
+    ```
+    npm run dev
+    ```
+### Running Frontend
+- Change directory
+    ```
+    cd Frontend/
+    ```
+- Create a env file in Backend folder like simple_env
+- Install node module
+    ```
+    npm i
+    ```
+- Run server
+    ```
+    npm run dev
+    ```
 
 <!--
 
