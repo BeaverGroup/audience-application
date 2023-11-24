@@ -36,7 +36,7 @@ services:
       - mongo_network
 
   beaver-audience-backend:
-    image: rew1234/beaver-audience-application-backend:VF
+    image: natekrth/beaver-audience-app-backend:1.0
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
@@ -70,7 +70,7 @@ services:
       SERVER_HOST: "0.0.0.0"
       VITE_API_PORT: 4004
       VITE_API_HOST_IP: "ec2-3-27-37-55.ap-southeast-2.compute.amazonaws.com"
-      VITE_GOOGLE_CLIENT_ID: 684559178288-ma6f967proboh0gh1jntpcnenfjttoe3.apps.googleusercontent.com
+      VITE_GOOGLE_CLIENT_ID: 658254688251-u580nla3lgmkgbhjlb20rgbjc19kv8p5.apps.googleusercontent.com
       VITE_IOC_API: https://nongnop.azurewebsites.net/match_table
       
     depends_on:
