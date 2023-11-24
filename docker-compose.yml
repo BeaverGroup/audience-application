@@ -36,7 +36,7 @@ services:
       - mongo_network
 
   beaver-audience-backend:
-    image: natekrth/beaver-audience-app-backend:1.0
+    image: rew1234/beaver-audience-application-backend:VF
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
@@ -62,7 +62,7 @@ services:
     networks:
       - mongo_network
   beaver-audience-frontend:
-    image: rew1234/beaver-audience-application-backend:VF
+    image: natekrth/beaver-audience-app:1.0
     ports:
       - "4005:4005" 
     environment:
