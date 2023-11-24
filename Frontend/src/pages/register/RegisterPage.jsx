@@ -65,6 +65,7 @@ function RegisterPage() {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
     try {
+      console.log("asdsdssd");
       const countNationality = await axios.post(`http://${host_ip}:${port}/country/add/${nationality}`, {
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +77,6 @@ function RegisterPage() {
         country: countNationality.data.country,
         count: countNationality.data.count
       })
-      console.log("asdsdssd");
       console.log(sending);
       const UserDataForIoc = await axios.post("https://nongnop.azurewebsites.net/user_statistic/", sending, {
         headers: {
