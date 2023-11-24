@@ -38,7 +38,7 @@ function SportBox(props) {
   // console.log(userSubscribeList);
 
   return (
-    <div className="sport-card" onClick={addSub}>
+    <div className="sport-card" onClick={addSub} id={sport.name}>
       <div className="img-box">
         <img src={sport.image_url} alt="" />
       </div>

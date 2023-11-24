@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useHistory } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./vertical_nav_icon.css";
 
 function VerticalNavIcon(props) {
     const { navigate: content } = props;
     const [hovered, setHovered] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // add mouseove and mouseout to check hover
@@ -27,9 +29,12 @@ function VerticalNavIcon(props) {
         };
     }, [content.id]);
 
-    const handleScroll = () => {
-        const element = document.getElementById("sprots-scroll");
-        element.scrollIntoView();
+    const handleScroll = async () => {
+        if (content.name === "Subscribe") {
+            await navigate("/");
+            const element = document.getElementById("scroll-sport-section");
+            element.scrollIntoView({ behavior: "smooth", block: "start"});
+        }
     }
 
     return (
