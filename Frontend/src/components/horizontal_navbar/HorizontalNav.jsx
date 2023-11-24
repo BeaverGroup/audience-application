@@ -56,8 +56,8 @@ function HorizontalNav({ user_email }) {
   useEffect(() => {
     const element = document.querySelector(":root");
     const navbar = document.querySelector(".horizontal-nav");
+    setPath(window.location.pathname);
     const onScroll = () => {
-      setPath(window.location.pathname);
       if (window.scrollY > 30) {
         setScrolled(true);
         element.style.setProperty("--text-horizontal-nav", "var(--blue)");
@@ -68,6 +68,7 @@ function HorizontalNav({ user_email }) {
           if (path === "/") {
             element.style.setProperty("--text-horizontal-nav", "var(--white)");
             navbar.style.backgroundColor = "inherit";
+            console.log("whiteee")
           } else {
             element.style.setProperty("--text-horizontal-nav", "var(--blue)");
             navbar.style.backgroundColor = "inherit";
@@ -121,6 +122,16 @@ function HorizontalNav({ user_email }) {
       setActived(false);
     }
   };
+
+  const handleScroll = async () => {
+    if (actived) {
+      setActived(false);
+    }
+    await navigate("/");
+    const element = document.getElementById("scroll-sport-section");
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
 
   return (
     <div>
@@ -282,7 +293,7 @@ function HorizontalNav({ user_email }) {
                     aria-controls={open ? "account-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
-                    style={{color: "white"}}
+                    style={{ color: "white" }}
                   >
                     Sign In
                   </Button>
@@ -302,7 +313,7 @@ function HorizontalNav({ user_email }) {
                     aria-controls={open ? "account-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
-                    style={{color: "white"}}
+                    style={{ color: "white" }}
                   >
                     Sign Up
                   </Button>
@@ -326,9 +337,12 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick={closeActive} to={content.to}>
+                  {content.name === "Subscribe" ? <Link onClick={handleScroll} to={content.to}>
                     {content.name}
-                  </Link>
+                  </Link> : <Link onClick={closeActive} to={content.to}>
+                    {content.name}
+                  </Link>}
+
                 </li>
               );
             })}
@@ -340,9 +354,11 @@ function HorizontalNav({ user_email }) {
             {contents.map((content, index) => {
               return (
                 <li id={contents.id} key={index}>
-                  <Link onClick={closeActive} to={content.to}>
+                  {content.name === "Subscribe" ? <Link onClick="closeActive();handleScroll();" to={content.to}>
                     {content.name}
-                  </Link>
+                  </Link> : <Link onClick={closeActive} to={content.to}>
+                    {content.name}
+                  </Link>}
                 </li>
               );
             })}

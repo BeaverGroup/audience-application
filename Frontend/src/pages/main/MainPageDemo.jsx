@@ -15,7 +15,7 @@ function MainPage() {
       });
       // console.log(all_user.data);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
   const health = async () => {
@@ -27,7 +27,7 @@ function MainPage() {
       });
       // console.log(all_user.data);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
   if (!userState) {
@@ -56,7 +56,7 @@ function MainPage() {
       });
       // console.log(userEmail.data);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 

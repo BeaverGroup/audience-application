@@ -6,6 +6,7 @@ import { UserStateContext } from "../../App";
 // import AddSubscribe from "../add_subscribe/AddSubscribe";
 import axios from "axios";
 
+
 function SportBox(props) {
   const { sport } = props;
   const { userState, setUserState } = useContext(UserStateContext);
@@ -37,7 +38,7 @@ function SportBox(props) {
   // console.log(userSubscribeList);
 
   return (
-    <div className="sport-card" onClick={addSub}>
+    <div className="sport-card" onClick={addSub} id={sport.name}>
       <div className="img-box">
         <img src={sport.image_url} alt="" />
       </div>

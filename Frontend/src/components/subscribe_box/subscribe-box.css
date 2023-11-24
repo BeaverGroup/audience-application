@@ -17,7 +17,7 @@
     flex-direction: column;
 }
 
-.description {
+.subscribe-box .description {
     color: rgb(166, 166, 166);
     font-size: xx-small;
     text-align: right;

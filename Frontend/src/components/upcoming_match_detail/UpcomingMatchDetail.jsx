@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { UserStateContext } from "../../App";
 import axios from "axios";
 import { sportData } from "../../data/importAPIData";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const UpcomingMatchDetail = (props) => {
   const { userState, setUserState } = useContext(UserStateContext);
@@ -32,7 +33,7 @@ const UpcomingMatchDetail = (props) => {
       // console.log(matchid);
       // console.log(response);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
@@ -48,7 +49,7 @@ const UpcomingMatchDetail = (props) => {
         // setIsVoted(true)
         // console.log(myvote.data.votes);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     }
     getUserVote();
@@ -81,7 +82,8 @@ const UpcomingMatchDetail = (props) => {
   if (!getData.length) {
     return (
       <div className='upcoming-box-detail' id="match-detail">
-        <h2>Don't find sport detail</h2>
+        <h2>Sport detail loading...</h2>
+        <CircularProgress />
       </div>
     )
   }

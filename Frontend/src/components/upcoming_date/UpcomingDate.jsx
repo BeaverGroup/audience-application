@@ -22,7 +22,7 @@ const UpcomingDate = () => {
                 setSubscribe(userSub.data.subscribe);
                 // console.log(userSub.data.subscribe);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
             }
         };
         getAllSubs();
@@ -33,8 +33,8 @@ const UpcomingDate = () => {
         sportData().then((data)=> setSportList(data))
     }, [])
     // console.log(sportList);
-    let userSportList = userSubscribe
-    if (!userSportList) {
+    let userSportListCheck = userSubscribe
+    if (!userSportListCheck) {
         return (
             <div className='upcoming-date'>
                 <h1>August 2024</h1>
@@ -42,6 +42,7 @@ const UpcomingDate = () => {
             </div>
         )
     }
+    let userSportList = userSubscribe.map((sub)=> sub.toUpperCase())
 
     const today = new Date();
     const thisMonth = today.getMonth() + 1;
@@ -64,6 +65,7 @@ const UpcomingDate = () => {
         dateData[`${index}`] = todayData
     }
     const dayList = Object.keys(dateData)
+    // console.log(dateData);
     return (
         <div className='upcoming-date'>
             <h1>August 2024</h1>

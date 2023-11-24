@@ -14,7 +14,7 @@ const contents = [
         id: "2",
         name: "Subscribe",
         icon: subIcon,
-        to: "/subscribe",
+        to: "/",
     },
     {
         id: "3",
@@ -26,7 +26,7 @@ const contents = [
         id: "4",
         name: "Result",
         icon: resultIcon,
-        to: "/",
+        to: "/subscribe",
     },
 ];
 
