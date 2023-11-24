@@ -107,7 +107,7 @@ function RegisterPage() {
       if (new_user) {
         if (new_user.success) {
           userNationality(new_user.data.user.Nationality)
-          navigate("/");
+          // navigate("/");
           // window.location.reload();
         }
 
