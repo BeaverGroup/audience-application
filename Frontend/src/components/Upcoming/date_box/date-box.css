@@ -1,0 +1,37 @@
+.datebox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.datebox .date {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.upcoming-list-datebox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .datebox .date {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .datebox .date {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .datebox .date {
+        font-size: 12px;
+    }
+}

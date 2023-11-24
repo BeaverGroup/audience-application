@@ -6,28 +6,33 @@ exports.addVote = async (req, res) => {
     const matchID = req.body.matchID;
     const vote = req.body.vote;
 
+    // Find the user by ID
     const user = await user_model.findById(User_Id);
     if (!user) {
       return res.status(400).json({ error: `User id ${User_Id} not found.` });
     }
 
-    const voteIndex = user.Votes.findIndex((v) => v.matchID === matchID);
-    if (voteIndex !== -1) {
-      // If user has already voted for the matchID, update the vote.
-      user.Votes[voteIndex].vote = vote;
-      await user.save();
-      return res.json({
-        message: `Successfully updated vote for matchID ${matchID}.`,
-      });
+    // Initialize the Votes array if it does not exist
+    if (!Array.isArray(user.Votes)) {
+      user.Votes = [];
     }
 
-    // If user hasn't voted for the matchID, add a new vote.
+    // Check if the user has already voted for the matchID
+    const voteIndex = user.Votes.findIndex((v) => v.matchID === matchID);
+    if (voteIndex !== -1) {
+      return res
+        .status(400)
+        .json({ error: `You have already voted for matchID ${matchID}.` });
+    }
+
+    // Add the new vote
     user.Votes.push({ matchID, vote });
     await user.save();
 
+    // Send a success response
     res.json({ message: `Successfully voted for matchID ${matchID}.` });
   } catch (err) {
-    console.log(err);
+    console.error(err); // Updated to use error logging
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -63,7 +68,7 @@ exports.removeVote = async (req, res) => {
 exports.allVotes = async (req, res) => {
   try {
     const User_Id = req.params.id;
-    const user = await user_model.findById(User_Id);
+    const user = await user_model.findById(User_Id).lean();
     if (!user) {
       return res.status(400).json({ error: `User id ${User_Id} not found.` });
     }

@@ -1,0 +1,63 @@
+.subscribe {
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: grey;
+    padding: 8px; 
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.subscribe p{
+    margin-left: 8px;
+}
+
+.sport-logo {
+    min-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.sport-name {
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.icon-x {
+    margin-left: auto;
+    /* margin: 0px 8px; */
+}
+
+.icon-x:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 900px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+}
+
+@media screen and (max-width: 600px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    
+}
+
+@media screen and (max-width: 320px) {
+    
+}
