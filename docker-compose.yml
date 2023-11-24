@@ -55,7 +55,7 @@ services:
       JWT_SECRET: JWT_SECRET
       DB_DATABASE_Public_URL: mongodb+srv://BeaverGroup:peT0rKwlPjPyYCR2@beaver.piraenz.mongodb.net/UserDB
   
-      FRONTEND_IP: "http://3.27.37.55:4005"
+      FRONTEND_IP: "http://ec2-3-27-37-55.ap-southeast-2.compute.amazonaws.com:4005"
     depends_on:
       - mongo-beaver
    
@@ -69,8 +69,8 @@ services:
       SERVER_PORT: 4005
       SERVER_HOST: "0.0.0.0"
       VITE_API_PORT: 4004
-      VITE_API_HOST_IP: "3.27.37.55"
-      VITE_GOOGLE_CLIENT_ID: 658254688251-u580nla3lgmkgbhjlb20rgbjc19kv8p5.apps.googleusercontent.com
+      VITE_API_HOST_IP: "ec2-3-27-37-55.ap-southeast-2.compute.amazonaws.com"
+      VITE_GOOGLE_CLIENT_ID: 684559178288-ma6f967proboh0gh1jntpcnenfjttoe3.apps.googleusercontent.com
       VITE_IOC_API: https://nongnop.azurewebsites.net/match_table
       
     depends_on:
