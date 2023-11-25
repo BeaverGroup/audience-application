@@ -65,7 +65,6 @@ function RegisterPage() {
     const port = import.meta.env.VITE_API_PORT;
     const host_ip = import.meta.env.VITE_API_HOST_IP;
     try {
-      console.log("asdsdssd");
       const countNationality = await axios.post(`http://${host_ip}:${port}/country/add/${nationality}`, {
         headers: {
           "Content-Type": "application/json",
@@ -77,15 +76,15 @@ function RegisterPage() {
         country: countNationality.data.country,
         count: countNationality.data.count
       })
-      console.log(sending);
+      // console.log(sending);
       const UserDataForIoc = await axios.post("https://nongnop.azurewebsites.net/user_statistic/", sending, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      console.log(UserDataForIoc);
+      // console.log(UserDataForIoc);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
@@ -107,8 +106,8 @@ function RegisterPage() {
       if (new_user) {
         if (new_user.success) {
           userNationality(new_user.data.user.Nationality)
-          // navigate("/");
-          // window.location.reload();
+          navigate("/");
+          window.location.reload();
         }
 
         if (!new_user.success && new_user.message == "Email is already used") {

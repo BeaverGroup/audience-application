@@ -78,7 +78,7 @@ function AssignPage() {
         count: countNationality.data.count
       })
       // console.log(sending);
-      const UserDataForIoc = await axios.post("http://nongnop.azurewebsites.net/user_statistic/", sending, {
+      const UserDataForIoc = await axios.post("https://nongnop.azurewebsites.net/user_statistic/", sending, {
         headers: {
           "Content-Type": "application/json",
         },
