@@ -82,7 +82,7 @@ function RegisterPage() {
           "Content-Type": "application/json",
         },
       })
-      // console.log(UserDataForIoc);
+      console.log(UserDataForIoc);
     } catch (e) {
       // console.log(e);
     }
@@ -107,7 +107,7 @@ function RegisterPage() {
         if (new_user.success) {
           userNationality(new_user.data.user.Nationality)
           navigate("/");
-          window.location.reload();
+          // window.location.reload();
         }
 
         if (!new_user.success && new_user.message == "Email is already used") {
